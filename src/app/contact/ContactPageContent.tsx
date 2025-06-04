@@ -49,17 +49,23 @@ export function ContactPageContent() {
       formData.append('name', data.name)
       formData.append('email', data.email)
       formData.append('message', data.message)
+      formData.append('bot-field', '') // Honeypot field
 
-      await fetch('/', {
+      const response = await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: formData.toString(),
       })
 
-      setIsSubmitted(true)
-      reset()
+      if (response.ok) {
+        setIsSubmitted(true)
+        reset()
+      } else {
+        throw new Error('Form submission failed')
+      }
     } catch (error) {
       console.error('Error submitting form:', error)
+      alert('There was an error submitting the form. Please try again.')
     }
   }
 
