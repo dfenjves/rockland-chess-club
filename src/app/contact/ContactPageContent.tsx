@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect } from 'react'
 import { MapPinIcon, ClockIcon, EnvelopeIcon } from '@heroicons/react/24/outline'
 
 const contactInfo = [
@@ -33,6 +34,16 @@ const contactInfo = [
 ]
 
 export function ContactPageContent() {
+  useEffect(() => {
+    // Ensure form submits natively without React interference
+    const form = document.querySelector('form[name="contact"]')
+    if (form) {
+      form.addEventListener('submit', () => {
+        // Let the form submit normally
+        console.log('Form submitting natively')
+      })
+    }
+  }, [])
 
   return (
     <div className="bg-white">
