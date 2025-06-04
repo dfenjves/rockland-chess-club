@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { useForm } from 'react-hook-form'
 import { MapPinIcon, ClockIcon, EnvelopeIcon } from '@heroicons/react/24/outline'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
@@ -39,35 +38,6 @@ const contactInfo = [
 
 export function ContactPageContent() {
   const [isSubmitted, setIsSubmitted] = useState(false)
-  const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm<ContactForm>()
-
-  const onSubmit = async (data: ContactForm) => {
-    try {
-      // Netlify Forms submission
-      const formData = new URLSearchParams()
-      formData.append('form-name', 'contact')
-      formData.append('name', data.name)
-      formData.append('email', data.email)
-      formData.append('message', data.message)
-      formData.append('bot-field', '') // Honeypot field
-
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: formData.toString(),
-      })
-
-      if (response.ok) {
-        setIsSubmitted(true)
-        reset()
-      } else {
-        throw new Error('Form submission failed')
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error)
-      alert('There was an error submitting the form. Please try again.')
-    }
-  }
 
   return (
     <div className="bg-white">
@@ -162,13 +132,11 @@ export function ContactPageContent() {
               </div>
             ) : (
               <form 
-                onSubmit={handleSubmit(onSubmit)}
                 className="space-y-6"
                 name="contact"
                 netlify-honeypot="bot-field"
                 data-netlify="true"
                 method="POST"
-                action="/"
               >
                 <input type="hidden" name="form-name" value="contact" />
                 <div className="hidden">
@@ -180,14 +148,11 @@ export function ContactPageContent() {
                     Name *
                   </label>
                   <Input
-                    {...register('name', { required: 'Name is required' })}
                     type="text"
                     name="name"
                     placeholder="Your full name"
+                    required
                   />
-                  {errors.name && (
-                    <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>
-                  )}
                 </div>
 
                 <div>
@@ -195,20 +160,11 @@ export function ContactPageContent() {
                     Email *
                   </label>
                   <Input
-                    {...register('email', { 
-                      required: 'Email is required',
-                      pattern: {
-                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                        message: 'Invalid email address'
-                      }
-                    })}
                     type="email"
                     name="email"
                     placeholder="your.email@example.com"
+                    required
                   />
-                  {errors.email && (
-                    <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
-                  )}
                 </div>
 
                 <div>
@@ -216,24 +172,20 @@ export function ContactPageContent() {
                     Message *
                   </label>
                   <textarea
-                    {...register('message', { required: 'Message is required' })}
                     name="message"
                     rows={6}
                     className="block w-full rounded-md border border-gray-300 px-3 py-2 text-sm placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
                     placeholder="Tell us about your chess experience, questions about the club, or anything else you&apos;d like to know..."
+                    required
                   />
-                  {errors.message && (
-                    <p className="mt-1 text-sm text-red-600">{errors.message.message}</p>
-                  )}
                 </div>
 
                 <Button 
                   type="submit" 
-                  disabled={isSubmitting}
                   className="w-full"
                   size="lg"
                 >
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                  Send Message
                 </Button>
               </form>
             )}

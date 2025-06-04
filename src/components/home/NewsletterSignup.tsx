@@ -2,40 +2,12 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { useForm } from 'react-hook-form'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 import type { NewsletterForm } from '@/types'
 
 export default function NewsletterSignup() {
   const [isSubmitted, setIsSubmitted] = useState(false)
-  const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm<NewsletterForm>()
-
-  const onSubmit = async (data: NewsletterForm) => {
-    try {
-      // Netlify Forms submission
-      const formData = new URLSearchParams()
-      formData.append('form-name', 'newsletter')
-      formData.append('email', data.email)
-      formData.append('bot-field', '') // Honeypot field
-
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: formData.toString(),
-      })
-
-      if (response.ok) {
-        setIsSubmitted(true)
-        reset()
-      } else {
-        throw new Error('Form submission failed')
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error)
-      alert('There was an error submitting the form. Please try again.')
-    }
-  }
 
   return (
     <section className="bg-blue-600">
@@ -65,13 +37,11 @@ export default function NewsletterSignup() {
             </motion.div>
           ) : (
             <form 
-              onSubmit={handleSubmit(onSubmit)} 
               className="mt-8 flex max-w-md mx-auto gap-x-4"
               name="newsletter"
               netlify-honeypot="bot-field"
               data-netlify="true"
               method="POST"
-              action="/"
             >
               <input type="hidden" name="form-name" value="newsletter" />
               <div className="hidden">
@@ -82,28 +52,18 @@ export default function NewsletterSignup() {
                   Email address
                 </label>
                 <Input
-                  {...register('email', { 
-                    required: 'Email is required',
-                    pattern: {
-                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                      message: 'Invalid email address'
-                    }
-                  })}
                   type="email"
                   name="email"
                   placeholder="Enter your email"
                   className="border-0 bg-white/20 text-white placeholder:text-blue-100 focus:ring-white"
+                  required
                 />
-                {errors.email && (
-                  <p className="mt-1 text-sm text-red-200">{errors.email.message}</p>
-                )}
               </div>
               <Button 
                 type="submit" 
-                disabled={isSubmitting}
                 className="bg-white text-blue-600 hover:bg-blue-50"
               >
-                {isSubmitting ? 'Subscribing...' : 'Subscribe'}
+                Subscribe
               </Button>
             </form>
           )}
