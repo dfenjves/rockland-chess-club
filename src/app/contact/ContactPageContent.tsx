@@ -168,6 +168,7 @@ export function ContactPageContent() {
                 netlify-honeypot="bot-field"
                 data-netlify="true"
                 method="POST"
+                action="/"
               >
                 <input type="hidden" name="form-name" value="contact" />
                 <div className="hidden">
@@ -181,6 +182,7 @@ export function ContactPageContent() {
                   <Input
                     {...register('name', { required: 'Name is required' })}
                     type="text"
+                    name="name"
                     placeholder="Your full name"
                   />
                   {errors.name && (
@@ -201,6 +203,7 @@ export function ContactPageContent() {
                       }
                     })}
                     type="email"
+                    name="email"
                     placeholder="your.email@example.com"
                   />
                   {errors.email && (
@@ -214,6 +217,7 @@ export function ContactPageContent() {
                   </label>
                   <textarea
                     {...register('message', { required: 'Message is required' })}
+                    name="message"
                     rows={6}
                     className="block w-full rounded-md border border-gray-300 px-3 py-2 text-sm placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
                     placeholder="Tell us about your chess experience, questions about the club, or anything else you&apos;d like to know..."

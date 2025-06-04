@@ -71,6 +71,7 @@ export default function NewsletterSignup() {
               netlify-honeypot="bot-field"
               data-netlify="true"
               method="POST"
+              action="/"
             >
               <input type="hidden" name="form-name" value="newsletter" />
               <div className="hidden">
@@ -89,6 +90,7 @@ export default function NewsletterSignup() {
                     }
                   })}
                   type="email"
+                  name="email"
                   placeholder="Enter your email"
                   className="border-0 bg-white/20 text-white placeholder:text-blue-100 focus:ring-white"
                 />
