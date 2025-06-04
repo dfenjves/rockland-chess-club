@@ -120,6 +120,7 @@ export function ContactPageContent() {
                 name="contact"
                 method="POST"
                 data-netlify="true"
+                action="/thank-you"
               >
                 
                 <div>

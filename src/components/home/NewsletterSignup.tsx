@@ -28,6 +28,7 @@ export default function NewsletterSignup() {
               name="newsletter"
               method="POST"
               data-netlify="true"
+              action="/thank-you"
             >
               <div className="min-w-0 flex-1">
                 <label htmlFor="email-address" className="sr-only">
