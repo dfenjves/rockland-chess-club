@@ -1,8 +1,6 @@
 'use client'
 
 import { MapPinIcon, ClockIcon, EnvelopeIcon } from '@heroicons/react/24/outline'
-import { Button } from '@/components/ui/Button'
-import { Input } from '@/components/ui/Input'
 
 const contactInfo = [
   {
@@ -120,18 +118,18 @@ export function ContactPageContent() {
                 name="contact"
                 method="POST"
                 data-netlify="true"
-                action="/thank-you"
               >
                 
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                     Name *
                   </label>
-                  <Input
+                  <input
                     type="text"
                     name="name"
                     placeholder="Your full name"
                     required
+                    className="block w-full rounded-md border border-gray-300 px-3 py-2 text-sm placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
                   />
                 </div>
 
@@ -139,11 +137,12 @@ export function ContactPageContent() {
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                     Email *
                   </label>
-                  <Input
+                  <input
                     type="email"
                     name="email"
                     placeholder="your.email@example.com"
                     required
+                    className="block w-full rounded-md border border-gray-300 px-3 py-2 text-sm placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
                   />
                 </div>
 
@@ -160,13 +159,12 @@ export function ContactPageContent() {
                   />
                 </div>
 
-                <Button 
+                <button 
                   type="submit" 
-                  className="w-full"
-                  size="lg"
+                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                 >
                   Send Message
-                </Button>
+                </button>
               </form>
           </div>
         </div>

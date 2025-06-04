@@ -1,8 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Button } from '@/components/ui/Button'
-import { Input } from '@/components/ui/Input'
 
 export default function NewsletterSignup() {
 
@@ -28,26 +26,25 @@ export default function NewsletterSignup() {
               name="newsletter"
               method="POST"
               data-netlify="true"
-              action="/thank-you"
             >
               <div className="min-w-0 flex-1">
                 <label htmlFor="email-address" className="sr-only">
                   Email address
                 </label>
-                <Input
+                <input
                   type="email"
                   name="email"
                   placeholder="Enter your email"
-                  className="border-0 bg-white/20 text-white placeholder:text-blue-100 focus:ring-white"
+                  className="border-0 bg-white/20 text-white placeholder:text-blue-100 focus:ring-white min-w-0 flex-auto rounded-md border-0 px-3.5 py-2 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-white sm:text-sm sm:leading-6"
                   required
                 />
               </div>
-              <Button 
+              <button 
                 type="submit" 
-                className="bg-white text-blue-600 hover:bg-blue-50"
+                className="flex-none rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-blue-600 shadow-sm hover:bg-blue-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
                 Subscribe
-              </Button>
+              </button>
             </form>
         </motion.div>
       </div>
