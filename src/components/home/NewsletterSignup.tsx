@@ -21,30 +21,13 @@ export default function NewsletterSignup() {
             Get the latest news about events, tournaments, and special announcements delivered to your inbox.
           </p>
           
-            <form 
-              className="mt-8 flex max-w-md mx-auto gap-x-4"
-              name="newsletter"
-              method="POST"
-              data-netlify="true"
-            >
-              <div className="min-w-0 flex-1">
-                <label htmlFor="email-address" className="sr-only">
-                  Email address
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Enter your email"
-                  className="border-0 bg-white/20 text-white placeholder:text-blue-100 focus:ring-white min-w-0 flex-auto rounded-md border-0 px-3.5 py-2 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-white sm:text-sm sm:leading-6"
-                  required
-                />
-              </div>
-              <button 
-                type="submit" 
-                className="flex-none rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-blue-600 shadow-sm hover:bg-blue-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-              >
-                Subscribe
-              </button>
+            <form name="newsletter" method="POST" data-netlify="true">
+              <p>
+                <label>Email: <input type="email" name="email" required /></label>
+              </p>
+              <p>
+                <button type="submit">Subscribe</button>
+              </p>
             </form>
         </motion.div>
       </div>

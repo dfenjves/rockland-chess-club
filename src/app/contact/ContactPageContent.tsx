@@ -113,58 +113,19 @@ export function ContactPageContent() {
           <div>
             <h2 className="text-2xl font-bold text-gray-900 mb-8">Send us a Message</h2>
             
-              <form 
-                className="space-y-6"
-                name="contact"
-                method="POST"
-                data-netlify="true"
-              >
-                
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                    Name *
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="Your full name"
-                    required
-                    className="block w-full rounded-md border border-gray-300 px-3 py-2 text-sm placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                    Email *
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="your.email@example.com"
-                    required
-                    className="block w-full rounded-md border border-gray-300 px-3 py-2 text-sm placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    Message *
-                  </label>
-                  <textarea
-                    name="message"
-                    rows={6}
-                    className="block w-full rounded-md border border-gray-300 px-3 py-2 text-sm placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-                    placeholder="Tell us about your chess experience, questions about the club, or anything else you&apos;d like to know..."
-                    required
-                  />
-                </div>
-
-                <button 
-                  type="submit" 
-                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                >
-                  Send Message
-                </button>
+              <form name="contact" method="POST" data-netlify="true">
+                <p>
+                  <label>Name: <input type="text" name="name" required /></label>
+                </p>
+                <p>
+                  <label>Email: <input type="email" name="email" required /></label>
+                </p>
+                <p>
+                  <label>Message: <textarea name="message" required></textarea></label>
+                </p>
+                <p>
+                  <button type="submit">Send Message</button>
+                </p>
               </form>
           </div>
         </div>
