@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact Form - Static Detection</title>
+</head>
+<body>
+  <!-- These forms are used by Netlify for build-time form detection -->
+  <!-- The actual forms are in the React components -->
+  
+  <!-- Contact form -->
+  <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+    <input type="text" name="name" />
+    <input type="email" name="email" />
+    <textarea name="message"></textarea>
+  </form>
+  
+  <!-- Newsletter form -->
+  <form name="newsletter" netlify netlify-honeypot="bot-field" hidden>
+    <input type="email" name="email" />
+  </form>
+</body>
+</html>
