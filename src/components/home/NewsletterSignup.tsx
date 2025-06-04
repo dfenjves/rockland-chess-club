@@ -26,14 +26,9 @@ export default function NewsletterSignup() {
             <form 
               className="mt-8 flex max-w-md mx-auto gap-x-4"
               name="newsletter"
-              netlify-honeypot="bot-field"
-              data-netlify="true"
               method="POST"
+              data-netlify="true"
             >
-              <input type="hidden" name="form-name" value="newsletter" />
-              <div className="hidden">
-                <label>Don&apos;t fill this out if you&apos;re human: <input name="bot-field" /></label>
-              </div>
               <div className="min-w-0 flex-1">
                 <label htmlFor="email-address" className="sr-only">
                   Email address

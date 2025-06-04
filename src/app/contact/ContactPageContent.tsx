@@ -118,14 +118,9 @@ export function ContactPageContent() {
               <form 
                 className="space-y-6"
                 name="contact"
-                netlify-honeypot="bot-field"
-                data-netlify="true"
                 method="POST"
+                data-netlify="true"
               >
-                <input type="hidden" name="form-name" value="contact" />
-                <div className="hidden">
-                  <label>Don&apos;t fill this out if you&apos;re human: <input name="bot-field" /></label>
-                </div>
                 
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
