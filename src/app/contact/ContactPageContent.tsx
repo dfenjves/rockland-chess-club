@@ -43,7 +43,7 @@ export function ContactPageContent() {
 
   const onSubmit = async (data: ContactForm) => {
     try {
-      // This would integrate with Netlify Forms
+      // Netlify Forms submission
       const formData = new URLSearchParams()
       formData.append('form-name', 'contact')
       formData.append('name', data.name)
@@ -161,8 +161,12 @@ export function ContactPageContent() {
                 name="contact"
                 netlify-honeypot="bot-field"
                 data-netlify="true"
+                method="POST"
               >
                 <input type="hidden" name="form-name" value="contact" />
+                <div className="hidden">
+                  <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                </div>
                 
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">

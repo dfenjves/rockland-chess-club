@@ -13,7 +13,7 @@ export default function NewsletterSignup() {
 
   const onSubmit = async (data: NewsletterForm) => {
     try {
-      // This would integrate with Netlify Forms
+      // Netlify Forms submission
       const formData = new URLSearchParams()
       formData.append('form-name', 'newsletter')
       formData.append('email', data.email)
@@ -64,8 +64,12 @@ export default function NewsletterSignup() {
               name="newsletter"
               netlify-honeypot="bot-field"
               data-netlify="true"
+              method="POST"
             >
               <input type="hidden" name="form-name" value="newsletter" />
+              <div className="hidden">
+                <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+              </div>
               <div className="min-w-0 flex-1">
                 <label htmlFor="email-address" className="sr-only">
                   Email address
