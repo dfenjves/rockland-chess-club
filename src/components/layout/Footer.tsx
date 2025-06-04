@@ -62,9 +62,13 @@ export default function Footer() {
         <div className="mt-10 border-t border-gray-900/10 pt-8">
           <div className="text-center">
             <div className="flex items-center justify-center space-x-2 mb-4">
-              <div className="h-6 w-6 bg-slate-800 rounded flex items-center justify-center">
-                <span className="text-white font-bold text-xs">♔</span>
-              </div>
+              <img 
+                src="/favicon-32x32.png" 
+                alt="Rockland Chess Club" 
+                width={24} 
+                height={24}
+                className="h-6 w-6"
+              />
               <span className="text-lg font-bold text-slate-800">Rockland Chess Club</span>
             </div>
             <p className="text-xs leading-5 text-gray-500 mb-2">

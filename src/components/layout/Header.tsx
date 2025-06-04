@@ -23,10 +23,14 @@ export default function Header() {
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Rockland Chess Club</span>
-            <div className="flex items-center space-x-2">
-              <div className="h-8 w-8 bg-slate-800 rounded flex items-center justify-center">
-                <span className="text-white font-bold text-sm">♔</span>
-              </div>
+            <div className="flex items-center space-x-3">
+              <img 
+                src="/favicon-32x32.png" 
+                alt="Rockland Chess Club" 
+                width={32} 
+                height={32}
+                className="h-8 w-8"
+              />
               <span className="text-xl font-bold text-slate-800">Rockland Chess Club</span>
             </div>
           </Link>
@@ -78,9 +82,13 @@ export default function Header() {
               <Link href="/" className="-m-1.5 p-1.5">
                 <span className="sr-only">Rockland Chess Club</span>
                 <div className="flex items-center space-x-2">
-                  <div className="h-8 w-8 bg-slate-800 rounded flex items-center justify-center">
-                    <span className="text-white font-bold text-sm">♔</span>
-                  </div>
+                  <img 
+                    src="/favicon-32x32.png" 
+                    alt="Rockland Chess Club" 
+                    width={32} 
+                    height={32}
+                    className="h-8 w-8"
+                  />
                   <span className="text-lg font-bold text-slate-800">RCC</span>
                 </div>
               </Link>
