@@ -2,88 +2,153 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { Button } from '@/components/ui/Button'
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-slate-50 to-blue-50 py-20 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
+    <section className="relative overflow-hidden bg-gradient-to-br from-amber-50 via-cream to-burgundy-50 py-24 sm:py-40 paper-texture">
+      {/* Ornamental top border */}
+      <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-burgundy-600 via-amber-500 to-burgundy-600 opacity-60"></div>
+      
+      {/* Classical background patterns */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-20 left-20 text-8xl text-burgundy-600 transform rotate-12">♔</div>
+        <div className="absolute top-40 right-32 text-6xl text-forest-600 transform -rotate-6">♕</div>
+        <div className="absolute bottom-32 left-40 text-7xl text-amber-600 transform rotate-45">♗</div>
+        <div className="absolute bottom-20 right-20 text-5xl text-burgundy-600 transform -rotate-12">♘</div>
+        <div className="absolute top-1/2 left-1/4 text-4xl text-forest-600 transform rotate-30">♖</div>
+        <div className="absolute top-1/3 right-1/4 text-6xl text-amber-600 transform -rotate-30">♙</div>
+      </div>
+
+      <div className="mx-auto max-w-6xl px-8 lg:px-12 relative z-10">
+        <div className="mx-auto max-w-4xl text-center">
+          
+          {/* Classical announcement banner */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            className="mb-12"
           >
-            <div className="mb-8 flex justify-center">
-              <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-                🎉 New space launching September 2025!{' '}
-                <Link href="/about" className="font-semibold text-blue-600">
-                  <span className="absolute inset-0" aria-hidden="true" />
-                  Learn more <span aria-hidden="true">&rarr;</span>
+            <div className="elegant-card inline-flex items-center px-8 py-4 mx-auto">
+              <div className="flex items-center space-x-4">
+                <span className="chess-piece-decoration text-amber-600">♔</span>
+                <div className="text-center">
+                  <div className="text-burgundy-700 font-semibold" style={{fontFamily: 'var(--font-playfair)'}}>
+                    Expansion Announcement
+                  </div>
+                  <div className="text-forest-600 text-sm mt-1" style={{fontFamily: 'var(--font-baskerville)'}}>
+                    New distinguished quarters opening September 2025
+                  </div>
+                </div>
+                <Link href="/about" className="text-amber-600 hover:text-amber-700 transition-colors">
+                  <span className="text-sm font-medium" style={{fontFamily: 'var(--font-playfair)'}}>
+                    Learn More →
+                  </span>
                 </Link>
+                <span className="chess-piece-decoration text-amber-600">♔</span>
               </div>
             </div>
           </motion.div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
+          {/* Grand title with classical styling */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl"
+            transition={{ duration: 1, delay: 0.2 }}
+            className="mb-8"
           >
-            Welcome to{' '}
-            <span className="text-blue-600">Rockland Chess Club</span>
-          </motion.h1>
+            <h1 className="text-5xl sm:text-7xl font-bold text-burgundy-800 leading-tight" 
+                style={{fontFamily: 'var(--font-playfair)'}}>
+              <span className="block">The Rockland</span>
+              <span className="block text-amber-600 relative">
+                Chess Society
+                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent"></div>
+              </span>
+            </h1>
+            <div className="mt-6 text-forest-700 text-xl italic" style={{fontFamily: 'var(--font-baskerville)'}}>
+              &ldquo;A distinguished gathering of intellectual pursuit&rdquo;
+            </div>
+          </motion.div>
 
+          {/* Elegant description */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="mt-6 text-lg leading-8 text-gray-600"
+            className="mt-8 text-xl leading-relaxed text-burgundy-700 max-w-3xl mx-auto"
+            style={{fontFamily: 'var(--font-baskerville)'}}
           >
-            A warm, welcoming community for chess players of all skill levels. Whether you&apos;re taking your first steps or you&apos;re an experienced player, join us for tournaments, casual games, classes, and friendship.
+            An esteemed fellowship dedicated to the noble game of chess, where strategic minds convene for intellectual discourse, spirited competition, and the timeless pursuit of mastery. From novice enthusiasts to seasoned grandmasters, all are welcomed into our distinguished society.
           </motion.p>
 
+          {/* Classical action buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="mt-10 flex items-center justify-center gap-x-6"
+            className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6"
           >
-            <Link href="/join">
-              <Button size="lg">Join Today</Button>
+            <Link href="/join" className="btn-classical text-lg px-10 py-4 group">
+              <span>Join Our Society</span>
+              <span className="chess-piece-decoration text-base ml-2 group-hover:rotate-12 transition-transform duration-300">♔</span>
             </Link>
-            <Link href="/events">
-              <Button variant="outline" size="lg">View Events</Button>
+            
+            <Link href="/events" 
+                  className="inline-flex items-center px-10 py-4 border-2 border-amber-500 text-burgundy-700 rounded-lg hover:bg-amber-100 transition-all duration-300 group"
+                  style={{fontFamily: 'var(--font-playfair)'}}>
+              <span className="font-semibold text-lg">View Events</span>
+              <span className="chess-piece-decoration text-base ml-2 group-hover:rotate-12 transition-transform duration-300">♕</span>
             </Link>
           </motion.div>
 
+          {/* Classical divider */}
+          <div className="classical-divider mt-16 mb-12"></div>
+
+          {/* Elegant features grid */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-8"
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16"
           >
-            <div className="text-center">
-              <div className="text-2xl font-bold text-blue-600">All Levels</div>
-              <div className="text-sm text-gray-600">Beginner to Expert</div>
+            <div className="elegant-card p-8 text-center group hover:shadow-elegant transition-all duration-300">
+              <div className="chess-piece-decoration text-4xl text-burgundy-600 mb-4 group-hover:scale-110 transition-transform duration-300">♔</div>
+              <h3 className="text-xl font-bold text-burgundy-800 mb-3" style={{fontFamily: 'var(--font-playfair)'}}>
+                All Skill Levels
+              </h3>
+              <p className="text-forest-700" style={{fontFamily: 'var(--font-baskerville)'}}>
+                From beginners to masters, every player finds their place in our society
+              </p>
             </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-green-600">Weekly Events</div>
-              <div className="text-sm text-gray-600">Tournaments & Casual Play</div>
+            
+            <div className="elegant-card p-8 text-center group hover:shadow-elegant transition-all duration-300">
+              <div className="chess-piece-decoration text-4xl text-forest-600 mb-4 group-hover:scale-110 transition-transform duration-300">♕</div>
+              <h3 className="text-xl font-bold text-burgundy-800 mb-3" style={{fontFamily: 'var(--font-playfair)'}}>
+                Regular Gatherings
+              </h3>
+              <p className="text-forest-700" style={{fontFamily: 'var(--font-baskerville)'}}>
+                Weekly tournaments, casual matches, and spirited intellectual exchanges
+              </p>
             </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-orange-600">Classes</div>
-              <div className="text-sm text-gray-600">Learn & Improve</div>
+            
+            <div className="elegant-card p-8 text-center group hover:shadow-elegant transition-all duration-300">
+              <div className="chess-piece-decoration text-4xl text-amber-600 mb-4 group-hover:scale-110 transition-transform duration-300">♗</div>
+              <h3 className="text-xl font-bold text-burgundy-800 mb-3" style={{fontFamily: 'var(--font-playfair)'}}>
+                Scholarly Instruction
+              </h3>
+              <p className="text-forest-700" style={{fontFamily: 'var(--font-baskerville)'}}>
+                Distinguished tutors offer guidance in the art and science of chess
+              </p>
             </div>
           </motion.div>
         </div>
       </div>
 
-      {/* Background decoration */}
-      <div className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">
-        <div className="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-blue-200 to-slate-200 opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]" />
-      </div>
+      {/* Ornamental bottom border */}
+      <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r from-burgundy-600 via-amber-500 to-burgundy-600 opacity-60"></div>
+      
+      {/* Subtle background texture overlay */}
+      <div className="absolute inset-0 opacity-10 bg-gradient-to-br from-burgundy-900/5 via-transparent to-amber-900/5"></div>
     </section>
   )
 }

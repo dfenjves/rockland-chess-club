@@ -1,101 +1,353 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Classic color palette */
+  --background: #F4F1E8; /* aged parchment */
+  --foreground: #2C2C2C; /* charcoal */
+  
+  /* Primary colors */
+  --burgundy: #8B1538;
+  --forest-green: #2D5530;
+  --navy: #1e3a5f;
+  
+  /* Accent colors */
+  --golden-amber: #D4A574;
+  --brass: #B5A642;
+  --cream: #F5F5DC;
+  
+  /* Text colors */
+  --text-primary: #2C2C2C;
+  --text-secondary: #4A3728;
+  --text-light: #6B5B73;
 }
 
 @theme inline {
+  /* Colors */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter);
+  --color-primary: var(--burgundy);
+  --color-secondary: var(--forest-green);
+  --color-accent: var(--golden-amber);
+  --color-muted: var(--cream);
+  
+  /* Classic color variations */
+  --color-burgundy-50: #fdf2f4;
+  --color-burgundy-100: #fce7ea;
+  --color-burgundy-500: var(--burgundy);
+  --color-burgundy-600: #7a1230;
+  --color-burgundy-700: #6b1029;
+  --color-burgundy-800: #5a0d21;
+  --color-burgundy-900: #4a0b1c;
+  
+  --color-forest-50: #f0f4f0;
+  --color-forest-100: #dce6dd;
+  --color-forest-500: var(--forest-green);
+  --color-forest-600: #254a27;
+  --color-forest-700: #1e3f20;
+  --color-forest-800: #173019;
+  --color-forest-900: #102012;
+  
+  --color-navy-50: #f0f4f8;
+  --color-navy-100: #dae6f0;
+  --color-navy-500: var(--navy);
+  --color-navy-600: #1a3354;
+  --color-navy-700: #162b48;
+  --color-navy-800: #12243c;
+  --color-navy-900: #0e1d30;
+  
+  --color-amber-50: #fefbf3;
+  --color-amber-100: #fdf4e1;
+  --color-amber-500: var(--golden-amber);
+  --color-amber-600: #c19660;
+  --color-amber-700: #a67f4d;
+  --color-amber-800: #8a693a;
+  --color-amber-900: #6e5327;
+  
+  /* Typography */
+  --font-serif: var(--font-baskerville), Georgia, 'Times New Roman', serif;
+  --font-display: var(--font-playfair), Georgia, serif;
+  
+  /* Shadows and effects */
+  --shadow-classical: 0 4px 16px rgba(139, 21, 56, 0.1);
+  --shadow-elegant: 0 8px 32px rgba(45, 85, 48, 0.15);
+  --border-classical: 1px solid rgba(212, 165, 116, 0.3);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter), system-ui, sans-serif;
+  font-family: var(--font-baskerville), Georgia, serif;
+  line-height: 1.7;
+  font-size: 18px;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(212, 165, 116, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(139, 21, 56, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(45, 85, 48, 0.04) 0%, transparent 50%);
 }
 
-/* React Calendar Styles */
+/* Classical typography hierarchy */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 3.5rem;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 2.5rem;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+p {
+  margin-bottom: 1.5rem;
+  color: var(--text-secondary);
+}
+
+/* Classical decorative elements */
+.classical-border {
+  border: 2px solid var(--golden-amber);
+  border-radius: 8px;
+  position: relative;
+}
+
+.classical-border::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 1px solid rgba(212, 165, 116, 0.3);
+  border-radius: 12px;
+  z-index: -1;
+}
+
+/* Elegant card styling */
+.elegant-card {
+  background: rgba(245, 245, 220, 0.6);
+  border: 1px solid rgba(212, 165, 116, 0.4);
+  border-radius: 12px;
+  box-shadow: var(--shadow-classical);
+  backdrop-filter: blur(10px);
+  position: relative;
+}
+
+.elegant-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--golden-amber), transparent);
+  opacity: 0.6;
+}
+
+/* Classical button styling */
+.btn-classical {
+  background: linear-gradient(135deg, var(--burgundy), #a01b42);
+  color: var(--cream);
+  border: 1px solid rgba(212, 165, 116, 0.5);
+  padding: 12px 32px;
+  border-radius: 6px;
+  font-family: var(--font-playfair), Georgia, serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.btn-classical:hover {
+  background: linear-gradient(135deg, #a01b42, var(--burgundy));
+  box-shadow: var(--shadow-classical);
+  transform: translateY(-1px);
+}
+
+/* Decorative dividers */
+.classical-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--golden-amber), transparent);
+  margin: 3rem 0;
+  position: relative;
+}
+
+.classical-divider::before {
+  content: '♔';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--background);
+  padding: 0 1rem;
+  color: var(--golden-amber);
+  font-size: 1.2rem;
+}
+
+/* Classical React Calendar Styles */
 .react-calendar {
   width: 100%;
-  background: white;
-  border: 1px solid #e5e7eb;
-  border-radius: 0.5rem;
-  font-family: inherit;
-  line-height: 1.125em;
+  background: var(--cream);
+  border: 2px solid var(--golden-amber);
+  border-radius: 12px;
+  font-family: var(--font-baskerville), Georgia, serif;
+  line-height: 1.4;
+  box-shadow: var(--shadow-classical);
+  overflow: hidden;
 }
 
 .react-calendar button {
   margin: 0;
   border: 0;
   outline: none;
+  font-family: inherit;
 }
 
 .react-calendar button:enabled:hover,
 .react-calendar button:enabled:focus {
-  background-color: #f3f4f6;
+  background-color: rgba(212, 165, 116, 0.2);
 }
 
 .react-calendar__navigation {
   display: flex;
-  height: 44px;
+  height: 56px;
   margin-bottom: 1em;
+  background: linear-gradient(135deg, var(--burgundy), #a01b42);
+  color: var(--cream);
 }
 
 .react-calendar__navigation button {
-  min-width: 44px;
+  min-width: 56px;
   background: none;
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--cream);
+  font-family: var(--font-playfair), Georgia, serif;
 }
 
 .react-calendar__navigation button:enabled:hover,
 .react-calendar__navigation button:enabled:focus {
-  background-color: #f3f4f6;
-  border-radius: 0.375rem;
+  background-color: rgba(245, 245, 220, 0.1);
+  border-radius: 6px;
 }
 
 .react-calendar__month-view__weekdays {
   text-align: center;
   text-transform: uppercase;
-  font-weight: 600;
-  font-size: 0.75em;
-  color: #6b7280;
+  font-weight: 700;
+  font-size: 0.8em;
+  color: var(--text-secondary);
+  background: rgba(212, 165, 116, 0.1);
+  font-family: var(--font-playfair), Georgia, serif;
+  letter-spacing: 1px;
 }
 
 .react-calendar__month-view__weekdays__weekday {
-  padding: 0.5em;
+  padding: 0.75em;
 }
 
 .react-calendar__month-view__days__day {
-  font-size: 0.875em;
-  padding: 0.5em 0.25em;
+  font-size: 1em;
+  padding: 0.75em 0.5em;
   background: none;
-  border-radius: 0.375rem;
-  color: #374151;
+  border-radius: 6px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  transition: all 0.2s ease;
 }
 
 .react-calendar__month-view__days__day--weekend {
-  color: #6b7280;
+  color: var(--burgundy);
+  font-weight: 600;
 }
 
 .react-calendar__month-view__days__day--neighboringMonth {
-  color: #9ca3af;
+  color: rgba(74, 55, 40, 0.4);
 }
 
 .react-calendar__month-view__days__day:enabled:hover,
 .react-calendar__month-view__days__day:enabled:focus {
-  background-color: #dbeafe;
+  background-color: rgba(212, 165, 116, 0.3);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(139, 21, 56, 0.1);
 }
 
 .react-calendar__tile--active {
-  background: #2563eb !important;
-  color: white !important;
+  background: linear-gradient(135deg, var(--burgundy), #a01b42) !important;
+  color: var(--cream) !important;
+  font-weight: 700 !important;
+  box-shadow: var(--shadow-classical) !important;
 }
 
 .react-calendar__tile--active:enabled:hover,
 .react-calendar__tile--active:enabled:focus {
-  background: #1d4ed8 !important;
+  background: linear-gradient(135deg, #a01b42, var(--burgundy)) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Additional decorative elements */
+.chess-piece-decoration {
+  color: var(--golden-amber);
+  opacity: 0.6;
+  font-size: 2rem;
+  user-select: none;
+}
+
+.ornamental-corner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--golden-amber);
+}
+
+.ornamental-corner.top-left {
+  top: 8px;
+  left: 8px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.ornamental-corner.top-right {
+  top: 8px;
+  right: 8px;
+  border-left: none;
+  border-bottom: none;
+}
+
+.ornamental-corner.bottom-left {
+  bottom: 8px;
+  left: 8px;
+  border-right: none;
+  border-top: none;
+}
+
+.ornamental-corner.bottom-right {
+  bottom: 8px;
+  right: 8px;
+  border-left: none;
+  border-top: none;
+}
+
+/* Vintage paper texture overlay */
+.paper-texture::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(139, 21, 56, 0.02) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(45, 85, 48, 0.02) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 1;
 }

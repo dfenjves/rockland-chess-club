@@ -18,55 +18,89 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="bg-white shadow-sm">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+    <header className="bg-cream relative border-b-2 border-amber-500 shadow-elegant">
+      {/* Ornamental top border */}
+      <div className="h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent opacity-70"></div>
+      
+      <nav className="mx-auto flex max-w-7xl items-center justify-between p-8 lg:px-12 relative" aria-label="Global">
+        {/* Decorative corner elements */}
+        <div className="ornamental-corner top-left"></div>
+        <div className="ornamental-corner top-right"></div>
+        
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Rockland Chess Club</span>
-            <div className="flex items-center space-x-3">
-              <img 
-                src="/favicon-32x32.png" 
-                alt="Rockland Chess Club" 
-                width={32} 
-                height={32}
-                className="h-8 w-8"
-              />
-              <span className="text-xl font-bold text-slate-800">Rockland Chess Club</span>
+            <div className="flex items-center space-x-4">
+              <div className="relative">
+                <div className="absolute inset-0 bg-amber-500 rounded-full opacity-20 scale-110"></div>
+                <img 
+                  src="/favicon-32x32.png" 
+                  alt="Rockland Chess Club" 
+                  width={40} 
+                  height={40}
+                  className="h-10 w-10 relative z-10"
+                />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-2xl font-bold text-burgundy-700" 
+                      style={{fontFamily: 'var(--font-playfair)'}}>
+                  Rockland Chess Club
+                </span>
+                <span className="text-sm text-forest-600 italic tracking-wider -mt-1"
+                      style={{fontFamily: 'var(--font-baskerville)'}}>
+                  Est. Rockland County
+                </span>
+              </div>
             </div>
           </Link>
         </div>
+        
         <div className="flex lg:hidden">
           <button
             type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+            className="-m-2.5 inline-flex items-center justify-center rounded-md p-3 text-burgundy-600 hover:bg-amber-100 transition-all duration-200"
             onClick={() => setMobileMenuOpen(true)}
           >
             <span className="sr-only">Open main menu</span>
-            <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+            <Bars3Icon className="h-7 w-7" aria-hidden="true" />
           </button>
         </div>
-        <div className="hidden lg:flex lg:gap-x-12">
-          {navigation.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 transition-colors"
-            >
-              {item.name}
-            </Link>
+        
+        {/* Classical navigation */}
+        <div className="hidden lg:flex lg:gap-x-8 items-center">
+          {navigation.map((item, index) => (
+            <div key={item.name} className="relative">
+              <Link
+                href={item.href}
+                className="text-lg font-medium text-burgundy-700 hover:text-amber-600 transition-colors duration-300 relative py-2 px-4 group"
+                style={{fontFamily: 'var(--font-playfair)'}}
+              >
+                {item.name}
+                <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-amber-500 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+              </Link>
+              {index < navigation.length - 1 && (
+                <div className="absolute -right-4 top-1/2 transform -translate-y-1/2 w-px h-6 bg-gradient-to-b from-transparent via-amber-500 to-transparent opacity-30"></div>
+              )}
+            </div>
           ))}
         </div>
+        
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <Link
             href="/join"
-            className="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors"
+            className="btn-classical inline-flex items-center space-x-2 group"
           >
-            Join Today
+            <span>Join Our Society</span>
+            <span className="chess-piece-decoration text-sm group-hover:rotate-12 transition-transform duration-300">♔</span>
           </Link>
         </div>
+        
+        {/* Bottom decorative border */}
+        <div className="ornamental-corner bottom-left"></div>
+        <div className="ornamental-corner bottom-right"></div>
       </nav>
 
-      {/* Mobile menu */}
+      {/* Classical Mobile menu */}
       {mobileMenuOpen && (
         <motion.div
           initial={{ opacity: 0 }}
@@ -76,54 +110,90 @@ export default function Header() {
           role="dialog"
           aria-modal="true"
         >
-          <div className="fixed inset-0 z-50"></div>
-          <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-            <div className="flex items-center justify-between">
-              <Link href="/" className="-m-1.5 p-1.5">
+          <div className="fixed inset-0 z-50 bg-burgundy-900/30 backdrop-blur-sm"></div>
+          <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-cream px-8 py-8 sm:max-w-sm border-l-4 border-amber-500 shadow-elegant">
+            <div className="flex items-center justify-between mb-8">
+              <Link href="/" className="-m-1.5 p-1.5" onClick={() => setMobileMenuOpen(false)}>
                 <span className="sr-only">Rockland Chess Club</span>
-                <div className="flex items-center space-x-2">
-                  <img 
-                    src="/favicon-32x32.png" 
-                    alt="Rockland Chess Club" 
-                    width={32} 
-                    height={32}
-                    className="h-8 w-8"
-                  />
-                  <span className="text-lg font-bold text-slate-800">RCC</span>
+                <div className="flex items-center space-x-3">
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-amber-500 rounded-full opacity-20 scale-110"></div>
+                    <img 
+                      src="/favicon-32x32.png" 
+                      alt="Rockland Chess Club" 
+                      width={32} 
+                      height={32}
+                      className="h-8 w-8 relative z-10"
+                    />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-lg font-bold text-burgundy-700" 
+                          style={{fontFamily: 'var(--font-playfair)'}}>
+                      RCC
+                    </span>
+                    <span className="text-xs text-forest-600 italic -mt-1"
+                          style={{fontFamily: 'var(--font-baskerville)'}}>
+                      Chess Society
+                    </span>
+                  </div>
                 </div>
               </Link>
               <button
                 type="button"
-                className="-m-2.5 rounded-md p-2.5 text-gray-700"
+                className="-m-2.5 rounded-md p-2.5 text-burgundy-600 hover:bg-amber-100 transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 <span className="sr-only">Close menu</span>
-                <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                <XMarkIcon className="h-7 w-7" aria-hidden="true" />
               </button>
             </div>
-            <div className="mt-6 flow-root">
-              <div className="-my-6 divide-y divide-gray-500/10">
-                <div className="space-y-2 py-6">
-                  {navigation.map((item) => (
+            
+            {/* Decorative divider */}
+            <div className="classical-divider mb-8"></div>
+            
+            <div className="flow-root">
+              <div className="space-y-1">
+                {navigation.map((item, index) => (
+                  <div key={item.name}>
                     <Link
-                      key={item.name}
                       href={item.href}
-                      className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                      className="flex items-center justify-between px-4 py-4 text-lg font-medium text-burgundy-700 hover:bg-amber-100 hover:text-burgundy-900 rounded-lg transition-all duration-300 group"
+                      style={{fontFamily: 'var(--font-playfair)'}}
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      {item.name}
+                      <span>{item.name}</span>
+                      <span className="chess-piece-decoration text-xs group-hover:rotate-12 transition-transform duration-300">
+                        {['♔', '♕', '♗', '♘', '♖', '♙'][index]}
+                      </span>
                     </Link>
-                  ))}
-                </div>
-                <div className="py-6">
+                    {index < navigation.length - 1 && (
+                      <div className="h-px bg-gradient-to-r from-transparent via-amber-500 to-transparent opacity-30 mx-4"></div>
+                    )}
+                  </div>
+                ))}
+                
+                {/* Classical divider */}
+                <div className="classical-divider my-8"></div>
+                
+                <div className="px-4">
                   <Link
                     href="/join"
-                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    className="btn-classical w-full text-center inline-flex items-center justify-center space-x-2 group"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    Join Today
+                    <span>Join Our Society</span>
+                    <span className="chess-piece-decoration text-sm group-hover:rotate-12 transition-transform duration-300">♔</span>
                   </Link>
                 </div>
+              </div>
+            </div>
+            
+            {/* Footer decoration */}
+            <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2">
+              <div className="flex space-x-2 text-amber-600 opacity-40">
+                <span className="chess-piece-decoration text-lg">♔</span>
+                <span className="chess-piece-decoration text-lg">♕</span>
+                <span className="chess-piece-decoration text-lg">♗</span>
               </div>
             </div>
           </div>
