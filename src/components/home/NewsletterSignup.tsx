@@ -1,13 +1,10 @@
 'use client'
 
-import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
-import type { NewsletterForm } from '@/types'
 
 export default function NewsletterSignup() {
-  const [isSubmitted, setIsSubmitted] = useState(false)
 
   return (
     <section className="bg-blue-600">
@@ -26,16 +23,6 @@ export default function NewsletterSignup() {
             Get the latest news about events, tournaments, and special announcements delivered to your inbox.
           </p>
           
-          {isSubmitted ? (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="mt-8 rounded-lg bg-green-500 p-4 text-white"
-            >
-              <p className="font-semibold">Thank you for subscribing!</p>
-              <p className="text-sm">We&apos;ll keep you updated on all club activities.</p>
-            </motion.div>
-          ) : (
             <form 
               className="mt-8 flex max-w-md mx-auto gap-x-4"
               name="newsletter"
@@ -66,7 +53,6 @@ export default function NewsletterSignup() {
                 Subscribe
               </Button>
             </form>
-          )}
         </motion.div>
       </div>
     </section>

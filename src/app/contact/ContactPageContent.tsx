@@ -1,10 +1,8 @@
 'use client'
 
-import { useState } from 'react'
 import { MapPinIcon, ClockIcon, EnvelopeIcon } from '@heroicons/react/24/outline'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
-import type { ContactForm } from '@/types'
 
 const contactInfo = [
   {
@@ -37,7 +35,6 @@ const contactInfo = [
 ]
 
 export function ContactPageContent() {
-  const [isSubmitted, setIsSubmitted] = useState(false)
 
   return (
     <div className="bg-white">
@@ -118,19 +115,6 @@ export function ContactPageContent() {
           <div>
             <h2 className="text-2xl font-bold text-gray-900 mb-8">Send us a Message</h2>
             
-            {isSubmitted ? (
-              <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
-                <div className="text-green-600 mb-2">
-                  <svg className="mx-auto h-12 w-12" fill="none" stroke="currentColor" viewBox="0 0 48 48">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-medium text-green-900 mb-2">Message Sent!</h3>
-                <p className="text-green-700">
-                  Thank you for reaching out. We&apos;ll get back to you within 24 hours.
-                </p>
-              </div>
-            ) : (
               <form 
                 className="space-y-6"
                 name="contact"
@@ -188,7 +172,6 @@ export function ContactPageContent() {
                   Send Message
                 </Button>
               </form>
-            )}
           </div>
         </div>
 
