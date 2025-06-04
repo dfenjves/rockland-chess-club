@@ -85,7 +85,7 @@ export default function AboutPage() {
                   <h3 className="text-xl font-semibold">Location</h3>
                 </div>
                 <div className="space-y-2 text-gray-600">
-                  <p className="font-medium">3 North Broadway, 3rd Floor</p>
+                  <p className="font-medium">7 North Broadway, 3rd Floor</p>
                   <p>Nyack, NY 10960</p>
                   <p>Accessible venue with parking available</p>
                   <p className="text-sm mt-4 text-blue-600">🎉 New expanded space launching September 2025!</p>

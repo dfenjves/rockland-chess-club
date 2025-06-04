@@ -20,7 +20,7 @@ const cards = [
     description: 'Convenient Nyack location',
     icon: MapPinIcon,
     content: [
-      '3 North Broadway, 3rd Floor',
+      '7 North Broadway, 3rd Floor',
       'Nyack, NY 10960',
       'Parking available nearby'
     ]

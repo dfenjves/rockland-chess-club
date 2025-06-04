@@ -12,7 +12,7 @@ const contactInfo = [
     icon: MapPinIcon,
     title: 'Location',
     details: [
-      '3 North Broadway, 3rd Floor',
+      '7 North Broadway, 3rd Floor',
       'Nyack, NY 10960',
       'Accessible venue with parking available'
     ]
@@ -233,7 +233,7 @@ export function ContactPageContent() {
             <MapPinIcon className="h-12 w-12 text-gray-400 mx-auto mb-4" />
             <h3 className="text-lg font-medium text-gray-900 mb-2">Interactive Map Coming Soon</h3>
             <p className="text-gray-600">
-              Visit us at 3 North Broadway, 3rd Floor in Nyack, NY. 
+              Visit us at 7 North Broadway, 3rd Floor in Nyack, NY. 
               Our location is easily accessible with parking available nearby.
             </p>
           </div>
