@@ -5,9 +5,6 @@ const nextConfig: NextConfig = {
   generateEtags: false,
   compress: false,
   poweredByHeader: false,
-  experimental: {
-    outputFileTracingRoot: __dirname,
-  },
 };
 
 export default nextConfig;

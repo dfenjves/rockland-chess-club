@@ -1,12 +1,9 @@
 [build]
   command = "npm run build"
+  publish = ".next"
 
 [build.environment]
   NEXT_TELEMETRY_DISABLED = "1"
-
-# Enable form processing
-[context.production]
-  command = "npm run build"
 
 [[headers]]
   for = "/*"
