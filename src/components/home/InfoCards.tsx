@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion'
 import { ClockIcon, MapPinIcon, UserGroupIcon, AcademicCapIcon } from '@heroicons/react/24/outline'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/Card'
 
 const cards = [
   {
@@ -49,7 +48,10 @@ const cards = [
 
 export default function InfoCards() {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-24 bg-cream relative paper-texture">
+      {/* Classical decorative divider */}
+      <div className="classical-divider mb-16"></div>
+      
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -58,11 +60,11 @@ export default function InfoCards() {
           viewport={{ once: true }}
           className="mx-auto max-w-2xl text-center mb-16"
         >
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            What You Need to Know
+          <h2 className="text-4xl font-bold text-burgundy-800 sm:text-5xl" style={{fontFamily: 'var(--font-playfair)'}}>
+            Essential Information
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600">
-            Everything you need to get started with the Rockland Chess Club
+          <p className="mt-6 text-xl leading-8 text-forest-700" style={{fontFamily: 'var(--font-baskerville)'}}>
+            Everything you need to know about joining our welcoming chess club
           </p>
         </motion.div>
 
@@ -75,25 +77,27 @@ export default function InfoCards() {
               transition={{ duration: 0.8, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <Card className="h-full hover:shadow-lg transition-shadow duration-300">
-                <CardHeader className="text-center">
-                  <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100">
-                    <card.icon className="h-6 w-6 text-blue-600" aria-hidden="true" />
+              <div className="elegant-card h-full p-8 hover:shadow-elegant transition-all duration-300 group">
+                <div className="text-center">
+                  <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-amber-100 to-amber-200 border-2 border-amber-400">
+                    <card.icon className="h-8 w-8 text-burgundy-600" aria-hidden="true" />
                   </div>
-                  <CardTitle className="text-xl">{card.title}</CardTitle>
-                  <CardDescription>{card.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2">
-                    {card.content.map((item, itemIndex) => (
-                      <li key={itemIndex} className="text-sm text-gray-600 flex items-center">
-                        <span className="mr-2 h-1.5 w-1.5 bg-blue-600 rounded-full flex-shrink-0"></span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
+                  <h3 className="text-2xl font-bold text-burgundy-800 mb-3" style={{fontFamily: 'var(--font-playfair)'}}>
+                    {card.title}
+                  </h3>
+                  <p className="text-forest-600 mb-6" style={{fontFamily: 'var(--font-baskerville)'}}>
+                    {card.description}
+                  </p>
+                </div>
+                <ul className="space-y-3">
+                  {card.content.map((item, itemIndex) => (
+                    <li key={itemIndex} className="text-burgundy-700 flex items-center" style={{fontFamily: 'var(--font-baskerville)'}}>
+                      <span className="mr-3 chess-piece-decoration text-amber-600">♦</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </motion.div>
           ))}
         </div>

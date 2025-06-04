@@ -90,7 +90,7 @@ export default function Header() {
             href="/join"
             className="btn-classical inline-flex items-center space-x-2 group"
           >
-            <span>Join Our Society</span>
+            <span>Join The Club</span>
             <span className="chess-piece-decoration text-sm group-hover:rotate-12 transition-transform duration-300">♔</span>
           </Link>
         </div>
@@ -133,7 +133,7 @@ export default function Header() {
                     </span>
                     <span className="text-xs text-forest-600 italic -mt-1"
                           style={{fontFamily: 'var(--font-baskerville)'}}>
-                      Chess Society
+                      Chess Club
                     </span>
                   </div>
                 </div>
@@ -181,7 +181,7 @@ export default function Header() {
                     className="btn-classical w-full text-center inline-flex items-center justify-center space-x-2 group"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    <span>Join Our Society</span>
+                    <span>Join Our Club</span>
                     <span className="chess-piece-decoration text-sm group-hover:rotate-12 transition-transform duration-300">♔</span>
                   </Link>
                 </div>

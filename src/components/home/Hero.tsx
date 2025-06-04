@@ -37,7 +37,7 @@ export default function Hero() {
                     Expansion Announcement
                   </div>
                   <div className="text-forest-600 text-sm mt-1" style={{fontFamily: 'var(--font-baskerville)'}}>
-                    New distinguished quarters opening September 2025
+                    New space opening September 2025
                   </div>
                 </div>
                 <Link href="/about" className="text-amber-600 hover:text-amber-700 transition-colors">
@@ -61,12 +61,12 @@ export default function Hero() {
                 style={{fontFamily: 'var(--font-playfair)'}}>
               <span className="block">The Rockland</span>
               <span className="block text-amber-600 relative">
-                Chess Society
+                Chess Club
                 <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent"></div>
               </span>
             </h1>
             <div className="mt-6 text-forest-700 text-xl italic" style={{fontFamily: 'var(--font-baskerville)'}}>
-              &ldquo;A distinguished gathering of intellectual pursuit&rdquo;
+              &ldquo;Where chess lovers gather, learn, and grow together&rdquo;
             </div>
           </motion.div>
 
@@ -78,7 +78,7 @@ export default function Hero() {
             className="mt-8 text-xl leading-relaxed text-burgundy-700 max-w-3xl mx-auto"
             style={{fontFamily: 'var(--font-baskerville)'}}
           >
-            An esteemed fellowship dedicated to the noble game of chess, where strategic minds convene for intellectual discourse, spirited competition, and the timeless pursuit of mastery. From novice enthusiasts to seasoned grandmasters, all are welcomed into our distinguished society.
+            A warm, welcoming community for chess players of all skill levels. Whether you&apos;re taking your first steps or you&apos;re an experienced player, join us for tournaments, casual games, classes, and friendship.
           </motion.p>
 
           {/* Classical action buttons */}
@@ -89,7 +89,7 @@ export default function Hero() {
             className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6"
           >
             <Link href="/join" className="btn-classical text-lg px-10 py-4 group">
-              <span>Join Our Society</span>
+              <span>Join The Club</span>
               <span className="chess-piece-decoration text-base ml-2 group-hover:rotate-12 transition-transform duration-300">♔</span>
             </Link>
             
@@ -117,7 +117,7 @@ export default function Hero() {
                 All Skill Levels
               </h3>
               <p className="text-forest-700" style={{fontFamily: 'var(--font-baskerville)'}}>
-                From beginners to masters, every player finds their place in our society
+                From beginners to masters, every player finds their place in our Club
               </p>
             </div>
             
@@ -127,7 +127,7 @@ export default function Hero() {
                 Regular Gatherings
               </h3>
               <p className="text-forest-700" style={{fontFamily: 'var(--font-baskerville)'}}>
-                Weekly tournaments, casual matches, and spirited intellectual exchanges
+                Casual matches, regular tournaments, and engaging classes
               </p>
             </div>
             
