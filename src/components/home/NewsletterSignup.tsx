@@ -21,7 +21,15 @@ export default function NewsletterSignup() {
             Get the latest news about events, tournaments, and special announcements delivered to your inbox.
           </p>
           
-            <form name="newsletter" method="POST" data-netlify="true">
+            <form 
+              name="newsletter" 
+              method="POST" 
+              data-netlify="true"
+              onSubmit={(e) => {
+                // Let the browser handle the submission naturally
+                e.currentTarget.submit()
+              }}
+            >
               <p>
                 <label>Email: <input type="email" name="email" required /></label>
               </p>

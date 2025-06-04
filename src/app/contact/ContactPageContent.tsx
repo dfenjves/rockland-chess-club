@@ -124,7 +124,15 @@ export function ContactPageContent() {
           <div>
             <h2 className="text-2xl font-bold text-gray-900 mb-8">Send us a Message</h2>
             
-              <form name="contact" method="POST" data-netlify="true">
+              <form 
+                name="contact" 
+                method="POST" 
+                data-netlify="true"
+                onSubmit={(e) => {
+                  // Let the browser handle the submission naturally
+                  e.currentTarget.submit()
+                }}
+              >
                 <p>
                   <label>Name: <input type="text" name="name" required /></label>
                 </p>
