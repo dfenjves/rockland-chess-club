@@ -150,7 +150,7 @@ export default function ClassesPage() {
               Classes Coming Soon!
             </h3>
             <p className="text-xl text-forest-700 mb-8 leading-relaxed" style={{fontFamily: 'var(--font-baskerville)'}}>
-              We're currently developing our structured class curriculum. Check back here soon for announcements 
+              We&apos;re currently developing our structured class curriculum. Check back here soon for announcements 
               about upcoming beginner workshops, intermediate tactics training, and advanced strategy sessions.
             </p>
             <p className="text-lg text-forest-600 mb-8" style={{fontFamily: 'var(--font-baskerville)'}}>
@@ -190,7 +190,7 @@ export default function ClassesPage() {
               </p>
               
               <div>
-                <h4 className="font-semibold text-burgundy-800 mb-2">What You'll Get:</h4>
+                <h4 className="font-semibold text-burgundy-800 mb-2">What You&apos;ll Get:</h4>
                 <ul className="space-y-2">
                   <li className="flex items-start">
                     <span className="text-amber-600 mr-2">♦</span>
@@ -272,8 +272,8 @@ export default function ClassesPage() {
             Ready to Improve Your Chess?
           </h2>
           <p className="text-forest-700 mb-8 max-w-2xl mx-auto text-lg leading-relaxed" style={{fontFamily: 'var(--font-baskerville)'}}>
-            Join our welcoming community of chess enthusiasts. Whether you're just learning the rules 
-            or looking to sharpen your competitive edge, you'll find the support and guidance you need.
+            Join our welcoming community of chess enthusiasts. Whether you&apos;re just learning the rules 
+            or looking to sharpen your competitive edge, you&apos;ll find the support and guidance you need.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="/join" className="btn-classical inline-flex items-center justify-center space-x-2 group">
