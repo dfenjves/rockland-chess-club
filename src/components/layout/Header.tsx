@@ -18,7 +18,7 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="bg-cream relative border-b-2 border-amber-500 shadow-elegant">
+    <header className="bg-cream relative border-b-2 border-amber-500 shadow-elegant z-50">
       {/* Ornamental top border */}
       <div className="h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent opacity-70"></div>
       
@@ -46,10 +46,6 @@ export default function Header() {
                       style={{fontFamily: 'var(--font-playfair)'}}>
                   Rockland Chess Club
                 </span>
-                <span className="text-sm text-forest-600 italic tracking-wider -mt-1"
-                      style={{fontFamily: 'var(--font-baskerville)'}}>
-                  Est. Rockland County
-                </span>
               </div>
             </div>
           </Link>
@@ -74,6 +70,7 @@ export default function Header() {
                 href={item.href}
                 className="text-lg font-medium text-burgundy-800 hover:text-amber-600 transition-colors duration-300 relative py-2 px-4 group"
                 style={{fontFamily: 'var(--font-playfair)'}}
+                prefetch={true}
               >
                 {item.name}
                 <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-amber-500 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
@@ -160,6 +157,7 @@ export default function Header() {
                       className="flex items-center justify-between px-4 py-4 text-lg font-medium text-burgundy-800 hover:bg-amber-100 hover:text-burgundy-900 rounded-lg transition-all duration-300 group"
                       style={{fontFamily: 'var(--font-playfair)'}}
                       onClick={() => setMobileMenuOpen(false)}
+                      prefetch={true}
                     >
                       <span>{item.name}</span>
                       <span className="chess-piece-decoration text-xs group-hover:rotate-12 transition-transform duration-300">

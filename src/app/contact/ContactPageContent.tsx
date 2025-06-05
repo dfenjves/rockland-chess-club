@@ -20,8 +20,8 @@ const contactInfo = [
     title: 'Meeting Hours',
     details: [
       'Thursdays: 7:00 PM - 9:00 PM',
-      'Saturdays: 2:00 PM - 6:00 PM',
-      'Drop in anytime during hours'
+      'Drop in anytime during our hours',
+      'All skill levels welcome'
     ]
   },
   {
@@ -69,7 +69,7 @@ export function ContactPageContent() {
   return (
     <div className="bg-gradient-to-br from-amber-50 via-cream to-burgundy-50 paper-texture">
       {/* Hero Section */}
-      <div className="px-6 py-24 sm:py-32 lg:px-8">
+      <div className="px-6 pt-24 pb-12 sm:pt-32 sm:pb-16 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h1 className="text-4xl font-bold tracking-tight text-burgundy-800 sm:text-6xl" style={{fontFamily: 'var(--font-playfair)'}}>
             Get in Touch

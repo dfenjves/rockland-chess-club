@@ -1,87 +1,7 @@
-import type { Metadata } from 'next'
-import { AcademicCapIcon, ClockIcon, UserGroupIcon, TrophyIcon } from '@heroicons/react/24/outline'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/Card'
-import { Button } from '@/components/ui/Button'
+'use client'
 
-export const metadata: Metadata = {
-  title: 'Chess Classes | Rockland Chess Club',
-  description: 'Learn chess with our structured classes for all skill levels. From complete beginner to advanced tactics and strategy.',
-}
-
-const classes = [
-  {
-    title: 'Absolute Beginner',
-    level: 'Complete Beginner',
-    duration: '4 weeks',
-    schedule: 'Wednesdays 6:30-7:30 PM',
-    maxStudents: 8,
-    description: 'Perfect for those who have never played chess or need a refresher on the basics.',
-    topics: [
-      'How the pieces move',
-      'Basic rules and objectives',
-      'Check, checkmate, and stalemate',
-      'Simple opening principles',
-      'Basic endgame patterns'
-    ],
-    nextStart: 'January 10, 2024',
-    instructor: 'Club volunteers',
-    cost: 'Included with membership'
-  },
-  {
-    title: 'Intermediate Tactics',
-    level: 'Intermediate',
-    duration: '6 weeks',
-    schedule: 'Saturdays 1:00-2:00 PM',
-    maxStudents: 10,
-    description: 'Improve your tactical vision and pattern recognition with systematic training.',
-    topics: [
-      'Pin, fork, and skewer tactics',
-      'Double attacks and discoveries',
-      'Combination patterns',
-      'Tactical puzzles and exercises',
-      'Game analysis and review'
-    ],
-    nextStart: 'January 13, 2024',
-    instructor: 'Experienced club members',
-    cost: 'Included with membership'
-  },
-  {
-    title: 'Opening Principles',
-    level: 'Beginner to Intermediate',
-    duration: '4 weeks',
-    schedule: 'Wednesdays 8:00-9:00 PM',
-    maxStudents: 12,
-    description: 'Learn the fundamental principles that guide good opening play.',
-    topics: [
-      'Development and center control',
-      'King safety and castling',
-      'Common opening traps',
-      'Popular opening systems',
-      'Transition to middlegame'
-    ],
-    nextStart: 'February 7, 2024',
-    instructor: 'Tournament-rated players',
-    cost: 'Included with membership'
-  },
-  {
-    title: 'Endgame Mastery',
-    level: 'Intermediate to Advanced',
-    duration: '8 weeks',
-    schedule: 'Saturdays 2:30-3:30 PM',
-    maxStudents: 8,
-    description: 'Master essential endgame positions and techniques.',
-    topics: [
-      'Basic checkmate patterns',
-      'Pawn endgames',
-      'Rook and minor piece endgames',
-      'Practical endgame technique',
-      'Endgame composition studies'
-    ],
-    nextStart: 'January 20, 2024',
-    instructor: 'Advanced club members',
-    cost: 'Included with membership'
-  }
-]
+import { AcademicCapIcon, ClockIcon, UserGroupIcon, TrophyIcon, BookOpenIcon } from '@heroicons/react/24/outline'
+import { motion } from 'framer-motion'
 
 const skillLevels = [
   {
@@ -132,197 +52,240 @@ const skillLevels = [
 
 export default function ClassesPage() {
   return (
-    <div className="bg-white">
+    <div className="bg-gradient-to-br from-amber-50 via-cream to-burgundy-50 paper-texture">
+      {/* Decorative chess pieces */}
+      <div className="absolute inset-0 opacity-5 z-10">
+        <div className="absolute top-20 left-20 text-6xl text-burgundy-600 transform rotate-12">♔</div>
+        <div className="absolute bottom-20 right-20 text-5xl text-amber-600 transform -rotate-12">♕</div>
+        <div className="absolute top-1/2 left-1/4 text-4xl text-forest-600 transform rotate-45">♗</div>
+        <div className="absolute top-1/3 right-1/3 text-5xl text-burgundy-600 transform -rotate-30">♘</div>
+      </div>
+
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-r from-slate-50 to-blue-50 px-6 py-24 sm:py-32 lg:px-8">
+      <div className="px-6 pt-24 pb-12 sm:pt-32 sm:pb-16 lg:px-8 relative z-10">
         <div className="mx-auto max-w-2xl text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-4xl font-bold tracking-tight text-burgundy-800 sm:text-6xl" 
+            style={{fontFamily: 'var(--font-playfair)'}}
+          >
             Chess Classes
-          </h1>
-          <p className="mt-6 text-lg leading-8 text-gray-600">
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mt-6 text-lg leading-8 text-forest-700" 
+            style={{fontFamily: 'var(--font-baskerville)'}}
+          >
             Structured learning for every skill level, from complete beginner to advanced player.
-          </p>
+          </motion.p>
         </div>
       </div>
 
       {/* Skill Levels */}
-      <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-6">
+      <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8 relative z-10">
+        {/* Classical decorative divider */}
+        <div className="classical-divider mb-16"></div>
+        
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl font-bold text-burgundy-800 mb-6" style={{fontFamily: 'var(--font-playfair)'}}>
             Find Your Level
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-forest-700 max-w-2xl mx-auto" style={{fontFamily: 'var(--font-baskerville)'}}>
             Our classes are designed to meet you where you are and help you progress to the next level.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
-          {skillLevels.map((level) => (
-            <Card key={level.title} className="text-center h-full">
-              <CardHeader>
-                <level.icon className="h-8 w-8 text-blue-600 mx-auto mb-4" />
-                <CardTitle className="text-lg">{level.title}</CardTitle>
-                <CardDescription>{level.description}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="text-sm text-gray-600 space-y-1">
-                  {level.characteristics.map((char, charIndex) => (
-                    <li key={charIndex} className="flex items-center">
-                      <span className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-2 flex-shrink-0"></span>
-                      {char}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
+          {skillLevels.map((level, index) => (
+            <motion.div
+              key={level.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="elegant-card p-8 text-center hover:shadow-elegant transition-all duration-300 group"
+            >
+              <level.icon className="h-10 w-10 text-amber-600 mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" />
+              <h3 className="text-xl font-bold text-burgundy-800 mb-3" style={{fontFamily: 'var(--font-playfair)'}}>{level.title}</h3>
+              <p className="text-forest-700 mb-4" style={{fontFamily: 'var(--font-baskerville)'}}>{level.description}</p>
+              <ul className="text-sm text-forest-600 space-y-2" style={{fontFamily: 'var(--font-baskerville)'}}>
+                {level.characteristics.map((char, charIndex) => (
+                  <li key={charIndex} className="flex items-center">
+                    <span className="text-amber-600 mr-2">♦</span>
+                    {char}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
           ))}
         </div>
 
-        {/* Available Classes */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 text-center mb-12">
+        {/* Current Class Offerings */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="mb-16"
+        >
+          <div className="classical-divider mb-16"></div>
+          <h2 className="text-4xl font-bold text-burgundy-800 text-center mb-12" style={{fontFamily: 'var(--font-playfair)'}}>
             Current Class Offerings
           </h2>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {classes.map((cls) => (
-              <Card key={cls.title} className="h-full">
-                <CardHeader>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="inline-flex items-center rounded-full bg-blue-100 px-3 py-0.5 text-sm font-medium text-blue-800">
-                      {cls.level}
-                    </span>
-                    <span className="text-sm text-gray-500">{cls.duration}</span>
-                  </div>
-                  <CardTitle className="text-xl">{cls.title}</CardTitle>
-                  <CardDescription>{cls.description}</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4 text-sm">
-                    <div>
-                      <span className="font-medium text-gray-900">Schedule:</span>
-                      <p className="text-gray-600">{cls.schedule}</p>
-                    </div>
-                    <div>
-                      <span className="font-medium text-gray-900">Max Students:</span>
-                      <p className="text-gray-600">{cls.maxStudents} students</p>
-                    </div>
-                    <div>
-                      <span className="font-medium text-gray-900">Next Start:</span>
-                      <p className="text-gray-600">{cls.nextStart}</p>
-                    </div>
-                    <div>
-                      <span className="font-medium text-gray-900">Cost:</span>
-                      <p className="text-gray-600">{cls.cost}</p>
-                    </div>
-                  </div>
-
-                  <div>
-                    <span className="font-medium text-gray-900 block mb-2">Topics Covered:</span>
-                    <ul className="text-sm text-gray-600 space-y-1">
-                      {cls.topics.map((topic, topicIndex) => (
-                        <li key={topicIndex} className="flex items-start">
-                          <span className="w-1.5 h-1.5 bg-green-500 rounded-full mr-2 mt-1.5 flex-shrink-0"></span>
-                          {topic}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="pt-4 border-t border-gray-200">
-                    <p className="text-sm text-gray-600 mb-3">
-                      <span className="font-medium">Instructor:</span> {cls.instructor}
-                    </p>
-                    <Button className="w-full">
-                      Register for Class
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+          {/* Check Back Soon Message */}
+          <div className="elegant-card p-16 text-center bg-gradient-to-br from-amber-100 to-cream max-w-4xl mx-auto">
+            <div className="chess-piece-decoration text-6xl text-burgundy-600 mb-6">♔</div>
+            <h3 className="text-3xl font-bold text-burgundy-800 mb-6" style={{fontFamily: 'var(--font-playfair)'}}>
+              Classes Coming Soon!
+            </h3>
+            <p className="text-xl text-forest-700 mb-8 leading-relaxed" style={{fontFamily: 'var(--font-baskerville)'}}>
+              We're currently developing our structured class curriculum. Check back here soon for announcements 
+              about upcoming beginner workshops, intermediate tactics training, and advanced strategy sessions.
+            </p>
+            <p className="text-lg text-forest-600 mb-8" style={{fontFamily: 'var(--font-baskerville)'}}>
+              In the meantime, join us for our regular Thursday night sessions where experienced players 
+              provide informal instruction and guidance to newer members.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="/contact" className="btn-classical inline-flex items-center justify-center space-x-2 group">
+                <span>Ask About Instruction</span>
+                <span className="chess-piece-decoration text-sm group-hover:rotate-12 transition-transform duration-300">♔</span>
+              </a>
+              <a href="/events" className="btn-classical inline-flex items-center justify-center space-x-2 group bg-gradient-to-r from-forest-600 to-forest-700 hover:from-forest-700 hover:to-forest-800">
+                <span>View Weekly Sessions</span>
+                <span className="chess-piece-decoration text-sm group-hover:rotate-12 transition-transform duration-300">♕</span>
+              </a>
+            </div>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Additional Information */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <Card>
-            <CardHeader>
-              <CardTitle>Class Information</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div>
-                <h4 className="font-medium text-gray-900 mb-2">What&apos;s Included</h4>
-                <ul className="text-sm text-gray-600 space-y-1">
-                  <li>• All equipment provided (boards, sets, clocks)</li>
-                  <li>• Handouts and study materials</li>
-                  <li>• Practice exercises and homework</li>
-                  <li>• Small class sizes for personalized attention</li>
-                  <li>• Certificate of completion</li>
-                </ul>
-              </div>
-              
-              <div>
-                <h4 className="font-medium text-gray-900 mb-2">Class Format</h4>
-                <p className="text-sm text-gray-600">
-                  Each class combines instruction, practice games, and Q&A. 
-                  We use a mix of lecture, hands-on exercises, and group discussion 
-                  to ensure everyone understands the material.
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>Private Lessons</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <p className="text-gray-600">
-                Want more personalized instruction? Several of our experienced 
-                members offer private lessons for focused, one-on-one learning.
+        {/* Learning Options */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16"
+        >
+          <div className="elegant-card p-8 hover:shadow-elegant transition-all duration-300">
+            <div className="flex items-center mb-6">
+              <BookOpenIcon className="h-8 w-8 text-amber-600 mr-4" />
+              <h3 className="text-2xl font-bold text-burgundy-800" style={{fontFamily: 'var(--font-playfair)'}}>Informal Learning</h3>
+            </div>
+            <div className="space-y-4 text-forest-700" style={{fontFamily: 'var(--font-baskerville)'}}>
+              <p>
+                Every Thursday night, our experienced members provide guidance and instruction 
+                during casual play sessions.
               </p>
               
               <div>
-                <h4 className="font-medium text-gray-900 mb-2">Benefits</h4>
-                <ul className="text-sm text-gray-600 space-y-1">
-                  <li>• Customized curriculum based on your goals</li>
-                  <li>• Flexible scheduling</li>
-                  <li>• Analysis of your own games</li>
-                  <li>• Faster improvement with focused attention</li>
+                <h4 className="font-semibold text-burgundy-800 mb-2">What You'll Get:</h4>
+                <ul className="space-y-2">
+                  <li className="flex items-start">
+                    <span className="text-amber-600 mr-2">♦</span>
+                    Personalized tips during games
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-amber-600 mr-2">♦</span>
+                    Post-game analysis and feedback
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-amber-600 mr-2">♦</span>
+                    Tactical puzzle solving sessions
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-amber-600 mr-2">♦</span>
+                    Opening and endgame guidance
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div className="elegant-card p-8 hover:shadow-elegant transition-all duration-300">
+            <div className="flex items-center mb-6">
+              <UserGroupIcon className="h-8 w-8 text-amber-600 mr-4" />
+              <h3 className="text-2xl font-bold text-burgundy-800" style={{fontFamily: 'var(--font-playfair)'}}>Private Lessons</h3>
+            </div>
+            <div className="space-y-4 text-forest-700" style={{fontFamily: 'var(--font-baskerville)'}}>
+              <p>
+                Several of our experienced members offer private lessons for focused, 
+                one-on-one learning tailored to your specific needs.
+              </p>
+              
+              <div>
+                <h4 className="font-semibold text-burgundy-800 mb-2">Benefits:</h4>
+                <ul className="space-y-2">
+                  <li className="flex items-start">
+                    <span className="text-amber-600 mr-2">♦</span>
+                    Customized curriculum based on your goals
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-amber-600 mr-2">♦</span>
+                    Flexible scheduling around your availability
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-amber-600 mr-2">♦</span>
+                    Analysis of your own games
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-amber-600 mr-2">♦</span>
+                    Faster improvement with focused attention
+                  </li>
                 </ul>
               </div>
 
-              <div className="pt-4 border-t border-gray-200">
-                <p className="text-sm text-gray-600 mb-3">
-                  Rates and availability vary by instructor. 
-                  Contact us to be connected with available tutors.
+              <div className="pt-4 border-t border-amber-500/30">
+                <p className="text-sm text-forest-600 mb-4">
+                  Rates and availability vary by instructor. Contact us to be connected with available tutors.
                 </p>
-                <Button variant="outline" className="w-full">
-                  <a href="/contact">Inquire About Private Lessons</a>
-                </Button>
+                <a href="/contact" className="btn-classical inline-flex items-center space-x-2 group w-full justify-center">
+                  <span>Inquire About Private Lessons</span>
+                  <span className="chess-piece-decoration text-sm group-hover:rotate-12 transition-transform duration-300">♗</span>
+                </a>
               </div>
-            </CardContent>
-          </Card>
-        </div>
+            </div>
+          </div>
+        </motion.div>
 
-        {/* Registration Info */}
-        <div className="mt-16 bg-blue-50 rounded-lg p-8 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">
+        {/* Call to Action */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="elegant-card p-12 text-center bg-gradient-to-br from-burgundy-50 to-amber-50"
+        >
+          <div className="chess-piece-decoration text-4xl text-burgundy-600 mb-6">♔</div>
+          <h2 className="text-3xl font-bold text-burgundy-800 mb-6" style={{fontFamily: 'var(--font-playfair)'}}>
             Ready to Improve Your Chess?
           </h2>
-          <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-            All classes are included with your club membership. Classes fill up quickly, 
-            so register early to secure your spot.
+          <p className="text-forest-700 mb-8 max-w-2xl mx-auto text-lg leading-relaxed" style={{fontFamily: 'var(--font-baskerville)'}}>
+            Join our welcoming community of chess enthusiasts. Whether you're just learning the rules 
+            or looking to sharpen your competitive edge, you'll find the support and guidance you need.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/join">
-              <Button size="lg">Join Club & Register</Button>
+            <a href="/join" className="btn-classical inline-flex items-center justify-center space-x-2 group">
+              <span>Join The Club</span>
+              <span className="chess-piece-decoration text-sm group-hover:rotate-12 transition-transform duration-300">♔</span>
             </a>
-            <a href="/contact">
-              <Button variant="outline" size="lg">Ask About Classes</Button>
+            <a href="/contact" className="btn-classical inline-flex items-center justify-center space-x-2 group bg-gradient-to-r from-forest-600 to-forest-700 hover:from-forest-700 hover:to-forest-800">
+              <span>Ask Questions</span>
+              <span className="chess-piece-decoration text-sm group-hover:rotate-12 transition-transform duration-300">♕</span>
             </a>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   )

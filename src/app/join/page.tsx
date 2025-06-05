@@ -90,7 +90,7 @@ export default function JoinPage() {
   return (
     <div className="bg-gradient-to-br from-amber-50 via-cream to-burgundy-50 paper-texture">
       {/* Hero Section */}
-      <div className="px-6 py-24 sm:py-32 lg:px-8">
+      <div className="px-6 pt-24 pb-12 sm:pt-32 sm:pb-16 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
@@ -149,7 +149,7 @@ export default function JoinPage() {
             >
               {option.recommended && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <span className="inline-flex items-center rounded-full bg-burgundy-600 px-4 py-1 text-sm font-medium text-cream" style={{fontFamily: 'var(--font-playfair)'}}>
+                  <span className="inline-flex items-center rounded-full bg-burgundy-600 px-4 py-1 text-sm font-medium" style={{fontFamily: 'var(--font-playfair)', color: 'var(--cream)'}}>
                     ♔ Recommended ♔
                   </span>
                 </div>

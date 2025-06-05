@@ -7,7 +7,7 @@ export default function AboutPage() {
   return (
     <div className="bg-gradient-to-br from-amber-50 via-cream to-burgundy-50 paper-texture">
       {/* Hero Section */}
-      <div className="px-6 py-24 sm:py-32 lg:px-8">
+      <div className="px-6 pt-24 pb-12 sm:pt-32 sm:pb-16 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
@@ -143,7 +143,6 @@ export default function AboutPage() {
                 </div>
                 <div className="space-y-3 text-forest-700" style={{fontFamily: 'var(--font-baskerville)'}}>
                   <p><strong>Thursdays:</strong> 7:00 PM - 9:00 PM</p>
-                  <p><strong>Saturdays:</strong> 2:00 PM - 6:00 PM</p>
                   <div className="classical-divider my-4"></div>
                   <p className="text-sm italic">Drop in anytime during these hours. No need to stay for the entire session.</p>
                 </div>

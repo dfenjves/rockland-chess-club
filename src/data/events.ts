@@ -13,55 +13,57 @@ const getNextWeekday = (weekday: number, weeksFromNow: number = 0) => {
 const generateUpcomingEvents = (): Event[] => {
   const events: Event[] = []
   
-  // Next Thursday Night Chess
-  const nextThursday = getNextWeekday(4) // 4 = Thursday
-  events.push({
-    id: '1',
-    title: 'Thursday Night Chess',
-    date: nextThursday,
-    time: '19:00',
-    category: 'casual',
-    description: 'Casual games and friendly competition. All skill levels welcome!'
-  })
+  // Generate next 8 weeks of Thursday Night Chess
+  for (let week = 0; week < 8; week++) {
+    const thursday = getNextWeekday(4, week) // 4 = Thursday
+    events.push({
+      id: `thursday-${week}`,
+      title: 'Thursday Night Chess',
+      date: thursday,
+      time: '19:00',
+      category: 'casual',
+      description: 'Casual games, instruction, and friendly competition. All skill levels welcome!'
+    })
+  }
   
-  // Next Saturday Tournament (first Saturday of the month) or regular Saturday
-  const nextSaturday = getNextWeekday(6) // 6 = Saturday
-  const isFirstSaturday = nextSaturday.getDate() <= 7
-  events.push({
-    id: '2',
-    title: isFirstSaturday ? 'Monthly Tournament' : 'Saturday Chess Club',
-    date: nextSaturday,
-    time: '14:00',
-    category: isFirstSaturday ? 'tournament' : 'casual',
-    description: isFirstSaturday 
-      ? 'Monthly Swiss tournament with prizes. Registration starts at 1:30 PM.'
-      : 'Weekend chess club with casual games and instruction.'
-  })
+  // Add some special events and classes
+  const specialEvents = [
+    {
+      id: 'beginner-class-1',
+      title: 'Beginner Chess Class',
+      date: getNextWeekday(4, 1), // Next week Thursday
+      time: '18:30',
+      category: 'classes' as const,
+      description: 'Learn the basics of chess in a supportive environment.'
+    },
+    {
+      id: 'puzzle-night',
+      title: 'Chess Puzzle Championship',
+      date: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000), // 15 days from now
+      time: '19:00',
+      category: 'special' as const,
+      description: 'Test your tactical skills in our monthly puzzle-solving competition!'
+    },
+    {
+      id: 'simul',
+      title: 'Simultaneous Exhibition',
+      date: new Date(Date.now() + 25 * 24 * 60 * 60 * 1000), // 25 days from now
+      time: '18:00',
+      category: 'special' as const,
+      description: 'Local chess master plays 15+ players simultaneously. A rare opportunity!'
+    },
+    {
+      id: 'beginner-class-2',
+      title: 'Advanced Tactics Workshop',
+      date: getNextWeekday(4, 3), // 3 weeks from now Thursday
+      time: '18:30',
+      category: 'classes' as const,
+      description: 'Intermediate workshop focusing on advanced tactical patterns.'
+    }
+  ]
   
-  // Beginner Chess Class (next week's Thursday)
-  const nextWeekThursday = getNextWeekday(4, 1)
-  events.push({
-    id: '3',
-    title: 'Beginner Chess Class',
-    date: nextWeekThursday,
-    time: '18:30',
-    category: 'classes',
-    description: 'Learn the basics of chess in a supportive environment.'
-  })
-  
-  // Board Game Night (next Friday)
-  const nextFriday = getNextWeekday(5) // 5 = Friday
-  events.push({
-    id: '4',
-    title: 'Board Game Night',
-    date: nextFriday,
-    time: '19:00',
-    category: 'board-games',
-    description: 'Not just chess! Enjoy other strategy games and puzzles.'
-  })
-  
-  // Sort by date and return
-  return events.sort((a, b) => a.date.getTime() - b.date.getTime())
+  return [...events, ...specialEvents]
+    .sort((a, b) => a.date.getTime() - b.date.getTime())
 }
 
 export const upcomingEvents: Event[] = generateUpcomingEvents()

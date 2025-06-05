@@ -10,7 +10,7 @@ const cards = [
     icon: ClockIcon,
     content: [
       'Thursdays: 7:00 PM - 9:00 PM',
-      'Saturdays: 2:00 PM - 6:00 PM',
+      'All skill levels welcome',
       'Special tournaments monthly'
     ]
   },

@@ -117,7 +117,7 @@ export default function Footer() {
               7 North Broadway, 3rd Floor • Nyack, NY 10960
             </p>
             <p>
-              Thursdays 7-9 PM • Saturdays 2-6 PM
+              Thursdays 7-9 PM
             </p>
             <p>
               Email: info@rocklandchessclub.org
