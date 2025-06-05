@@ -82,16 +82,16 @@ export default function InfoCards() {
                   <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-amber-100 to-amber-200 border-2 border-amber-400">
                     <card.icon className="h-8 w-8 text-burgundy-600" aria-hidden="true" />
                   </div>
-                  <h3 className="text-2xl font-bold text-burgundy-800 mb-3" style={{fontFamily: 'var(--font-playfair)'}}>
+                  <h3 className="text-xl font-bold text-burgundy-800 mb-3" style={{fontFamily: 'var(--font-playfair)'}}>
                     {card.title}
                   </h3>
-                  <p className="text-forest-600 mb-6" style={{fontFamily: 'var(--font-baskerville)'}}>
+                  <p className="text-sm text-forest-600 mb-6" style={{fontFamily: 'var(--font-baskerville)'}}>
                     {card.description}
                   </p>
                 </div>
                 <ul className="space-y-3">
                   {card.content.map((item, itemIndex) => (
-                    <li key={itemIndex} className="text-burgundy-700 flex items-center" style={{fontFamily: 'var(--font-baskerville)'}}>
+                    <li key={itemIndex} className="text-sm text-burgundy-700 flex items-center" style={{fontFamily: 'var(--font-baskerville)'}}>
                       <span className="mr-3 chess-piece-decoration text-amber-600">♦</span>
                       {item}
                     </li>
