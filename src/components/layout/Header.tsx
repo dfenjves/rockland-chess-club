@@ -42,7 +42,7 @@ export default function Header() {
                 />
               </div>
               <div className="flex flex-col">
-                <span className="text-2xl font-bold text-burgundy-700" 
+                <span className="text-2xl font-bold text-burgundy-800" 
                       style={{fontFamily: 'var(--font-playfair)'}}>
                   Rockland Chess Club
                 </span>
@@ -72,7 +72,7 @@ export default function Header() {
             <div key={item.name} className="relative">
               <Link
                 href={item.href}
-                className="text-lg font-medium text-burgundy-700 hover:text-amber-600 transition-colors duration-300 relative py-2 px-4 group"
+                className="text-lg font-medium text-burgundy-800 hover:text-amber-600 transition-colors duration-300 relative py-2 px-4 group"
                 style={{fontFamily: 'var(--font-playfair)'}}
               >
                 {item.name}
@@ -127,7 +127,7 @@ export default function Header() {
                     />
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-lg font-bold text-burgundy-700" 
+                    <span className="text-lg font-bold text-burgundy-800" 
                           style={{fontFamily: 'var(--font-playfair)'}}>
                       RCC
                     </span>
@@ -157,7 +157,7 @@ export default function Header() {
                   <div key={item.name}>
                     <Link
                       href={item.href}
-                      className="flex items-center justify-between px-4 py-4 text-lg font-medium text-burgundy-700 hover:bg-amber-100 hover:text-burgundy-900 rounded-lg transition-all duration-300 group"
+                      className="flex items-center justify-between px-4 py-4 text-lg font-medium text-burgundy-800 hover:bg-amber-100 hover:text-burgundy-900 rounded-lg transition-all duration-300 group"
                       style={{fontFamily: 'var(--font-playfair)'}}
                       onClick={() => setMobileMenuOpen(false)}
                     >

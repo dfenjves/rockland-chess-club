@@ -6,8 +6,6 @@ import Link from 'next/link'
 export default function Hero() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-amber-50 via-cream to-burgundy-50 py-24 sm:py-40 paper-texture">
-      {/* Ornamental top border */}
-      <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-burgundy-600 via-amber-500 to-burgundy-600 opacity-60"></div>
       
       {/* Classical background patterns */}
       <div className="absolute inset-0 opacity-5">
@@ -134,19 +132,16 @@ export default function Hero() {
             <div className="elegant-card p-8 text-center group hover:shadow-elegant transition-all duration-300">
               <div className="chess-piece-decoration text-4xl text-amber-600 mb-4 group-hover:scale-110 transition-transform duration-300">♗</div>
               <h3 className="text-xl font-bold text-burgundy-800 mb-3" style={{fontFamily: 'var(--font-playfair)'}}>
-                Scholarly Instruction
+                Instruction
               </h3>
               <p className="text-forest-700" style={{fontFamily: 'var(--font-baskerville)'}}>
-                Distinguished tutors offer guidance in the art and science of chess
+                Our instructors offer guidance in the art and science of chess
               </p>
             </div>
           </motion.div>
         </div>
       </div>
 
-      {/* Ornamental bottom border */}
-      <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r from-burgundy-600 via-amber-500 to-burgundy-600 opacity-60"></div>
-      
       {/* Subtle background texture overlay */}
       <div className="absolute inset-0 opacity-10 bg-gradient-to-br from-burgundy-900/5 via-transparent to-amber-900/5"></div>
     </section>

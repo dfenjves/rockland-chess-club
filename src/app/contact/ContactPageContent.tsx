@@ -1,7 +1,9 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import { MapPinIcon, ClockIcon, EnvelopeIcon } from '@heroicons/react/24/outline'
+import type { ContactForm } from '@/types'
 
 const contactInfo = [
   {
@@ -34,26 +36,45 @@ const contactInfo = [
 ]
 
 export function ContactPageContent() {
-  useEffect(() => {
-    // Ensure form submits natively without React interference
-    const form = document.querySelector('form[name="contact"]')
-    if (form) {
-      form.addEventListener('submit', () => {
-        // Let the form submit normally
-        console.log('Form submitting natively')
+  const [isSubmitted, setIsSubmitted] = useState(false)
+  const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm<ContactForm>()
+
+  const onSubmit = async (data: ContactForm) => {
+    try {
+      // Netlify Forms submission
+      const formData = new URLSearchParams()
+      formData.append('form-name', 'contact')
+      formData.append('name', data.name)
+      formData.append('email', data.email)
+      formData.append('message', data.message)
+
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: formData.toString(),
       })
+
+      if (response.ok) {
+        setIsSubmitted(true)
+        reset()
+      } else {
+        throw new Error('Form submission failed')
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      alert('There was an error submitting the form. Please try again.')
     }
-  }, [])
+  }
 
   return (
-    <div className="bg-white">
+    <div className="bg-gradient-to-br from-amber-50 via-cream to-burgundy-50 paper-texture">
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-r from-slate-50 to-blue-50 px-6 py-24 sm:py-32 lg:px-8">
+      <div className="px-6 py-24 sm:py-32 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+          <h1 className="text-4xl font-bold tracking-tight text-burgundy-800 sm:text-6xl" style={{fontFamily: 'var(--font-playfair)'}}>
             Get in Touch
           </h1>
-          <p className="mt-6 text-lg leading-8 text-gray-600">
+          <p className="mt-6 text-lg leading-8 text-forest-700" style={{fontFamily: 'var(--font-baskerville)'}}>
             Questions about membership, meetings, or chess in general? We&apos;d love to hear from you.
           </p>
         </div>
@@ -61,22 +82,27 @@ export function ContactPageContent() {
 
       {/* Contact Info & Form */}
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+        {/* Classical decorative divider */}
+        <div className="classical-divider mb-16"></div>
+        
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           {/* Contact Information */}
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-8">Contact Information</h2>
+            <h2 className="text-4xl font-bold text-burgundy-800 mb-8" style={{fontFamily: 'var(--font-playfair)'}}>Contact Information</h2>
             <div className="space-y-8">
               {contactInfo.map((item, index) => (
-                <div key={index} className="flex">
-                  <div className="flex-shrink-0">
-                    <item.icon className="h-6 w-6 text-blue-600" />
-                  </div>
-                  <div className="ml-4">
-                    <h3 className="text-lg font-medium text-gray-900">{item.title}</h3>
-                    <div className="mt-2 space-y-1">
-                      {item.details.map((detail, detailIndex) => (
-                        <p key={detailIndex} className="text-gray-600">{detail}</p>
-                      ))}
+                <div key={index} className="elegant-card p-6">
+                  <div className="flex">
+                    <div className="flex-shrink-0">
+                      <item.icon className="h-8 w-8 text-amber-600" />
+                    </div>
+                    <div className="ml-4">
+                      <h3 className="text-xl font-bold text-burgundy-800 mb-2" style={{fontFamily: 'var(--font-playfair)'}}>{item.title}</h3>
+                      <div className="mt-2 space-y-1">
+                        {item.details.map((detail, detailIndex) => (
+                          <p key={detailIndex} className="text-forest-700" style={{fontFamily: 'var(--font-baskerville)'}}>{detail}</p>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -84,11 +110,12 @@ export function ContactPageContent() {
             </div>
 
             {/* Additional Info */}
-            <div className="mt-12 bg-blue-50 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                🎉 Exciting News!
+            <div className="mt-12 elegant-card p-8 bg-gradient-to-br from-amber-100 to-cream">
+              <div className="chess-piece-decoration text-4xl text-burgundy-600 mb-4">♔</div>
+              <h3 className="text-xl font-bold text-burgundy-800 mb-3" style={{fontFamily: 'var(--font-playfair)'}}>
+                Exciting News!
               </h3>
-              <p className="text-gray-600">
+              <p className="text-forest-700" style={{fontFamily: 'var(--font-baskerville)'}}>
                 We&apos;re expanding to a new, larger space in September 2025! This will allow us to host more events, 
                 accommodate more members, and offer enhanced facilities for our chess community.
               </p>
@@ -96,11 +123,11 @@ export function ContactPageContent() {
 
             {/* Social Media */}
             <div className="mt-8">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Follow Us</h3>
+              <h3 className="text-xl font-bold text-burgundy-800 mb-4" style={{fontFamily: 'var(--font-playfair)'}}>Follow Us</h3>
               <div className="flex space-x-4">
                 <a 
                   href="#" 
-                  className="text-gray-400 hover:text-blue-600 transition-colors"
+                  className="elegant-card p-3 text-burgundy-600 hover:text-amber-600 transition-colors"
                   aria-label="Facebook"
                 >
                   <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -109,7 +136,7 @@ export function ContactPageContent() {
                 </a>
                 <a 
                   href="#" 
-                  className="text-gray-400 hover:text-blue-600 transition-colors"
+                  className="elegant-card p-3 text-burgundy-600 hover:text-amber-600 transition-colors"
                   aria-label="Instagram"
                 >
                   <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -122,40 +149,124 @@ export function ContactPageContent() {
 
           {/* Contact Form */}
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-8">Send us a Message</h2>
+            <h2 className="text-4xl font-bold text-burgundy-800 mb-8" style={{fontFamily: 'var(--font-playfair)'}}>
+              Send us a Message
+            </h2>
             
+            {isSubmitted ? (
+              <div className="elegant-card p-8 text-center">
+                <div className="chess-piece-decoration text-6xl text-amber-600 mb-4">♔</div>
+                <h3 className="text-2xl font-bold text-burgundy-800 mb-4" style={{fontFamily: 'var(--font-playfair)'}}>
+                  Message Sent Successfully!
+                </h3>
+                <p className="text-forest-700 text-lg" style={{fontFamily: 'var(--font-baskerville)'}}>
+                  Thank you for reaching out. We&apos;ll get back to you within 24 hours.
+                </p>
+              </div>
+            ) : (
               <form 
-                name="contact" 
-                method="POST" 
+                onSubmit={handleSubmit(onSubmit)}
+                className="elegant-card p-8 space-y-6"
+                name="contact"
+                method="POST"
                 data-netlify="true"
-                onSubmit={(e) => {
-                  // Let the browser handle the submission naturally
-                  e.currentTarget.submit()
-                }}
               >
-                <p>
-                  <label>Name: <input type="text" name="name" required /></label>
-                </p>
-                <p>
-                  <label>Email: <input type="email" name="email" required /></label>
-                </p>
-                <p>
-                  <label>Message: <textarea name="message" required></textarea></label>
-                </p>
-                <p>
-                  <button type="submit">Send Message</button>
-                </p>
+                {/* Hidden form name for Netlify */}
+                <input type="hidden" name="form-name" value="contact" />
+                
+                <div>
+                  <label htmlFor="name" className="block text-lg font-semibold text-burgundy-800 mb-3" 
+                         style={{fontFamily: 'var(--font-playfair)'}}>
+                    Your Name *
+                  </label>
+                  <input
+                    {...register('name', { required: 'Name is required' })}
+                    type="text"
+                    name="name"
+                    id="name"
+                    placeholder="Enter your full name"
+                    className="w-full px-4 py-3 text-burgundy-800 bg-cream border-2 border-amber-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-300 focus:border-transparent transition-all duration-300 text-lg"
+                    style={{fontFamily: 'var(--font-baskerville)'}}
+                  />
+                  {errors.name && (
+                    <p className="mt-2 text-burgundy-600 text-sm" style={{fontFamily: 'var(--font-baskerville)'}}>
+                      {errors.name.message}
+                    </p>
+                  )}
+                </div>
+
+                <div>
+                  <label htmlFor="email" className="block text-lg font-semibold text-burgundy-800 mb-3" 
+                         style={{fontFamily: 'var(--font-playfair)'}}>
+                    Email Address *
+                  </label>
+                  <input
+                    {...register('email', { 
+                      required: 'Email is required',
+                      pattern: {
+                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                        message: 'Invalid email address'
+                      }
+                    })}
+                    type="email"
+                    name="email"
+                    id="email"
+                    placeholder="your.email@example.com"
+                    className="w-full px-4 py-3 text-burgundy-800 bg-cream border-2 border-amber-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-300 focus:border-transparent transition-all duration-300 text-lg"
+                    style={{fontFamily: 'var(--font-baskerville)'}}
+                  />
+                  {errors.email && (
+                    <p className="mt-2 text-burgundy-600 text-sm" style={{fontFamily: 'var(--font-baskerville)'}}>
+                      {errors.email.message}
+                    </p>
+                  )}
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-lg font-semibold text-burgundy-800 mb-3" 
+                         style={{fontFamily: 'var(--font-playfair)'}}>
+                    Your Message *
+                  </label>
+                  <textarea
+                    {...register('message', { required: 'Message is required' })}
+                    name="message"
+                    id="message"
+                    rows={6}
+                    placeholder="Tell us about your chess experience, questions about the club, or anything else you'd like to know..."
+                    className="w-full px-4 py-3 text-burgundy-800 bg-cream border-2 border-amber-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-300 focus:border-transparent transition-all duration-300 text-lg resize-vertical"
+                    style={{fontFamily: 'var(--font-baskerville)'}}
+                  />
+                  {errors.message && (
+                    <p className="mt-2 text-burgundy-600 text-sm" style={{fontFamily: 'var(--font-baskerville)'}}>
+                      {errors.message.message}
+                    </p>
+                  )}
+                </div>
+
+                <div className="pt-4">
+                  <button 
+                    type="submit" 
+                    disabled={isSubmitting}
+                    className="btn-classical w-full text-lg px-8 py-4 group disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    <span>{isSubmitting ? 'Sending Message...' : 'Send Message'}</span>
+                    <span className="chess-piece-decoration text-base ml-2 group-hover:rotate-12 transition-transform duration-300">
+                      {isSubmitting ? '⧗' : '♔'}
+                    </span>
+                  </button>
+                </div>
               </form>
+            )}
           </div>
         </div>
 
         {/* Map Section Placeholder */}
         <div className="mt-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">Find Us</h2>
-          <div className="bg-gray-100 rounded-lg p-12 text-center">
-            <MapPinIcon className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-            <h3 className="text-lg font-medium text-gray-900 mb-2">Interactive Map Coming Soon</h3>
-            <p className="text-gray-600">
+          <h2 className="text-4xl font-bold text-burgundy-800 mb-8 text-center" style={{fontFamily: 'var(--font-playfair)'}}>Find Us</h2>
+          <div className="elegant-card p-12 text-center">
+            <MapPinIcon className="h-16 w-16 text-amber-600 mx-auto mb-4" />
+            <h3 className="text-2xl font-bold text-burgundy-800 mb-4" style={{fontFamily: 'var(--font-playfair)'}}>Interactive Map Coming Soon</h3>
+            <p className="text-forest-700 text-lg" style={{fontFamily: 'var(--font-baskerville)'}}>
               Visit us at 7 North Broadway, 3rd Floor in Nyack, NY. 
               Our location is easily accessible with parking available nearby.
             </p>

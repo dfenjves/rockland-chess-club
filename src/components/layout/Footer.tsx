@@ -40,41 +40,92 @@ const navigation = {
 
 export default function Footer() {
   return (
-    <footer className="bg-white">
-      <div className="mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-24 lg:px-8">
-        <nav className="-mb-6 columns-2 sm:flex sm:justify-center sm:space-x-12" aria-label="Footer">
-          {navigation.main.map((item) => (
-            <div key={item.name} className="pb-6">
-              <Link href={item.href} className="text-sm leading-6 text-gray-600 hover:text-gray-900">
+    <footer className="bg-gradient-to-br from-amber-50 via-cream to-burgundy-50 relative paper-texture">
+      {/* Classical decorative divider */}
+      <div className="classical-divider mb-16"></div>
+      
+      {/* Decorative chess pieces */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-8 left-20 text-4xl text-burgundy-600 transform rotate-12">♔</div>
+        <div className="absolute bottom-8 right-20 text-3xl text-amber-600 transform -rotate-12">♕</div>
+        <div className="absolute top-1/2 left-1/4 text-2xl text-forest-600 transform rotate-45">♗</div>
+        <div className="absolute top-1/3 right-1/3 text-3xl text-burgundy-600 transform -rotate-30">♘</div>
+      </div>
+
+      <div className="mx-auto max-w-7xl overflow-hidden px-6 py-16 sm:py-20 lg:px-8 relative z-10">
+        {/* Navigation Links */}
+        <nav className="flex flex-wrap justify-center gap-8 mb-12" aria-label="Footer">
+          {navigation.main.map((item, index) => (
+            <div key={item.name} className="relative">
+              <Link 
+                href={item.href} 
+                className="text-lg font-medium text-burgundy-700 hover:text-burgundy-800 transition-colors duration-300 group"
+                style={{fontFamily: 'var(--font-playfair)'}}
+              >
                 {item.name}
+                <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-amber-600 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
               </Link>
+              {index < navigation.main.length - 1 && (
+                <div className="hidden sm:block absolute -right-4 top-1/2 transform -translate-y-1/2 text-amber-600 opacity-50">♦</div>
+              )}
             </div>
           ))}
         </nav>
-        <div className="mt-10 flex justify-center space-x-10">
+
+        {/* Social Media */}
+        <div className="flex justify-center space-x-8 mb-12">
           {navigation.social.map((item) => (
-            <Link key={item.name} href={item.href} className="text-gray-400 hover:text-gray-500">
+            <Link 
+              key={item.name} 
+              href={item.href} 
+              className="elegant-card p-3 text-burgundy-600 hover:text-burgundy-800 hover:bg-amber-100 transition-all duration-300 group"
+            >
               <span className="sr-only">{item.name}</span>
-              <item.icon className="h-6 w-6" aria-hidden="true" />
+              <item.icon className="h-6 w-6 group-hover:scale-110 transition-transform duration-300" aria-hidden="true" />
             </Link>
           ))}
         </div>
-        <div className="mt-10 border-t border-gray-900/10 pt-8">
-          <div className="text-center">
-            <div className="flex items-center justify-center space-x-2 mb-4">
+
+        {/* Classical divider */}
+        <div className="classical-divider mb-12"></div>
+
+        {/* Club Information */}
+        <div className="text-center">
+          <div className="elegant-card inline-flex items-center space-x-3 px-8 py-4 mb-6 bg-gradient-to-r from-cream to-amber-100">
+            <div className="chess-piece-decoration text-2xl text-burgundy-600">♔</div>
+            <div>
               <img 
                 src="/favicon-32x32.png" 
                 alt="Rockland Chess Club" 
-                width={24} 
-                height={24}
-                className="h-6 w-6"
+                width={28} 
+                height={28}
+                className="h-7 w-7 inline mr-2"
               />
-              <span className="text-lg font-bold text-slate-800">Rockland Chess Club</span>
+              <span className="text-xl font-bold text-burgundy-800" style={{fontFamily: 'var(--font-playfair)'}}>
+                Rockland Chess Club
+              </span>
             </div>
-            <p className="text-xs leading-5 text-gray-500 mb-2">
-              Building a welcoming chess community in Rockland County
+            <div className="chess-piece-decoration text-2xl text-burgundy-600">♔</div>
+          </div>
+          
+          <p className="text-lg text-forest-700 mb-4 italic" style={{fontFamily: 'var(--font-baskerville)'}}>
+            &ldquo;Building a welcoming chess community in Rockland County&rdquo;
+          </p>
+          
+          <div className="space-y-2 text-burgundy-700" style={{fontFamily: 'var(--font-baskerville)'}}>
+            <p>
+              7 North Broadway, 3rd Floor • Nyack, NY 10960
             </p>
-            <p className="text-xs leading-5 text-gray-500">
+            <p>
+              Thursdays 7-9 PM • Saturdays 2-6 PM
+            </p>
+            <p>
+              Email: info@rocklandchessclub.org
+            </p>
+          </div>
+          
+          <div className="mt-8 pt-6 border-t border-amber-500/30">
+            <p className="text-sm text-forest-600" style={{fontFamily: 'var(--font-baskerville)'}}>
               &copy; {new Date().getFullYear()} Rockland Chess Club. All rights reserved.
             </p>
           </div>

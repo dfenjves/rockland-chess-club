@@ -50,6 +50,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script 
+          src="https://zeffy-scripts.s3.ca-central-1.amazonaws.com/embed-form-script.min.js" 
+          async
+        ></script>
+      </head>
       <body className={`${playfairDisplay.variable} ${libreBaskerville.variable} font-serif antialiased`}>
         <div className="flex min-h-screen flex-col">
           <Header />

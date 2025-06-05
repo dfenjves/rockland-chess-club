@@ -351,3 +351,7 @@ p {
   pointer-events: none;
   z-index: 1;
 }
+
+.footer-text-amber p.text-amber-300 {
+  color: var(--color-amber-300) !important;
+}
