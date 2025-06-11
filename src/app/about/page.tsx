@@ -2,6 +2,7 @@
 
 import { MapPinIcon, ClockIcon, UserGroupIcon, TrophyIcon } from '@heroicons/react/24/outline'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 export default function AboutPage() {
   return (
@@ -188,6 +189,47 @@ export default function AboutPage() {
                 <ClockIcon className="h-12 w-12 text-amber-600 mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" />
                 <div className="text-4xl font-bold text-burgundy-800 mb-2" style={{fontFamily: 'var(--font-playfair)'}}>4</div>
                 <div className="text-forest-700" style={{fontFamily: 'var(--font-baskerville)'}}>Years Established</div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Photo Gallery */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="mb-16"
+          >
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="elegant-card overflow-hidden hover:shadow-elegant transition-all duration-300 group">
+                <Image 
+                  src="/images/DSC_3168.JPG" 
+                  alt="Chess club members" 
+                  width={400}
+                  height={300}
+                  className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              
+              <div className="elegant-card overflow-hidden hover:shadow-elegant transition-all duration-300 group">
+                <Image 
+                  src="/images/DSC_3171.JPG" 
+                  alt="Chess tournament" 
+                  width={400}
+                  height={300}
+                  className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              
+              <div className="elegant-card overflow-hidden hover:shadow-elegant transition-all duration-300 group">
+                <Image 
+                  src="/images/DSC_3176.JPG" 
+                  alt="Chess club community" 
+                  width={400}
+                  height={300}
+                  className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                />
               </div>
             </div>
           </motion.div>
