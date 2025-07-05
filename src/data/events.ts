@@ -22,7 +22,8 @@ const generateUpcomingEvents = (): Event[] => {
       date: thursday,
       time: '19:00',
       category: 'casual',
-      description: 'Casual games, instruction, and friendly competition. All skill levels welcome!'
+      description: 'Casual games, instruction, and friendly competition. All skill levels welcome!',
+      location: '7 North Broadway, 3rd Floor, Nyack, NY'
     })
   }
   
@@ -47,7 +48,8 @@ const generateUpcomingEvents = (): Event[] => {
         date: saturday,
         time: '19:00',
         category: 'board-games',
-        description: 'Not just chess! Enjoy Scrabble, Settlers of Catan, and other strategy games in a fun, social setting.'
+        description: 'Not just chess! Enjoy Scrabble, Settlers of Catan, and other strategy games in a fun, social setting.',
+        location: '7 North Broadway, 3rd Floor, Nyack, NY'
       })
     }
   }
