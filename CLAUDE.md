@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-The Rockland Chess Club website is a modern, welcoming platform built with Next.js 14+, TypeScript, and Tailwind CSS. It serves as the digital home for the chess community in Rockland County, NY, featuring event management, membership information, and community engagement tools.
+The Rockland County Chess Club website is a modern, welcoming platform built with Next.js 14+, TypeScript, and Tailwind CSS. It serves as the digital home for the chess community in Rockland County, NY, featuring event management, membership information, and community engagement tools.
 
 ## Development Commands
 

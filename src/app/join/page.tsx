@@ -313,7 +313,7 @@ export default function JoinPage() {
           </h2>
           <p className="text-forest-700 mb-8 max-w-2xl mx-auto text-lg" style={{fontFamily: 'var(--font-baskerville)'}}>
             Choose your membership option above, or drop by one of our meetings to experience 
-            the Rockland Chess Club firsthand. We can&apos;t wait to welcome you!
+            the Rockland County Chess Club firsthand. We can&apos;t wait to welcome you!
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <a href="#pricing" className="btn-classical text-lg px-10 py-4 group">

@@ -96,13 +96,13 @@ export default function Footer() {
             <div>
               <img 
                 src="/favicon-32x32.png" 
-                alt="Rockland Chess Club" 
+                alt="Rockland County Chess Club" 
                 width={28} 
                 height={28}
                 className="h-7 w-7 inline mr-2"
               />
               <span className="text-xl font-bold text-burgundy-800" style={{fontFamily: 'var(--font-playfair)'}}>
-                Rockland Chess Club
+                Rockland County Chess Club
               </span>
             </div>
             <div className="chess-piece-decoration text-2xl text-burgundy-600">♔</div>
@@ -126,7 +126,7 @@ export default function Footer() {
           
           <div className="mt-8 pt-6 border-t border-amber-500/30">
             <p className="text-sm text-forest-600" style={{fontFamily: 'var(--font-baskerville)'}}>
-              &copy; {new Date().getFullYear()} Rockland Chess Club. All rights reserved.
+              &copy; {new Date().getFullYear()} Rockland County Chess Club. All rights reserved.
             </p>
           </div>
         </div>

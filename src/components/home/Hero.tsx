@@ -57,7 +57,7 @@ export default function Hero() {
           >
             <h1 className="text-5xl sm:text-7xl font-bold text-burgundy-800 leading-tight" 
                 style={{fontFamily: 'var(--font-playfair)'}}>
-              <span className="block">The Rockland</span>
+              <span className="block">The Rockland County</span>
               <span className="block text-amber-600 relative">
                 Chess Club
                 <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent"></div>

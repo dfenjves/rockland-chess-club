@@ -52,7 +52,7 @@ export default function AboutPage() {
               </div>
               
               <p className="text-xl leading-8 text-forest-700 mb-6 text-center italic" style={{fontFamily: 'var(--font-baskerville)'}}>
-                &ldquo;The Rockland Chess Club exists to foster a love of chess in our community by providing a welcoming, 
+                &ldquo;The Rockland County Chess Club exists to foster a love of chess in our community by providing a welcoming, 
                 inclusive environment where players of all skill levels can learn, compete, and grow together.&rdquo;
               </p>
               

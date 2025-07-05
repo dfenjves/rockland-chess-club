@@ -18,11 +18,11 @@ const libreBaskerville = Libre_Baskerville({
 });
 
 export const metadata: Metadata = {
-  title: "Rockland Chess Club | Chess Community in Rockland County",
-  description: "Join the Rockland Chess Club - a welcoming chess community for players of all skill levels. Events, classes, tournaments, and casual play in Rockland County, NY.",
+  title: "Rockland County Chess Club | Chess Community in Rockland County",
+  description: "Join the Rockland County Chess Club - a welcoming chess community for players of all skill levels. Events, classes, tournaments, and casual play in Rockland County, NY.",
   keywords: "chess club, Rockland County, chess lessons, chess tournaments, chess community, New York chess",
   openGraph: {
-    title: "Rockland Chess Club",
+    title: "Rockland County Chess Club",
     description: "A welcoming chess community for players of all skill levels",
     type: "website",
     locale: "en_US",
@@ -62,6 +62,18 @@ export default function RootLayout({
           <main className="flex-1">{children}</main>
           <Footer />
         </div>
+        
+        {/* Hidden forms for Netlify to detect during build */}
+        <form name="newsletter" method="POST" data-netlify="true" style={{ display: 'none' }}>
+          <input type="hidden" name="form-name" value="newsletter" />
+          <input type="email" name="email" />
+        </form>
+        <form name="contact" method="POST" data-netlify="true" style={{ display: 'none' }}>
+          <input type="hidden" name="form-name" value="contact" />
+          <input type="text" name="name" />
+          <input type="email" name="email" />
+          <textarea name="message"></textarea>
+        </form>
       </body>
     </html>
   );

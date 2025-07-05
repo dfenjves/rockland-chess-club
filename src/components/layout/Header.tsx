@@ -29,13 +29,13 @@ export default function Header() {
         
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
-            <span className="sr-only">Rockland Chess Club</span>
+            <span className="sr-only">Rockland County Chess Club</span>
             <div className="flex items-center space-x-4">
               <div className="relative">
                 <div className="absolute inset-0 bg-amber-500 rounded-full opacity-20 scale-110"></div>
                 <img 
                   src="/favicon-32x32.png" 
-                  alt="Rockland Chess Club" 
+                  alt="Rockland County Chess Club" 
                   width={40} 
                   height={40}
                   className="h-10 w-10 relative z-10"
@@ -44,7 +44,7 @@ export default function Header() {
               <div className="flex flex-col">
                 <span className="text-2xl font-bold text-burgundy-800" 
                       style={{fontFamily: 'var(--font-playfair)'}}>
-                  Rockland Chess Club
+                  Rockland County Chess Club
                 </span>
               </div>
             </div>
@@ -111,13 +111,13 @@ export default function Header() {
           <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-cream px-8 py-8 sm:max-w-sm border-l-4 border-amber-500 shadow-elegant">
             <div className="flex items-center justify-between mb-8">
               <Link href="/" className="-m-1.5 p-1.5" onClick={() => setMobileMenuOpen(false)}>
-                <span className="sr-only">Rockland Chess Club</span>
+                <span className="sr-only">Rockland County Chess Club</span>
                 <div className="flex items-center space-x-3">
                   <div className="relative">
                     <div className="absolute inset-0 bg-amber-500 rounded-full opacity-20 scale-110"></div>
                     <img 
                       src="/favicon-32x32.png" 
-                      alt="Rockland Chess Club" 
+                      alt="Rockland County Chess Club" 
                       width={32} 
                       height={32}
                       className="h-8 w-8 relative z-10"

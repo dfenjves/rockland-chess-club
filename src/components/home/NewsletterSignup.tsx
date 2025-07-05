@@ -7,29 +7,35 @@ import type { NewsletterForm } from '@/types'
 
 export default function NewsletterSignup() {
   const [isSubmitted, setIsSubmitted] = useState(false)
-  const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm<NewsletterForm>()
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const { register, handleSubmit, formState: { errors }, reset } = useForm<NewsletterForm>()
 
   const onSubmit = async (data: NewsletterForm) => {
+    console.log('Form submission started:', data)
+    setIsSubmitting(true)
+    
     try {
-      // Netlify Forms submission
-      const formData = new URLSearchParams()
+      // Create form data for Netlify
+      const formData = new FormData()
       formData.append('form-name', 'newsletter')
       formData.append('email', data.email)
 
+      // Submit to Netlify using fetch
       const response = await fetch('/', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: formData.toString(),
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams(formData as any).toString(),
       })
 
-      if (response.ok) {
-        setIsSubmitted(true)
-        reset()
-      } else {
-        throw new Error('Form submission failed')
-      }
+      console.log('Form submitted successfully')
+      setIsSubmitted(true)
+      setIsSubmitting(false)
+      reset()
     } catch (error) {
       console.error('Error submitting form:', error)
+      setIsSubmitting(false)
       alert('There was an error submitting the form. Please try again.')
     }
   }
@@ -103,6 +109,7 @@ export default function NewsletterSignup() {
                   placeholder="Enter your email address"
                   className="w-full px-4 py-3 text-burgundy-800 bg-white border-2 border-amber-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-300 focus:border-transparent transition-all duration-300 text-lg"
                   style={{fontFamily: 'var(--font-baskerville)'}}
+                  disabled={isSubmitting}
                 />
                 {errors.email && (
                   <p className="mt-2 text-burgundy-600 text-sm" style={{fontFamily: 'var(--font-baskerville)'}}>

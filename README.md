@@ -1,6 +1,6 @@
-# Rockland Chess Club Website
+# Rockland County Chess Club Website
 
-A modern, welcoming website for the Rockland Chess Club built with Next.js, TypeScript, and Tailwind CSS.
+A modern, welcoming website for the Rockland County Chess Club built with Next.js, TypeScript, and Tailwind CSS.
 
 ## 🚀 Features
 
@@ -177,4 +177,4 @@ For questions or support:
 
 ---
 
-Built with ❤️ for the Rockland Chess Club community
+Built with ❤️ for the Rockland County Chess Club community
