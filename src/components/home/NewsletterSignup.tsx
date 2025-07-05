@@ -16,27 +16,31 @@ export default function NewsletterSignup() {
     
     try {
       // Create form data for Netlify
-      const formData = new FormData()
+      const formData = new URLSearchParams()
       formData.append('form-name', 'newsletter')
       formData.append('email', data.email)
 
       // Submit to Netlify using fetch
-      await fetch('/', {
+      const response = await fetch('/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: new URLSearchParams(formData as unknown as Record<string, string>).toString(),
+        body: formData.toString(),
       })
 
-      console.log('Form submitted successfully')
-      setIsSubmitted(true)
-      setIsSubmitting(false)
-      reset()
+      if (response.ok) {
+        console.log('Form submitted successfully')
+        setIsSubmitted(true)
+        reset()
+      } else {
+        throw new Error('Form submission failed')
+      }
     } catch (error) {
       console.error('Error submitting form:', error)
-      setIsSubmitting(false)
       alert('There was an error submitting the form. Please try again.')
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
