@@ -5,7 +5,6 @@ import Calendar from 'react-calendar'
 import { motion } from 'framer-motion'
 import { CalendarIcon, ClockIcon, MapPinIcon } from '@heroicons/react/24/outline'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card'
-import { Button } from '@/components/ui/Button'
 import { categoryColors, categoryLabels } from '@/data/events'
 import { formatDate, formatTime } from '@/lib/utils'
 import type { Event } from '@/types'
@@ -54,11 +53,8 @@ export default function EventCalendar({ events }: EventCalendarProps) {
 
   const categories = [
     { value: 'all', label: 'All Events' },
-    { value: 'tournament', label: 'Tournaments' },
-    { value: 'casual', label: 'Casual Play' },
-    { value: 'classes', label: 'Classes' },
-    { value: 'board-games', label: 'Board Games' },
-    { value: 'special', label: 'Special Events' }
+    { value: 'casual', label: 'Thursday Night Chess' },
+    { value: 'board-games', label: 'Board Game Nights' }
   ]
 
   return (
@@ -185,17 +181,10 @@ export default function EventCalendar({ events }: EventCalendarProps) {
                     </div>
 
                     <div className="mt-4 pt-4 border-t border-gray-200">
-                      <div className="flex items-center justify-between">
-                        <div className="text-sm text-gray-500">
-                          {event.date < new Date() ? 'Past Event' : 
-                           event.date.toDateString() === new Date().toDateString() ? 'Today' :
-                           `${Math.ceil((event.date.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24))} days away`}
-                        </div>
-                        {event.date >= new Date() && (
-                          <Button variant="outline" size="sm">
-                            More Details
-                          </Button>
-                        )}
+                      <div className="text-sm text-gray-500">
+                        {event.date < new Date() ? 'Past Event' : 
+                         event.date.toDateString() === new Date().toDateString() ? 'Today' :
+                         `${Math.ceil((event.date.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24))} days away`}
                       </div>
                     </div>
                   </CardContent>

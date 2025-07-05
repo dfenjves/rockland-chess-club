@@ -13,8 +13,8 @@ const getNextWeekday = (weekday: number, weeksFromNow: number = 0) => {
 const generateUpcomingEvents = (): Event[] => {
   const events: Event[] = []
   
-  // Generate next 8 weeks of Thursday Night Chess
-  for (let week = 0; week < 8; week++) {
+  // Generate next 12 weeks of Thursday Night Chess
+  for (let week = 0; week < 12; week++) {
     const thursday = getNextWeekday(4, week) // 4 = Thursday
     events.push({
       id: `thursday-${week}`,
@@ -26,44 +26,33 @@ const generateUpcomingEvents = (): Event[] => {
     })
   }
   
-  // Add some special events and classes
-  const specialEvents = [
-    {
-      id: 'beginner-class-1',
-      title: 'Beginner Chess Class',
-      date: getNextWeekday(4, 1), // Next week Thursday
-      time: '18:30',
-      category: 'classes' as const,
-      description: 'Learn the basics of chess in a supportive environment.'
-    },
-    {
-      id: 'puzzle-night',
-      title: 'Chess Puzzle Championship',
-      date: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000), // 15 days from now
-      time: '19:00',
-      category: 'special' as const,
-      description: 'Test your tactical skills in our monthly puzzle-solving competition!'
-    },
-    {
-      id: 'simul',
-      title: 'Simultaneous Exhibition',
-      date: new Date(Date.now() + 25 * 24 * 60 * 60 * 1000), // 25 days from now
-      time: '18:00',
-      category: 'special' as const,
-      description: 'Local chess master plays 15+ players simultaneously. A rare opportunity!'
-    },
-    {
-      id: 'beginner-class-2',
-      title: 'Advanced Tactics Workshop',
-      date: getNextWeekday(4, 3), // 3 weeks from now Thursday
-      time: '18:30',
-      category: 'classes' as const,
-      description: 'Intermediate workshop focusing on advanced tactical patterns.'
+  // Add monthly board game nights (first Saturday of each month)
+  const getFirstSaturdayOfMonth = (monthsFromNow: number) => {
+    const now = new Date()
+    const targetDate = new Date(now.getFullYear(), now.getMonth() + monthsFromNow, 1)
+    // Find first Saturday of the month
+    while (targetDate.getDay() !== 6) { // 6 = Saturday
+      targetDate.setDate(targetDate.getDate() + 1)
     }
-  ]
+    return targetDate
+  }
   
-  return [...events, ...specialEvents]
-    .sort((a, b) => a.date.getTime() - b.date.getTime())
+  // Generate next 3 months of board game nights
+  for (let month = 0; month < 3; month++) {
+    const saturday = getFirstSaturdayOfMonth(month)
+    if (saturday >= new Date()) {
+      events.push({
+        id: `board-games-${month}`,
+        title: 'Monthly Board Game Night',
+        date: saturday,
+        time: '19:00',
+        category: 'board-games',
+        description: 'Not just chess! Enjoy Scrabble, Settlers of Catan, and other strategy games in a fun, social setting.'
+      })
+    }
+  }
+  
+  return events.sort((a, b) => a.date.getTime() - b.date.getTime())
 }
 
 export const upcomingEvents: Event[] = generateUpcomingEvents()

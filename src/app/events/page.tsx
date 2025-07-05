@@ -4,76 +4,8 @@ import EventCalendar from '@/components/events/EventCalendar'
 import { upcomingEvents } from '@/data/events'
 import { motion } from 'framer-motion'
 
-// Generate more events for demonstration
-const generateMoreEvents = () => {
-  const additionalEvents = []
-  const now = new Date()
-  
-  // Helper function to find next occurrence of a weekday
-  const getNextWeekday = (weekday: number, weeksFromNow: number = 0) => {
-    const date = new Date(now)
-    const daysUntilWeekday = (weekday - date.getDay() + 7) % 7
-    date.setDate(date.getDate() + daysUntilWeekday + (weeksFromNow * 7))
-    return date
-  }
-  
-  // Add next 8 weeks of Thursday events
-  for (let week = 0; week < 8; week++) {
-    // Thursday Night Chess
-    const thursday = getNextWeekday(4, week) // 4 = Thursday
-    if (thursday > now) {
-      additionalEvents.push({
-        id: `thu-week-${week}`,
-        title: 'Thursday Night Chess',
-        date: thursday,
-        time: '19:00',
-        category: 'casual' as const,
-        description: 'Casual games, analysis, and friendly competition. All skill levels welcome!'
-      })
-    }
-  }
-  
-  // Add some special events
-  const specialEvents = [
-    {
-      id: 'puzzle-night',
-      title: 'Chess Puzzle Championship',
-      date: new Date(now.getTime() + 15 * 24 * 60 * 60 * 1000), // 15 days from now
-      time: '19:00',
-      category: 'special' as const,
-      description: 'Test your tactical skills in our monthly puzzle-solving competition!'
-    },
-    {
-      id: 'simul',
-      title: 'Simultaneous Exhibition',
-      date: new Date(now.getTime() + 25 * 24 * 60 * 60 * 1000), // 25 days from now
-      time: '18:00',
-      category: 'special' as const,
-      description: 'Local chess master plays 20+ players simultaneously. A rare opportunity!'
-    },
-    {
-      id: 'beginners-workshop',
-      title: 'Beginners Workshop',
-      date: new Date(now.getTime() + 10 * 24 * 60 * 60 * 1000), // 10 days from now
-      time: '18:30',
-      category: 'classes' as const,
-      description: 'Perfect for new players! Learn the basics in a supportive environment.'
-    },
-    {
-      id: 'game-night',
-      title: 'Board Game Night',
-      date: new Date(now.getTime() + 20 * 24 * 60 * 60 * 1000), // 20 days from now
-      time: '19:00',
-      category: 'board-games' as const,
-      description: 'Not just chess! Enjoy Scrabble, Settlers of Catan, and other strategy games.'
-    }
-  ]
-  
-  return [...upcomingEvents, ...additionalEvents, ...specialEvents]
-    .sort((a, b) => a.date.getTime() - b.date.getTime())
-}
-
-const allEvents = generateMoreEvents()
+// Use only the events from the data file (no duplicates)
+const allEvents = upcomingEvents
 
 export default function EventsPage() {
   return (
@@ -118,36 +50,20 @@ export default function EventsPage() {
           className="mt-16"
         >
           <h2 className="text-4xl font-bold text-burgundy-800 mb-12 text-center" style={{fontFamily: 'var(--font-playfair)'}}>Event Types</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="elegant-card p-8 hover:shadow-elegant transition-all duration-300 group text-center">
-              <div className="chess-piece-decoration text-3xl text-burgundy-600 mb-4 group-hover:scale-110 transition-transform duration-300">♔</div>
-              <h3 className="text-xl font-bold text-burgundy-800 mb-3" style={{fontFamily: 'var(--font-playfair)'}}>Tournament Play</h3>
-              <p className="text-forest-700" style={{fontFamily: 'var(--font-baskerville)'}}>
-                Competitive rated games with prizes. Monthly Swiss tournaments and special events.
-              </p>
-            </div>
-            
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <div className="elegant-card p-8 hover:shadow-elegant transition-all duration-300 group text-center">
               <div className="chess-piece-decoration text-3xl text-forest-600 mb-4 group-hover:scale-110 transition-transform duration-300">♕</div>
-              <h3 className="text-xl font-bold text-burgundy-800 mb-3" style={{fontFamily: 'var(--font-playfair)'}}>Casual Nights</h3>
+              <h3 className="text-xl font-bold text-burgundy-800 mb-3" style={{fontFamily: 'var(--font-playfair)'}}>Thursday Night Chess</h3>
               <p className="text-forest-700" style={{fontFamily: 'var(--font-baskerville)'}}>
-                Relaxed atmosphere for games, analysis, and socializing. Perfect for all skill levels.
-              </p>
-            </div>
-            
-            <div className="elegant-card p-8 hover:shadow-elegant transition-all duration-300 group text-center">
-              <div className="chess-piece-decoration text-3xl text-amber-600 mb-4 group-hover:scale-110 transition-transform duration-300">♗</div>
-              <h3 className="text-xl font-bold text-burgundy-800 mb-3" style={{fontFamily: 'var(--font-playfair)'}}>Chess Classes</h3>
-              <p className="text-forest-700" style={{fontFamily: 'var(--font-baskerville)'}}>
-                Structured learning sessions covering everything from basics to advanced tactics.
+                Our weekly casual chess nights. Relaxed atmosphere for games, analysis, and socializing. Perfect for all skill levels.
               </p>
             </div>
             
             <div className="elegant-card p-8 hover:shadow-elegant transition-all duration-300 group text-center">
               <div className="chess-piece-decoration text-3xl text-burgundy-600 mb-4 group-hover:scale-110 transition-transform duration-300">♘</div>
-              <h3 className="text-xl font-bold text-burgundy-800 mb-3" style={{fontFamily: 'var(--font-playfair)'}}>Board Games</h3>
+              <h3 className="text-xl font-bold text-burgundy-800 mb-3" style={{fontFamily: 'var(--font-playfair)'}}>Monthly Board Game Nights</h3>
               <p className="text-forest-700" style={{fontFamily: 'var(--font-baskerville)'}}>
-                Not just chess! Enjoy other strategy games and puzzles in a fun, social setting.
+                Not just chess! Enjoy Scrabble, Settlers of Catan, and other strategy games in a fun, social setting.
               </p>
             </div>
           </div>
