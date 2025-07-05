@@ -17,7 +17,7 @@ export default function NewsletterSignup() {
     try {
       // Create form data for Netlify
       const formData = new URLSearchParams()
-      formData.append('form-name', 'newsletter')
+      formData.append('form-name', 'newsletter-signup')
       formData.append('email', data.email)
 
       // Submit to Netlify using fetch
@@ -89,13 +89,13 @@ export default function NewsletterSignup() {
           ) : (
             <form 
               onSubmit={handleSubmit(onSubmit)}
-              name="newsletter" 
+              name="newsletter-signup" 
               method="POST" 
               data-netlify="true"
               className="mt-10 flex flex-col sm:flex-row max-w-lg mx-auto gap-4"
             >
               {/* Hidden form name for Netlify */}
-              <input type="hidden" name="form-name" value="newsletter" />
+              <input type="hidden" name="form-name" value="newsletter-signup" />
               
               <div className="flex-1">
                 <label htmlFor="newsletter-email" className="sr-only">Email address</label>
