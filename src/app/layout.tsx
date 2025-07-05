@@ -63,12 +63,6 @@ export default function RootLayout({
           <Footer />
         </div>
         
-        {/* Hidden form for Netlify to detect during build */}
-        <form name="newsletter-signup" method="POST" data-netlify="true" style={{ display: 'none' }}>
-          <input type="hidden" name="form-name" value="newsletter-signup" />
-          <input type="email" name="email" />
-        </form>
-        
       </body>
     </html>
   );
