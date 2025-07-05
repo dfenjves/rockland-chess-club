@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { motion } from 'framer-motion'
 
@@ -33,7 +34,7 @@ export default function Header() {
             <div className="flex items-center space-x-4">
               <div className="relative">
                 <div className="absolute inset-0 bg-amber-500 rounded-full opacity-20 scale-110"></div>
-                <img 
+                <Image 
                   src="/favicon-32x32.png" 
                   alt="Rockland County Chess Club" 
                   width={40} 
@@ -115,7 +116,7 @@ export default function Header() {
                 <div className="flex items-center space-x-3">
                   <div className="relative">
                     <div className="absolute inset-0 bg-amber-500 rounded-full opacity-20 scale-110"></div>
-                    <img 
+                    <Image 
                       src="/favicon-32x32.png" 
                       alt="Rockland County Chess Club" 
                       width={32} 

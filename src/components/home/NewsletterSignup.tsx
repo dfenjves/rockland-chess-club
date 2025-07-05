@@ -21,12 +21,12 @@ export default function NewsletterSignup() {
       formData.append('email', data.email)
 
       // Submit to Netlify using fetch
-      const response = await fetch('/', {
+      await fetch('/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: new URLSearchParams(formData as any).toString(),
+        body: new URLSearchParams(formData as unknown as Record<string, string>).toString(),
       })
 
       console.log('Form submitted successfully')

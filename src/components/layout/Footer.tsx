@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 const navigation = {
   main: [
@@ -94,7 +95,7 @@ export default function Footer() {
           <div className="elegant-card inline-flex items-center space-x-3 px-8 py-4 mb-6 bg-gradient-to-r from-cream to-amber-100">
             <div className="chess-piece-decoration text-2xl text-burgundy-600">♔</div>
             <div>
-              <img 
+              <Image 
                 src="/favicon-32x32.png" 
                 alt="Rockland County Chess Club" 
                 width={28} 
