@@ -3,11 +3,21 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { CalendarIcon, ClockIcon } from '@heroicons/react/24/outline'
-import { upcomingEvents, categoryLabels } from '@/data/events'
+import { categoryLabels } from '@/data/events'
 import { formatDate, formatTime } from '@/lib/utils'
+import type { Event } from '@/types'
 
-export default function UpcomingEvents() {
-  const nextThreeEvents = upcomingEvents.slice(0, 3)
+interface UpcomingEventsProps {
+  events: Event[]
+}
+
+export default function UpcomingEvents({ events }: UpcomingEventsProps) {
+  const nextThreeEvents = events.slice(0, 3)
+  
+  // Don't render anything if no events
+  if (nextThreeEvents.length === 0) {
+    return null
+  }
 
   return (
     <section className="py-24 bg-gradient-to-br from-amber-50 via-cream to-burgundy-50 relative paper-texture">

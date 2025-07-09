@@ -2,9 +2,12 @@ import Hero from '@/components/home/Hero'
 import InfoCards from '@/components/home/InfoCards'
 import UpcomingEvents from '@/components/home/UpcomingEvents'
 import NewsletterSignup from '@/components/home/NewsletterSignup'
+import { fetchEventsFromAirtable } from '@/lib/airtable'
 import Image from 'next/image'
 
-export default function Home() {
+export default async function Home() {
+  // Fetch events for the upcoming events section
+  const events = await fetchEventsFromAirtable()
   return (
     <>
       <Hero />
@@ -37,7 +40,7 @@ export default function Home() {
         </div>
       </section>
       
-      <UpcomingEvents />
+      <UpcomingEvents events={events} />
       <NewsletterSignup />
     </>
   )
