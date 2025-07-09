@@ -3,16 +3,15 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
-import type { Announcement, CommunityCard } from '@/types'
+import type { CommunityCard } from '@/types'
 
 interface HeroProps {
-  announcements: Announcement[]
   communityCards: CommunityCard[]
 }
 
-export default function Hero({ announcements, communityCards }: HeroProps) {
+export default function Hero({ communityCards }: HeroProps) {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-amber-50 via-cream to-burgundy-50 py-24 sm:py-40 paper-texture">
+    <section className="relative overflow-hidden bg-gradient-to-br from-amber-50 via-cream to-burgundy-50 py-12 sm:py-20 paper-texture">
       
       {/* Classical background patterns */}
       <div className="absolute inset-0 opacity-5">
@@ -27,44 +26,6 @@ export default function Hero({ announcements, communityCards }: HeroProps) {
       <div className="mx-auto max-w-6xl px-8 lg:px-12 relative z-10">
         <div className="mx-auto max-w-4xl text-center">
           
-          {/* Dynamic announcement banner */}
-          {announcements.length > 0 && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="mb-12"
-            >
-              {announcements.map((announcement) => (
-                <div key={announcement.id} className="elegant-card inline-flex items-center px-8 py-4 mx-auto mb-4">
-                  <div className="flex items-center space-x-4">
-                    <span className="chess-piece-decoration text-amber-600">
-                      {announcement.icon || '♔'}
-                    </span>
-                    <div className="text-center">
-                      <div className="text-burgundy-700 font-semibold" style={{fontFamily: 'var(--font-playfair)'}}>
-                        {announcement.title}
-                      </div>
-                      <div className="text-forest-600 text-sm mt-1" style={{fontFamily: 'var(--font-baskerville)'}}>
-                        {announcement.description}
-                      </div>
-                    </div>
-                    {announcement.linkUrl && (
-                      <Link href={announcement.linkUrl} className="text-amber-600 hover:text-amber-700 transition-colors">
-                        <span className="text-sm font-medium" style={{fontFamily: 'var(--font-playfair)'}}>
-                          {announcement.linkText || 'Learn More →'}
-                        </span>
-                      </Link>
-                    )}
-                    <span className="chess-piece-decoration text-amber-600">
-                      {announcement.icon || '♔'}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </motion.div>
-          )}
-
           {/* Large logo */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -76,9 +37,9 @@ export default function Hero({ announcements, communityCards }: HeroProps) {
               <Image 
                 src="/new-logo.png" 
                 alt="Rockland County Chess Club" 
-                width={400} 
-                height={400}
-                className="w-96 h-96 object-contain"
+                width={500} 
+                height={500}
+                className="w-[28rem] h-[28rem] object-contain"
               />
             </div>
             <div className="mt-6 text-forest-700 text-xl italic" style={{fontFamily: 'var(--font-baskerville)'}}>

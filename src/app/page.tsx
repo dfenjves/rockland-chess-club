@@ -2,6 +2,7 @@ import Hero from '@/components/home/Hero'
 import InfoCards from '@/components/home/InfoCards'
 import UpcomingEvents from '@/components/home/UpcomingEvents'
 import NewsletterSignup from '@/components/home/NewsletterSignup'
+import Toast from '@/components/ui/Toast'
 import { fetchEventsFromAirtable, fetchAnnouncementsFromAirtable, fetchCommunityCardsFromAirtable } from '@/lib/airtable'
 import Image from 'next/image'
 import type { Event, Announcement, CommunityCard } from '@/types'
@@ -29,9 +30,11 @@ export default async function Home() {
     console.error('Failed to fetch data for home page:', error)
     // Fallback functions will be called automatically in each fetch function
   }
+  
+  
   return (
     <>
-      <Hero announcements={announcements} communityCards={communityCards} />
+      <Hero communityCards={communityCards} />
       <InfoCards />
       
       {/* Photo Gallery Section */}
@@ -55,14 +58,6 @@ export default async function Home() {
                 height={400}
                 className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="p-4">
-                <h3 className="text-lg font-semibold text-burgundy-800" style={{fontFamily: 'var(--font-playfair)'}}>
-                  Focused Competition
-                </h3>
-                <p className="text-forest-700 text-sm mt-2" style={{fontFamily: 'var(--font-baskerville)'}}>
-                  Deep concentration during tournament play
-                </p>
-              </div>
             </div>
             
             <div className="elegant-card overflow-hidden hover:shadow-elegant transition-all duration-300 group">
@@ -73,14 +68,6 @@ export default async function Home() {
                 height={400}
                 className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="p-4">
-                <h3 className="text-lg font-semibold text-burgundy-800" style={{fontFamily: 'var(--font-playfair)'}}>
-                  Young Strategists
-                </h3>
-                <p className="text-forest-700 text-sm mt-2" style={{fontFamily: 'var(--font-baskerville)'}}>
-                  Learning the art of chess at any age
-                </p>
-              </div>
             </div>
             
             <div className="elegant-card overflow-hidden hover:shadow-elegant transition-all duration-300 group">
@@ -91,14 +78,6 @@ export default async function Home() {
                 height={400}
                 className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="p-4">
-                <h3 className="text-lg font-semibold text-burgundy-800" style={{fontFamily: 'var(--font-playfair)'}}>
-                  Active Community
-                </h3>
-                <p className="text-forest-700 text-sm mt-2" style={{fontFamily: 'var(--font-baskerville)'}}>
-                  Multiple games happening simultaneously
-                </p>
-              </div>
             </div>
             
             <div className="elegant-card overflow-hidden hover:shadow-elegant transition-all duration-300 group">
@@ -109,14 +88,6 @@ export default async function Home() {
                 height={400}
                 className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="p-4">
-                <h3 className="text-lg font-semibold text-burgundy-800" style={{fontFamily: 'var(--font-playfair)'}}>
-                  Learning by Watching
-                </h3>
-                <p className="text-forest-700 text-sm mt-2" style={{fontFamily: 'var(--font-baskerville)'}}>
-                  Observing games teaches valuable lessons
-                </p>
-              </div>
             </div>
             
             <div className="elegant-card overflow-hidden hover:shadow-elegant transition-all duration-300 group">
@@ -127,14 +98,6 @@ export default async function Home() {
                 height={400}
                 className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="p-4">
-                <h3 className="text-lg font-semibold text-burgundy-800" style={{fontFamily: 'var(--font-playfair)'}}>
-                  Special Events
-                </h3>
-                <p className="text-forest-700 text-sm mt-2" style={{fontFamily: 'var(--font-baskerville)'}}>
-                  Simultaneous exhibitions and tournaments
-                </p>
-              </div>
             </div>
             
             <div className="elegant-card overflow-hidden hover:shadow-elegant transition-all duration-300 group">
@@ -145,14 +108,6 @@ export default async function Home() {
                 height={400}
                 className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="p-4">
-                <h3 className="text-lg font-semibold text-burgundy-800" style={{fontFamily: 'var(--font-playfair)'}}>
-                  Social Atmosphere
-                </h3>
-                <p className="text-forest-700 text-sm mt-2" style={{fontFamily: 'var(--font-baskerville)'}}>
-                  Building friendships through chess
-                </p>
-              </div>
             </div>
           </div>
         </div>
@@ -160,6 +115,9 @@ export default async function Home() {
       
       <UpcomingEvents events={events} />
       <NewsletterSignup />
+      
+      {/* Toast for announcements */}
+      <Toast announcements={announcements} />
     </>
   )
 }

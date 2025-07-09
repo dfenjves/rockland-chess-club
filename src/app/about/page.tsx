@@ -211,11 +211,6 @@ export default function AboutPage() {
                   height={300}
                   className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-                <div className="p-4">
-                  <p className="text-forest-700 text-sm text-center" style={{fontFamily: 'var(--font-baskerville)'}}>
-                    Weekly Thursday meetings bring together players of all levels
-                  </p>
-                </div>
               </div>
               
               <div className="elegant-card overflow-hidden hover:shadow-elegant transition-all duration-300 group">
@@ -226,11 +221,6 @@ export default function AboutPage() {
                   height={300}
                   className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-                <div className="p-4">
-                  <p className="text-forest-700 text-sm text-center" style={{fontFamily: 'var(--font-baskerville)'}}>
-                    Casual games and friendly competition
-                  </p>
-                </div>
               </div>
               
               <div className="elegant-card overflow-hidden hover:shadow-elegant transition-all duration-300 group">
@@ -241,11 +231,6 @@ export default function AboutPage() {
                   height={300}
                   className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-                <div className="p-4">
-                  <p className="text-forest-700 text-sm text-center" style={{fontFamily: 'var(--font-baskerville)'}}>
-                    Building lasting friendships through chess
-                  </p>
-                </div>
               </div>
               
               <div className="elegant-card overflow-hidden hover:shadow-elegant transition-all duration-300 group">
@@ -256,11 +241,6 @@ export default function AboutPage() {
                   height={300}
                   className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-                <div className="p-4">
-                  <p className="text-forest-700 text-sm text-center" style={{fontFamily: 'var(--font-baskerville)'}}>
-                    Learning and instruction for all skill levels
-                  </p>
-                </div>
               </div>
               
               <div className="elegant-card overflow-hidden hover:shadow-elegant transition-all duration-300 group">
@@ -271,11 +251,6 @@ export default function AboutPage() {
                   height={300}
                   className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-                <div className="p-4">
-                  <p className="text-forest-700 text-sm text-center" style={{fontFamily: 'var(--font-baskerville)'}}>
-                    Tournament play and competitive events
-                  </p>
-                </div>
               </div>
               
               <div className="elegant-card overflow-hidden hover:shadow-elegant transition-all duration-300 group">
@@ -286,11 +261,6 @@ export default function AboutPage() {
                   height={300}
                   className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-                <div className="p-4">
-                  <p className="text-forest-700 text-sm text-center" style={{fontFamily: 'var(--font-baskerville)'}}>
-                    Our welcoming meeting space in Nyack
-                  </p>
-                </div>
               </div>
             </div>
           </motion.div>

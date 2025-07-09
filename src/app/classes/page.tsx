@@ -153,14 +153,6 @@ export default function ClassesPage() {
                 height={300}
                 className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="p-6">
-                <h3 className="text-lg font-semibold text-burgundy-800 mb-2" style={{fontFamily: 'var(--font-playfair)'}}>
-                  Youth Learning
-                </h3>
-                <p className="text-forest-700 text-sm" style={{fontFamily: 'var(--font-baskerville)'}}>
-                  Young players developing critical thinking skills through chess
-                </p>
-              </div>
             </div>
             
             <div className="elegant-card overflow-hidden hover:shadow-elegant transition-all duration-300 group">
@@ -171,14 +163,6 @@ export default function ClassesPage() {
                 height={300}
                 className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="p-6">
-                <h3 className="text-lg font-semibold text-burgundy-800 mb-2" style={{fontFamily: 'var(--font-playfair)'}}>
-                  Learning by Observation
-                </h3>
-                <p className="text-forest-700 text-sm" style={{fontFamily: 'var(--font-baskerville)'}}>
-                  Students gain valuable insights by watching experienced players
-                </p>
-              </div>
             </div>
             
             <div className="elegant-card overflow-hidden hover:shadow-elegant transition-all duration-300 group">
@@ -189,14 +173,6 @@ export default function ClassesPage() {
                 height={300}
                 className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="p-6">
-                <h3 className="text-lg font-semibold text-burgundy-800 mb-2" style={{fontFamily: 'var(--font-playfair)'}}>
-                  Guided Instruction
-                </h3>
-                <p className="text-forest-700 text-sm" style={{fontFamily: 'var(--font-baskerville)'}}>
-                  One-on-one guidance from experienced club members
-                </p>
-              </div>
             </div>
           </div>
         </motion.div>
