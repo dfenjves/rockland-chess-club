@@ -6,11 +6,13 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function formatDate(date: Date): string {
-  // Use local date components to avoid timezone issues
-  const year = date.getFullYear()
-  const month = date.toLocaleString('en-US', { month: 'long' })
-  const day = date.getDate()
-  return `${month} ${day}, ${year}`
+  // Use consistent timezone formatting for both development and production
+  return new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    timeZone: 'America/New_York' // Force Eastern timezone for consistency
+  }).format(date)
 }
 
 export function formatTime(time: string): string {
@@ -25,5 +27,11 @@ export function formatTime(time: string): string {
 // Create a timezone-safe date from YYYY-MM-DD string
 export function createLocalDate(dateString: string): Date {
   const [year, month, day] = dateString.split('-').map(Number)
-  return new Date(year, month - 1, day) // month is 0-indexed
+  
+  // Create date in Eastern timezone to ensure consistency between dev and production
+  const easternDate = new Date(new Date().toLocaleString("en-US", {timeZone: "America/New_York"}))
+  easternDate.setFullYear(year, month - 1, day)
+  easternDate.setHours(12, 0, 0, 0) // Set to noon to avoid DST boundary issues
+  
+  return easternDate
 }

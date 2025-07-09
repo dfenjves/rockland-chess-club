@@ -171,14 +171,14 @@ export async function fetchEventsFromAirtable(): Promise<Event[]> {
     const events = records
       .map((record) => convertAirtableToEvent(record as unknown as AirtableEventRecord))
       .filter(event => {
-        // Compare dates using local date components to avoid timezone issues
-        const today = new Date()
+        // Compare dates using Eastern timezone for consistency
+        const nowInEastern = new Date(new Date().toLocaleString("en-US", {timeZone: "America/New_York"}))
         const eventYear = event.date.getFullYear()
         const eventMonth = event.date.getMonth()
         const eventDay = event.date.getDate()
-        const todayYear = today.getFullYear()
-        const todayMonth = today.getMonth()
-        const todayDay = today.getDate()
+        const todayYear = nowInEastern.getFullYear()
+        const todayMonth = nowInEastern.getMonth()
+        const todayDay = nowInEastern.getDate()
         
         // Event is today or in the future
         return (eventYear > todayYear) || 
