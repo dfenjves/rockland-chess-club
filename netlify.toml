@@ -4,6 +4,9 @@
 
 [build.environment]
   NEXT_TELEMETRY_DISABLED = "1"
+  AIRTABLE_API_KEY = "${AIRTABLE_API_KEY}"
+  AIRTABLE_BASE_ID = "${AIRTABLE_BASE_ID}"
+  AIRTABLE_TABLE_NAME = "${AIRTABLE_TABLE_NAME}"
 
 [[headers]]
   for = "/*"
