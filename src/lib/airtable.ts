@@ -17,7 +17,7 @@ const eventsTable = base(process.env.AIRTABLE_TABLE_NAME || 'Events')
 const announcementsTable = base('Announcements')
 const communityCardsTable = base('CommunityCards')
 const newsletterTable = base('Newsletter')
-const contactTable = base('Contacts')
+const contactTable = base('Contact-Us')
 
 // Types for Airtable records
 interface AirtableEventRecord {
