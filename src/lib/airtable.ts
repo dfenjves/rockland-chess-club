@@ -1,4 +1,5 @@
 import Airtable from 'airtable'
+import { createLocalDate } from '@/lib/utils'
 import type { Event, Announcement, CommunityCard, NewsletterSubscriber, ContactSubmission } from '@/types'
 
 // Initialize Airtable with validation
@@ -99,15 +100,10 @@ const convertTimeTo24Hour = (time12h: string): string => {
 
 // Convert Airtable record to Event type
 const convertAirtableToEvent = (record: AirtableEventRecord): Event => {
-  // Fix timezone issue by treating date as local date
-  const dateStr = record.fields.Date
-  const [year, month, day] = dateStr.split('-').map(Number)
-  const localDate = new Date(year, month - 1, day) // month is 0-indexed
-  
   return {
     id: record.id,
     title: record.fields.Title,
-    date: localDate,
+    date: createLocalDate(record.fields.Date),
     time: convertTimeTo24Hour(record.fields.Time),
     category: record.fields.Category,
     description: record.fields.Description,
@@ -175,10 +171,19 @@ export async function fetchEventsFromAirtable(): Promise<Event[]> {
     const events = records
       .map((record) => convertAirtableToEvent(record as unknown as AirtableEventRecord))
       .filter(event => {
-        // Compare dates without time to avoid timezone issues
+        // Compare dates using local date components to avoid timezone issues
         const today = new Date()
-        const todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate())
-        return event.date >= todayStart
+        const eventYear = event.date.getFullYear()
+        const eventMonth = event.date.getMonth()
+        const eventDay = event.date.getDate()
+        const todayYear = today.getFullYear()
+        const todayMonth = today.getMonth()
+        const todayDay = today.getDate()
+        
+        // Event is today or in the future
+        return (eventYear > todayYear) || 
+               (eventYear === todayYear && eventMonth > todayMonth) ||
+               (eventYear === todayYear && eventMonth === todayMonth && eventDay >= todayDay)
       }) // Only future events
 
     return events

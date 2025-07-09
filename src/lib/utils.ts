@@ -6,11 +6,11 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function formatDate(date: Date): string {
-  return new Intl.DateTimeFormat('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  }).format(date)
+  // Use local date components to avoid timezone issues
+  const year = date.getFullYear()
+  const month = date.toLocaleString('en-US', { month: 'long' })
+  const day = date.getDate()
+  return `${month} ${day}, ${year}`
 }
 
 export function formatTime(time: string): string {
@@ -20,4 +20,10 @@ export function formatTime(time: string): string {
   const ampm = hour >= 12 ? 'PM' : 'AM'
   const displayHour = hour % 12 || 12
   return `${displayHour}:${minutes} ${ampm}`
+}
+
+// Create a timezone-safe date from YYYY-MM-DD string
+export function createLocalDate(dateString: string): Date {
+  const [year, month, day] = dateString.split('-').map(Number)
+  return new Date(year, month - 1, day) // month is 0-indexed
 }
