@@ -356,7 +356,7 @@ export async function addNewsletterSubscriber(email: string, source: string = 'w
       {
         fields: {
           Email: email,
-          'Subscribed At': new Date().toISOString(),
+          'Subscribed At': new Date().toISOString().split('T')[0],
           Status: 'Active',
           Source: source
         }
