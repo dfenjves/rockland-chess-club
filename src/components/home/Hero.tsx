@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Hero() {
   return (
@@ -48,21 +49,22 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* Grand title with classical styling */}
+          {/* Large logo */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
             className="mb-8"
           >
-            <h1 className="text-5xl sm:text-7xl font-bold text-burgundy-800 leading-tight" 
-                style={{fontFamily: 'var(--font-playfair)'}}>
-              <span className="block">The Rockland County</span>
-              <span className="block text-amber-600 relative">
-                Chess Club
-                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent"></div>
-              </span>
-            </h1>
+            <div className="flex justify-center mb-6">
+              <Image 
+                src="/new-logo.png" 
+                alt="Rockland County Chess Club" 
+                width={400} 
+                height={400}
+                className="w-96 h-96 object-contain"
+              />
+            </div>
             <div className="mt-6 text-forest-700 text-xl italic" style={{fontFamily: 'var(--font-baskerville)'}}>
               &ldquo;Where chess lovers gather, learn, and grow together&rdquo;
             </div>

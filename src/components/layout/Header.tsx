@@ -33,13 +33,12 @@ export default function Header() {
             <span className="sr-only">Rockland County Chess Club</span>
             <div className="flex items-center space-x-4">
               <div className="relative">
-                <div className="absolute inset-0 bg-amber-500 rounded-full opacity-20 scale-110"></div>
                 <Image 
                   src="/favicon-32x32.png" 
                   alt="Rockland County Chess Club" 
-                  width={40} 
-                  height={40}
-                  className="h-10 w-10 relative z-10"
+                  width={60} 
+                  height={60}
+                  className="h-14 w-14 relative z-10 object-contain"
                 />
               </div>
               <div className="flex flex-col">
@@ -115,13 +114,12 @@ export default function Header() {
                 <span className="sr-only">Rockland County Chess Club</span>
                 <div className="flex items-center space-x-3">
                   <div className="relative">
-                    <div className="absolute inset-0 bg-amber-500 rounded-full opacity-20 scale-110"></div>
                     <Image 
                       src="/favicon-32x32.png" 
                       alt="Rockland County Chess Club" 
-                      width={32} 
-                      height={32}
-                      className="h-8 w-8 relative z-10"
+                      width={40} 
+                      height={40}
+                      className="h-10 w-10 relative z-10 object-contain"
                     />
                   </div>
                   <div className="flex flex-col">
