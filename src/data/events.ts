@@ -1,20 +1,5 @@
-import { fetchEventsFromAirtable } from '@/lib/airtable'
-import type { Event } from '@/types'
-
-// This will be dynamically populated from Airtable
-export let upcomingEvents: Event[] = []
-
-// Function to load events from Airtable
-export async function loadEvents(): Promise<Event[]> {
-  try {
-    const events = await fetchEventsFromAirtable()
-    upcomingEvents = events
-    return events
-  } catch (error) {
-    console.error('Failed to load events:', error)
-    return []
-  }
-}
+// This file now only contains category configuration
+// Events are fetched directly in server components using fetchEventsFromAirtable
 
 export const categoryColors = {
   tournament: 'bg-blue-100 text-blue-800',
