@@ -171,7 +171,9 @@ export function ContactPageContent() {
               <h3 className="text-xl font-bold text-burgundy-800 mb-4" style={{fontFamily: 'var(--font-playfair)'}}>Follow Us</h3>
               <div className="flex space-x-4">
                 <a 
-                  href="#" 
+                  href="https://www.facebook.com/RocklandChess/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="elegant-card p-3 text-burgundy-600 hover:text-amber-600 transition-colors"
                   aria-label="Facebook"
                 >
