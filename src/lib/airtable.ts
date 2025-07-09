@@ -99,10 +99,15 @@ const convertTimeTo24Hour = (time12h: string): string => {
 
 // Convert Airtable record to Event type
 const convertAirtableToEvent = (record: AirtableEventRecord): Event => {
+  // Fix timezone issue by treating date as local date
+  const dateStr = record.fields.Date
+  const [year, month, day] = dateStr.split('-').map(Number)
+  const localDate = new Date(year, month - 1, day) // month is 0-indexed
+  
   return {
     id: record.id,
     title: record.fields.Title,
-    date: new Date(record.fields.Date),
+    date: localDate,
     time: convertTimeTo24Hour(record.fields.Time),
     category: record.fields.Category,
     description: record.fields.Description,
@@ -169,7 +174,12 @@ export async function fetchEventsFromAirtable(): Promise<Event[]> {
 
     const events = records
       .map((record) => convertAirtableToEvent(record as unknown as AirtableEventRecord))
-      .filter(event => event.date >= new Date()) // Only future events
+      .filter(event => {
+        // Compare dates without time to avoid timezone issues
+        const today = new Date()
+        const todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate())
+        return event.date >= todayStart
+      }) // Only future events
 
     return events
   } catch (error) {
