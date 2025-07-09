@@ -46,7 +46,7 @@ export async function fetchEventsFromAirtable(): Promise<Event[]> {
       .all()
 
     const events = records
-      .map((record) => convertAirtableToEvent(record as AirtableEventRecord))
+      .map((record) => convertAirtableToEvent(record as unknown as AirtableEventRecord))
       .filter(event => event.date >= new Date()) // Only future events
 
     return events
@@ -105,7 +105,7 @@ export async function createEvent(eventData: Omit<Event, 'id'>): Promise<Event |
       }
     ])
 
-    return convertAirtableToEvent(record[0] as AirtableEventRecord)
+    return convertAirtableToEvent(record[0] as unknown as AirtableEventRecord)
   } catch (error) {
     console.error('Error creating event in Airtable:', error)
     return null
@@ -130,7 +130,7 @@ export async function updateEvent(id: string, eventData: Partial<Event>): Promis
       }
     ])
 
-    return convertAirtableToEvent(record[0] as AirtableEventRecord)
+    return convertAirtableToEvent(record[0] as unknown as AirtableEventRecord)
   } catch (error) {
     console.error('Error updating event in Airtable:', error)
     return null
