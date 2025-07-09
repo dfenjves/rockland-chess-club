@@ -1,5 +1,5 @@
 import Airtable from 'airtable'
-import type { Event } from '@/types'
+import type { Event, Announcement, CommunityCard } from '@/types'
 
 // Initialize Airtable with validation
 if (!process.env.AIRTABLE_API_KEY) {
@@ -13,9 +13,11 @@ const base = new Airtable({
   apiKey: process.env.AIRTABLE_API_KEY,
 }).base(process.env.AIRTABLE_BASE_ID)
 
-const table = base(process.env.AIRTABLE_TABLE_NAME || 'Events')
+const eventsTable = base(process.env.AIRTABLE_TABLE_NAME || 'Events')
+const announcementsTable = base('Announcements')
+const communityCardsTable = base('CommunityCards')
 
-// Type for Airtable record
+// Types for Airtable records
 interface AirtableEventRecord {
   id: string
   fields: {
@@ -27,6 +29,30 @@ interface AirtableEventRecord {
     Description: string
     Location?: string
     Status?: 'Active' | 'Cancelled' | 'Draft'
+  }
+}
+
+interface AirtableAnnouncementRecord {
+  id: string
+  fields: {
+    Title: string
+    Description: string
+    'Link URL'?: string
+    'Link Text'?: string
+    Status: 'Active' | 'Inactive'
+    Priority: number
+    Icon?: string
+  }
+}
+
+interface AirtableCommunityCardRecord {
+  id: string
+  fields: {
+    Title: string
+    Description: string
+    Icon: string
+    Order: number
+    Status: 'Active' | 'Inactive'
   }
 }
 
@@ -60,10 +86,35 @@ const convertAirtableToEvent = (record: AirtableEventRecord): Event => {
   }
 }
 
+// Convert Airtable records to typed objects
+const convertAirtableToAnnouncement = (record: AirtableAnnouncementRecord): Announcement => {
+  return {
+    id: record.id,
+    title: record.fields.Title,
+    description: record.fields.Description,
+    linkUrl: record.fields['Link URL'],
+    linkText: record.fields['Link Text'],
+    status: record.fields.Status.toLowerCase() as 'active' | 'inactive',
+    priority: record.fields.Priority,
+    icon: record.fields.Icon
+  }
+}
+
+const convertAirtableToCommunityCard = (record: AirtableCommunityCardRecord): CommunityCard => {
+  return {
+    id: record.id,
+    title: record.fields.Title,
+    description: record.fields.Description,
+    icon: record.fields.Icon,
+    order: record.fields.Order,
+    status: record.fields.Status.toLowerCase() as 'active' | 'inactive'
+  }
+}
+
 // Fetch all active events from Airtable
 export async function fetchEventsFromAirtable(): Promise<Event[]> {
   try {
-    const records = await table
+    const records = await eventsTable
       .select({
         filterByFormula: "{Status} = 'Active'",
         sort: [{ field: 'Date', direction: 'asc' }],
@@ -116,7 +167,7 @@ function getNextWeekday(weekday: number, weeksFromNow: number = 0): Date {
 // Create a new event in Airtable (for future admin interface)
 export async function createEvent(eventData: Omit<Event, 'id'>): Promise<Event | null> {
   try {
-    const record = await table.create([
+    const record = await eventsTable.create([
       {
         fields: {
           Title: eventData.title,
@@ -148,7 +199,7 @@ export async function updateEvent(id: string, eventData: Partial<Event>): Promis
     if (eventData.description) updateFields.Description = eventData.description
     if (eventData.location) updateFields.Location = eventData.location
 
-    const record = await table.update([
+    const record = await eventsTable.update([
       {
         id,
         fields: updateFields
@@ -165,10 +216,100 @@ export async function updateEvent(id: string, eventData: Partial<Event>): Promis
 // Delete an event from Airtable (for future admin interface)
 export async function deleteEvent(id: string): Promise<boolean> {
   try {
-    await table.destroy([id])
+    await eventsTable.destroy([id])
     return true
   } catch (error) {
     console.error('Error deleting event from Airtable:', error)
     return false
   }
+}
+
+// Fetch active announcements from Airtable
+export async function fetchAnnouncementsFromAirtable(): Promise<Announcement[]> {
+  try {
+    const records = await announcementsTable
+      .select({
+        filterByFormula: "{Status} = 'Active'",
+        sort: [{ field: 'Priority', direction: 'asc' }],
+      })
+      .all()
+
+    const announcements = records
+      .map((record) => convertAirtableToAnnouncement(record as unknown as AirtableAnnouncementRecord))
+
+    return announcements
+  } catch (error) {
+    console.error('Error fetching announcements from Airtable:', error)
+    
+    // Fallback to static announcement if Airtable fails
+    return getFallbackAnnouncements()
+  }
+}
+
+// Fetch active community cards from Airtable
+export async function fetchCommunityCardsFromAirtable(): Promise<CommunityCard[]> {
+  try {
+    const records = await communityCardsTable
+      .select({
+        filterByFormula: "{Status} = 'Active'",
+        sort: [{ field: 'Order', direction: 'asc' }],
+      })
+      .all()
+
+    const communityCards = records
+      .map((record) => convertAirtableToCommunityCard(record as unknown as AirtableCommunityCardRecord))
+
+    return communityCards
+  } catch (error) {
+    console.error('Error fetching community cards from Airtable:', error)
+    
+    // Fallback to static community cards if Airtable fails
+    return getFallbackCommunityCards()
+  }
+}
+
+// Fallback announcements in case Airtable is unavailable
+function getFallbackAnnouncements(): Announcement[] {
+  return [
+    {
+      id: 'fallback-expansion',
+      title: 'Expansion Announcement',
+      description: 'New space opening September 2025',
+      linkUrl: '/about',
+      linkText: 'Learn More →',
+      status: 'active',
+      priority: 1,
+      icon: '♔'
+    }
+  ]
+}
+
+// Fallback community cards in case Airtable is unavailable
+function getFallbackCommunityCards(): CommunityCard[] {
+  return [
+    {
+      id: 'fallback-skill-levels',
+      title: 'All Skill Levels',
+      description: 'From beginners to masters, every player finds their place in our Club',
+      icon: '♔',
+      order: 1,
+      status: 'active'
+    },
+    {
+      id: 'fallback-gatherings',
+      title: 'Regular Gatherings',
+      description: 'Casual matches, regular tournaments, and engaging classes',
+      icon: '♕',
+      order: 2,
+      status: 'active'
+    },
+    {
+      id: 'fallback-instruction',
+      title: 'Instruction',
+      description: 'Our instructors offer guidance in the art and science of chess',
+      icon: '♗',
+      order: 3,
+      status: 'active'
+    }
+  ]
 }

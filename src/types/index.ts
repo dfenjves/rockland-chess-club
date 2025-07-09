@@ -36,3 +36,23 @@ export interface ContactForm {
 export interface NewsletterForm {
   email: string
 }
+
+export interface Announcement {
+  id: string
+  title: string
+  description: string
+  linkUrl?: string
+  linkText?: string
+  status: 'active' | 'inactive'
+  priority: number
+  icon?: string
+}
+
+export interface CommunityCard {
+  id: string
+  title: string
+  description: string
+  icon: string
+  order: number
+  status: 'active' | 'inactive'
+}

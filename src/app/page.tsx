@@ -2,23 +2,33 @@ import Hero from '@/components/home/Hero'
 import InfoCards from '@/components/home/InfoCards'
 import UpcomingEvents from '@/components/home/UpcomingEvents'
 import NewsletterSignup from '@/components/home/NewsletterSignup'
-import { fetchEventsFromAirtable } from '@/lib/airtable'
+import { fetchEventsFromAirtable, fetchAnnouncementsFromAirtable, fetchCommunityCardsFromAirtable } from '@/lib/airtable'
 import Image from 'next/image'
-import type { Event } from '@/types'
+import type { Event, Announcement, CommunityCard } from '@/types'
 
 export default async function Home() {
-  // Fetch events for the upcoming events section with error handling
+  // Fetch all data concurrently for better performance
   let events: Event[] = []
+  let announcements: Announcement[] = []
+  let communityCards: CommunityCard[] = []
+  
   try {
-    events = await fetchEventsFromAirtable()
+    const [eventsData, announcementsData, communityCardsData] = await Promise.all([
+      fetchEventsFromAirtable(),
+      fetchAnnouncementsFromAirtable(),
+      fetchCommunityCardsFromAirtable()
+    ])
+    
+    events = eventsData
+    announcements = announcementsData
+    communityCards = communityCardsData
   } catch (error) {
-    console.error('Failed to fetch events for home page:', error)
-    // Use empty array as fallback
-    events = []
+    console.error('Failed to fetch data for home page:', error)
+    // Fallback functions will be called automatically in each fetch function
   }
   return (
     <>
-      <Hero />
+      <Hero announcements={announcements} communityCards={communityCards} />
       <InfoCards />
       
       {/* Photo Section */}

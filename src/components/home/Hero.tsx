@@ -3,8 +3,14 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
+import type { Announcement, CommunityCard } from '@/types'
 
-export default function Hero() {
+interface HeroProps {
+  announcements: Announcement[]
+  communityCards: CommunityCard[]
+}
+
+export default function Hero({ announcements, communityCards }: HeroProps) {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-amber-50 via-cream to-burgundy-50 py-24 sm:py-40 paper-texture">
       
@@ -21,33 +27,43 @@ export default function Hero() {
       <div className="mx-auto max-w-6xl px-8 lg:px-12 relative z-10">
         <div className="mx-auto max-w-4xl text-center">
           
-          {/* Classical announcement banner */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="mb-12"
-          >
-            <div className="elegant-card inline-flex items-center px-8 py-4 mx-auto">
-              <div className="flex items-center space-x-4">
-                <span className="chess-piece-decoration text-amber-600">♔</span>
-                <div className="text-center">
-                  <div className="text-burgundy-700 font-semibold" style={{fontFamily: 'var(--font-playfair)'}}>
-                    Expansion Announcement
-                  </div>
-                  <div className="text-forest-600 text-sm mt-1" style={{fontFamily: 'var(--font-baskerville)'}}>
-                    New space opening September 2025
+          {/* Dynamic announcement banner */}
+          {announcements.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="mb-12"
+            >
+              {announcements.map((announcement) => (
+                <div key={announcement.id} className="elegant-card inline-flex items-center px-8 py-4 mx-auto mb-4">
+                  <div className="flex items-center space-x-4">
+                    <span className="chess-piece-decoration text-amber-600">
+                      {announcement.icon || '♔'}
+                    </span>
+                    <div className="text-center">
+                      <div className="text-burgundy-700 font-semibold" style={{fontFamily: 'var(--font-playfair)'}}>
+                        {announcement.title}
+                      </div>
+                      <div className="text-forest-600 text-sm mt-1" style={{fontFamily: 'var(--font-baskerville)'}}>
+                        {announcement.description}
+                      </div>
+                    </div>
+                    {announcement.linkUrl && (
+                      <Link href={announcement.linkUrl} className="text-amber-600 hover:text-amber-700 transition-colors">
+                        <span className="text-sm font-medium" style={{fontFamily: 'var(--font-playfair)'}}>
+                          {announcement.linkText || 'Learn More →'}
+                        </span>
+                      </Link>
+                    )}
+                    <span className="chess-piece-decoration text-amber-600">
+                      {announcement.icon || '♔'}
+                    </span>
                   </div>
                 </div>
-                <Link href="/about" className="text-amber-600 hover:text-amber-700 transition-colors">
-                  <span className="text-sm font-medium" style={{fontFamily: 'var(--font-playfair)'}}>
-                    Learn More →
-                  </span>
-                </Link>
-                <span className="chess-piece-decoration text-amber-600">♔</span>
-              </div>
-            </div>
-          </motion.div>
+              ))}
+            </motion.div>
+          )}
 
           {/* Large logo */}
           <motion.div
@@ -104,42 +120,31 @@ export default function Hero() {
           {/* Classical divider */}
           <div className="classical-divider mt-16 mb-12"></div>
 
-          {/* Elegant features grid */}
+          {/* Dynamic community cards grid */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
             className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16"
           >
-            <div className="elegant-card p-8 text-center group hover:shadow-elegant transition-all duration-300">
-              <div className="chess-piece-decoration text-4xl text-burgundy-600 mb-4 group-hover:scale-110 transition-transform duration-300">♔</div>
-              <h3 className="text-xl font-bold text-burgundy-800 mb-3" style={{fontFamily: 'var(--font-playfair)'}}>
-                All Skill Levels
-              </h3>
-              <p className="text-forest-700" style={{fontFamily: 'var(--font-baskerville)'}}>
-                From beginners to masters, every player finds their place in our Club
-              </p>
-            </div>
-            
-            <div className="elegant-card p-8 text-center group hover:shadow-elegant transition-all duration-300">
-              <div className="chess-piece-decoration text-4xl text-forest-600 mb-4 group-hover:scale-110 transition-transform duration-300">♕</div>
-              <h3 className="text-xl font-bold text-burgundy-800 mb-3" style={{fontFamily: 'var(--font-playfair)'}}>
-                Regular Gatherings
-              </h3>
-              <p className="text-forest-700" style={{fontFamily: 'var(--font-baskerville)'}}>
-                Casual matches, regular tournaments, and engaging classes
-              </p>
-            </div>
-            
-            <div className="elegant-card p-8 text-center group hover:shadow-elegant transition-all duration-300">
-              <div className="chess-piece-decoration text-4xl text-amber-600 mb-4 group-hover:scale-110 transition-transform duration-300">♗</div>
-              <h3 className="text-xl font-bold text-burgundy-800 mb-3" style={{fontFamily: 'var(--font-playfair)'}}>
-                Instruction
-              </h3>
-              <p className="text-forest-700" style={{fontFamily: 'var(--font-baskerville)'}}>
-                Our instructors offer guidance in the art and science of chess
-              </p>
-            </div>
+            {communityCards.map((card, index) => {
+              const colors = ['text-burgundy-600', 'text-forest-600', 'text-amber-600']
+              const colorClass = colors[index % colors.length]
+              
+              return (
+                <div key={card.id} className="elegant-card p-8 text-center group hover:shadow-elegant transition-all duration-300">
+                  <div className={`chess-piece-decoration text-4xl ${colorClass} mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                    {card.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-burgundy-800 mb-3" style={{fontFamily: 'var(--font-playfair)'}}>
+                    {card.title}
+                  </h3>
+                  <p className="text-forest-700" style={{fontFamily: 'var(--font-baskerville)'}}>
+                    {card.description}
+                  </p>
+                </div>
+              )
+            })}
           </motion.div>
         </div>
       </div>
