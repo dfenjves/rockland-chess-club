@@ -4,10 +4,18 @@ import UpcomingEvents from '@/components/home/UpcomingEvents'
 import NewsletterSignup from '@/components/home/NewsletterSignup'
 import { fetchEventsFromAirtable } from '@/lib/airtable'
 import Image from 'next/image'
+import type { Event } from '@/types'
 
 export default async function Home() {
-  // Fetch events for the upcoming events section
-  const events = await fetchEventsFromAirtable()
+  // Fetch events for the upcoming events section with error handling
+  let events: Event[] = []
+  try {
+    events = await fetchEventsFromAirtable()
+  } catch (error) {
+    console.error('Failed to fetch events for home page:', error)
+    // Use empty array as fallback
+    events = []
+  }
   return (
     <>
       <Hero />
