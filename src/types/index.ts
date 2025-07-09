@@ -37,6 +37,14 @@ export interface NewsletterForm {
   email: string
 }
 
+export interface NewsletterSubscriber {
+  id: string
+  email: string
+  subscribedAt: Date
+  status: 'active' | 'inactive'
+  source?: string
+}
+
 export interface Announcement {
   id: string
   title: string

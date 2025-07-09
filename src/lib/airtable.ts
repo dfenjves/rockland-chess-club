@@ -1,5 +1,5 @@
 import Airtable from 'airtable'
-import type { Event, Announcement, CommunityCard } from '@/types'
+import type { Event, Announcement, CommunityCard, NewsletterSubscriber } from '@/types'
 
 // Initialize Airtable with validation
 if (!process.env.AIRTABLE_API_KEY) {
@@ -16,6 +16,7 @@ const base = new Airtable({
 const eventsTable = base(process.env.AIRTABLE_TABLE_NAME || 'Events')
 const announcementsTable = base('Announcements')
 const communityCardsTable = base('CommunityCards')
+const newsletterTable = base('Newsletter')
 
 // Types for Airtable records
 interface AirtableEventRecord {
@@ -53,6 +54,16 @@ interface AirtableCommunityCardRecord {
     Icon: string
     Order: number
     Status: 'Active' | 'Inactive'
+  }
+}
+
+interface AirtableNewsletterRecord {
+  id: string
+  fields: {
+    Email: string
+    'Subscribed At': string
+    Status: 'Active' | 'Inactive'
+    Source?: string
   }
 }
 
@@ -108,6 +119,16 @@ const convertAirtableToCommunityCard = (record: AirtableCommunityCardRecord): Co
     icon: record.fields.Icon,
     order: record.fields.Order,
     status: record.fields.Status.toLowerCase() as 'active' | 'inactive'
+  }
+}
+
+const convertAirtableToNewsletterSubscriber = (record: AirtableNewsletterRecord): NewsletterSubscriber => {
+  return {
+    id: record.id,
+    email: record.fields.Email,
+    subscribedAt: new Date(record.fields['Subscribed At']),
+    status: record.fields.Status.toLowerCase() as 'active' | 'inactive',
+    source: record.fields.Source
   }
 }
 
@@ -312,4 +333,59 @@ function getFallbackCommunityCards(): CommunityCard[] {
       status: 'active'
     }
   ]
+}
+
+// Add newsletter subscriber to Airtable
+export async function addNewsletterSubscriber(email: string, source: string = 'website'): Promise<NewsletterSubscriber | null> {
+  try {
+    // First check if email already exists
+    const existingRecords = await newsletterTable
+      .select({
+        filterByFormula: `{Email} = "${email}"`,
+        maxRecords: 1
+      })
+      .all()
+
+    // If email already exists, return the existing record
+    if (existingRecords.length > 0) {
+      return convertAirtableToNewsletterSubscriber(existingRecords[0] as unknown as AirtableNewsletterRecord)
+    }
+
+    // Create new subscriber record
+    const record = await newsletterTable.create([
+      {
+        fields: {
+          Email: email,
+          'Subscribed At': new Date().toISOString(),
+          Status: 'Active',
+          Source: source
+        }
+      }
+    ])
+
+    return convertAirtableToNewsletterSubscriber(record[0] as unknown as AirtableNewsletterRecord)
+  } catch (error) {
+    console.error('Error adding newsletter subscriber to Airtable:', error)
+    return null
+  }
+}
+
+// Fetch all active newsletter subscribers (for admin use)
+export async function fetchNewsletterSubscribers(): Promise<NewsletterSubscriber[]> {
+  try {
+    const records = await newsletterTable
+      .select({
+        filterByFormula: "{Status} = 'Active'",
+        sort: [{ field: 'Subscribed At', direction: 'desc' }],
+      })
+      .all()
+
+    const subscribers = records
+      .map((record) => convertAirtableToNewsletterSubscriber(record as unknown as AirtableNewsletterRecord))
+
+    return subscribers
+  } catch (error) {
+    console.error('Error fetching newsletter subscribers from Airtable:', error)
+    return []
+  }
 }

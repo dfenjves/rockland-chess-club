@@ -8,37 +8,76 @@ import type { NewsletterForm } from '@/types'
 export default function NewsletterSignup() {
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState<string | null>(null)
   const { register, handleSubmit, formState: { errors }, reset } = useForm<NewsletterForm>()
 
   const onSubmit = async (data: NewsletterForm) => {
     console.log('Form submission started:', data)
     setIsSubmitting(true)
+    setError(null)
     
     try {
-      // Create form data for Netlify
-      const formData = new URLSearchParams()
-      formData.append('form-name', 'newsletter-signup')
-      formData.append('email', data.email)
+      // Submit to both Netlify and Airtable concurrently
+      const [netlifyResponse, airtableResponse] = await Promise.allSettled([
+        // Submit to Netlify
+        (async () => {
+          const formData = new URLSearchParams()
+          formData.append('form-name', 'newsletter-signup')
+          formData.append('email', data.email)
 
-      // Submit to Netlify using fetch
-      const response = await fetch('/__forms.html', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: formData.toString(),
-      })
+          const response = await fetch('/__forms.html', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: formData.toString(),
+          })
 
-      if (response.ok) {
+          if (!response.ok) {
+            throw new Error('Netlify form submission failed')
+          }
+          return response
+        })(),
+        
+        // Submit to Airtable
+        (async () => {
+          const response = await fetch('/api/newsletter-signup', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email: data.email }),
+          })
+
+          if (!response.ok) {
+            throw new Error('Airtable submission failed')
+          }
+          return response.json()
+        })()
+      ])
+
+      // Check results
+      const netlifySuccess = netlifyResponse.status === 'fulfilled'
+      const airtableSuccess = airtableResponse.status === 'fulfilled'
+
+      if (netlifySuccess || airtableSuccess) {
         console.log('Form submitted successfully')
         setIsSubmitted(true)
         reset()
+        
+        // Log any partial failures
+        if (!netlifySuccess) {
+          console.warn('Netlify submission failed:', netlifyResponse.reason)
+        }
+        if (!airtableSuccess) {
+          console.warn('Airtable submission failed:', airtableResponse.reason)
+        }
       } else {
-        throw new Error('Form submission failed')
+        throw new Error('Both submissions failed')
       }
     } catch (error) {
       console.error('Error submitting form:', error)
-      alert('There was an error submitting the form. Please try again.')
+      setError('There was an error submitting the form. Please try again.')
     } finally {
       setIsSubmitting(false)
     }
@@ -132,6 +171,19 @@ export default function NewsletterSignup() {
                 </span>
               </button>
             </form>
+          )}
+          
+          {/* Error message */}
+          {error && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mt-6 p-4 bg-red-50 border border-red-200 rounded-lg text-center max-w-md mx-auto"
+            >
+              <p className="text-red-700 text-sm" style={{fontFamily: 'var(--font-baskerville)'}}>
+                {error}
+              </p>
+            </motion.div>
           )}
             
           {/* Elegant note */}
