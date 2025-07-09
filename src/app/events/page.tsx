@@ -2,6 +2,9 @@ import { fetchEventsFromAirtable } from '@/lib/airtable'
 import EventsPageContent from './EventsPageContent'
 import type { Event } from '@/types'
 
+// Force dynamic rendering to always show fresh Airtable data
+export const dynamic = 'force-dynamic'
+
 // Server component to fetch events
 export default async function EventsPage() {
   // Fetch events from Airtable on the server with error handling

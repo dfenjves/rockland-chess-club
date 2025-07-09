@@ -6,6 +6,9 @@ import { fetchEventsFromAirtable, fetchAnnouncementsFromAirtable, fetchCommunity
 import Image from 'next/image'
 import type { Event, Announcement, CommunityCard } from '@/types'
 
+// Force dynamic rendering to always show fresh Airtable data
+export const dynamic = 'force-dynamic'
+
 export default async function Home() {
   // Fetch all data concurrently for better performance
   let events: Event[] = []
