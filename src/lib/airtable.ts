@@ -19,14 +19,32 @@ const table = base(process.env.AIRTABLE_TABLE_NAME || 'Events')
 interface AirtableEventRecord {
   id: string
   fields: {
+    'Unique-Name'?: string
     Title: string
     Date: string
     Time: string
     Category: 'casual' | 'board-games'
     Description: string
     Location?: string
-    Status?: 'active' | 'cancelled' | 'draft'
+    Status?: 'Active' | 'Cancelled' | 'Draft'
   }
+}
+
+// Convert 12-hour time to 24-hour time
+const convertTimeTo24Hour = (time12h: string): string => {
+  const [time, modifier] = time12h.split(' ')
+  let [hours] = time.split(':')
+  const [, minutes] = time.split(':')
+  
+  if (hours === '12') {
+    hours = '00'
+  }
+  
+  if (modifier === 'PM') {
+    hours = String(parseInt(hours, 10) + 12)
+  }
+  
+  return `${hours}:${minutes}`
 }
 
 // Convert Airtable record to Event type
@@ -35,7 +53,7 @@ const convertAirtableToEvent = (record: AirtableEventRecord): Event => {
     id: record.id,
     title: record.fields.Title,
     date: new Date(record.fields.Date),
-    time: record.fields.Time,
+    time: convertTimeTo24Hour(record.fields.Time),
     category: record.fields.Category,
     description: record.fields.Description,
     location: record.fields.Location || '7 North Broadway, 3rd Floor, Nyack, NY'
@@ -47,7 +65,7 @@ export async function fetchEventsFromAirtable(): Promise<Event[]> {
   try {
     const records = await table
       .select({
-        filterByFormula: "{Status} = 'active'",
+        filterByFormula: "{Status} = 'Active'",
         sort: [{ field: 'Date', direction: 'asc' }],
       })
       .all()
@@ -107,7 +125,7 @@ export async function createEvent(eventData: Omit<Event, 'id'>): Promise<Event |
           Category: eventData.category,
           Description: eventData.description,
           Location: eventData.location,
-          Status: 'active'
+          Status: 'Active'
         }
       }
     ])
