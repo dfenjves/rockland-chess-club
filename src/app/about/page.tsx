@@ -201,35 +201,96 @@ export default function AboutPage() {
             viewport={{ once: true }}
             className="mb-16"
           >
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <h2 className="text-4xl font-bold text-burgundy-800 mb-12 text-center" style={{fontFamily: 'var(--font-playfair)'}}>Club Life in Pictures</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <div className="elegant-card overflow-hidden hover:shadow-elegant transition-all duration-300 group">
                 <Image 
                   src="/images/DSC_3168.JPG" 
-                  alt="Chess club members" 
+                  alt="Chess club members during a meeting" 
                   width={400}
                   height={300}
                   className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
+                <div className="p-4">
+                  <p className="text-forest-700 text-sm text-center" style={{fontFamily: 'var(--font-baskerville)'}}>
+                    Weekly Thursday meetings bring together players of all levels
+                  </p>
+                </div>
               </div>
               
               <div className="elegant-card overflow-hidden hover:shadow-elegant transition-all duration-300 group">
                 <Image 
-                  src="/images/DSC_3171.JPG" 
-                  alt="Chess tournament" 
+                  src="/images/playingchess.jpg" 
+                  alt="Players engaged in chess match" 
                   width={400}
                   height={300}
                   className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
+                <div className="p-4">
+                  <p className="text-forest-700 text-sm text-center" style={{fontFamily: 'var(--font-baskerville)'}}>
+                    Casual games and friendly competition
+                  </p>
+                </div>
               </div>
               
               <div className="elegant-card overflow-hidden hover:shadow-elegant transition-all duration-300 group">
                 <Image 
                   src="/images/DSC_3176.JPG" 
-                  alt="Chess club community" 
+                  alt="Chess club community gathering" 
                   width={400}
                   height={300}
                   className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
+                <div className="p-4">
+                  <p className="text-forest-700 text-sm text-center" style={{fontFamily: 'var(--font-baskerville)'}}>
+                    Building lasting friendships through chess
+                  </p>
+                </div>
+              </div>
+              
+              <div className="elegant-card overflow-hidden hover:shadow-elegant transition-all duration-300 group">
+                <Image 
+                  src="/images/image1.jpg" 
+                  alt="Chess instruction and learning" 
+                  width={400}
+                  height={300}
+                  className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="p-4">
+                  <p className="text-forest-700 text-sm text-center" style={{fontFamily: 'var(--font-baskerville)'}}>
+                    Learning and instruction for all skill levels
+                  </p>
+                </div>
+              </div>
+              
+              <div className="elegant-card overflow-hidden hover:shadow-elegant transition-all duration-300 group">
+                <Image 
+                  src="/images/DSC_3171.JPG" 
+                  alt="Chess tournament action" 
+                  width={400}
+                  height={300}
+                  className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="p-4">
+                  <p className="text-forest-700 text-sm text-center" style={{fontFamily: 'var(--font-baskerville)'}}>
+                    Tournament play and competitive events
+                  </p>
+                </div>
+              </div>
+              
+              <div className="elegant-card overflow-hidden hover:shadow-elegant transition-all duration-300 group">
+                <Image 
+                  src="/images/mall-birdseye_orig.jpg" 
+                  alt="Chess club venue overview" 
+                  width={400}
+                  height={300}
+                  className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="p-4">
+                  <p className="text-forest-700 text-sm text-center" style={{fontFamily: 'var(--font-baskerville)'}}>
+                    Our welcoming meeting space in Nyack
+                  </p>
+                </div>
               </div>
             </div>
           </motion.div>

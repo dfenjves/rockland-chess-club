@@ -2,6 +2,7 @@
 
 import { AcademicCapIcon, ClockIcon, UserGroupIcon, TrophyIcon, BookOpenIcon } from '@heroicons/react/24/outline'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 const skillLevels = [
   {
@@ -130,7 +131,7 @@ export default function ClassesPage() {
           ))}
         </div>
 
-        {/* Current Class Offerings */}
+        {/* Learning Environment */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -139,6 +140,75 @@ export default function ClassesPage() {
           className="mb-16"
         >
           <div className="classical-divider mb-16"></div>
+          <h2 className="text-4xl font-bold text-burgundy-800 text-center mb-12" style={{fontFamily: 'var(--font-playfair)'}}>
+            Learning Environment
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            <div className="elegant-card overflow-hidden hover:shadow-elegant transition-all duration-300 group">
+              <Image 
+                src="/images/thinking-kid.jpeg" 
+                alt="Young student learning chess" 
+                width={400}
+                height={300}
+                className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="p-6">
+                <h3 className="text-lg font-semibold text-burgundy-800 mb-2" style={{fontFamily: 'var(--font-playfair)'}}>
+                  Youth Learning
+                </h3>
+                <p className="text-forest-700 text-sm" style={{fontFamily: 'var(--font-baskerville)'}}>
+                  Young players developing critical thinking skills through chess
+                </p>
+              </div>
+            </div>
+            
+            <div className="elegant-card overflow-hidden hover:shadow-elegant transition-all duration-300 group">
+              <Image 
+                src="/images/onlooker-kid.jpeg" 
+                alt="Student observing a chess game" 
+                width={400}
+                height={300}
+                className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="p-6">
+                <h3 className="text-lg font-semibold text-burgundy-800 mb-2" style={{fontFamily: 'var(--font-playfair)'}}>
+                  Learning by Observation
+                </h3>
+                <p className="text-forest-700 text-sm" style={{fontFamily: 'var(--font-baskerville)'}}>
+                  Students gain valuable insights by watching experienced players
+                </p>
+              </div>
+            </div>
+            
+            <div className="elegant-card overflow-hidden hover:shadow-elegant transition-all duration-300 group">
+              <Image 
+                src="/images/image1.jpg" 
+                alt="Chess instruction session" 
+                width={400}
+                height={300}
+                className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="p-6">
+                <h3 className="text-lg font-semibold text-burgundy-800 mb-2" style={{fontFamily: 'var(--font-playfair)'}}>
+                  Guided Instruction
+                </h3>
+                <p className="text-forest-700 text-sm" style={{fontFamily: 'var(--font-baskerville)'}}>
+                  One-on-one guidance from experienced club members
+                </p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Current Class Offerings */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="mb-16"
+        >
           <h2 className="text-4xl font-bold text-burgundy-800 text-center mb-12" style={{fontFamily: 'var(--font-playfair)'}}>
             Current Class Offerings
           </h2>
