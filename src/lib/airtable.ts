@@ -1,5 +1,5 @@
 import Airtable from 'airtable'
-import type { Event, Announcement, CommunityCard, NewsletterSubscriber } from '@/types'
+import type { Event, Announcement, CommunityCard, NewsletterSubscriber, ContactSubmission } from '@/types'
 
 // Initialize Airtable with validation
 if (!process.env.AIRTABLE_API_KEY) {
@@ -17,6 +17,7 @@ const eventsTable = base(process.env.AIRTABLE_TABLE_NAME || 'Events')
 const announcementsTable = base('Announcements')
 const communityCardsTable = base('CommunityCards')
 const newsletterTable = base('Newsletter')
+const contactTable = base('Contacts')
 
 // Types for Airtable records
 interface AirtableEventRecord {
@@ -63,6 +64,18 @@ interface AirtableNewsletterRecord {
     Email: string
     'Subscribed At': string
     Status: 'Active' | 'Inactive'
+    Source?: string
+  }
+}
+
+interface AirtableContactRecord {
+  id: string
+  fields: {
+    Name: string
+    Email: string
+    Message: string
+    'Submitted At': string
+    Status: 'New' | 'Reviewed' | 'Responded' | 'Closed'
     Source?: string
   }
 }
@@ -128,6 +141,18 @@ const convertAirtableToNewsletterSubscriber = (record: AirtableNewsletterRecord)
     email: record.fields.Email,
     subscribedAt: new Date(record.fields['Subscribed At']),
     status: record.fields.Status.toLowerCase() as 'active' | 'inactive',
+    source: record.fields.Source
+  }
+}
+
+const convertAirtableToContactSubmission = (record: AirtableContactRecord): ContactSubmission => {
+  return {
+    id: record.id,
+    name: record.fields.Name,
+    email: record.fields.Email,
+    message: record.fields.Message,
+    submittedAt: new Date(record.fields['Submitted At']),
+    status: record.fields.Status.toLowerCase() as 'new' | 'reviewed' | 'responded' | 'closed',
     source: record.fields.Source
   }
 }
@@ -387,5 +412,75 @@ export async function fetchNewsletterSubscribers(): Promise<NewsletterSubscriber
   } catch (error) {
     console.error('Error fetching newsletter subscribers from Airtable:', error)
     return []
+  }
+}
+
+// Add contact form submission to Airtable
+export async function addContactSubmission(
+  name: string, 
+  email: string, 
+  message: string, 
+  source: string = 'website'
+): Promise<ContactSubmission | null> {
+  try {
+    // Create new contact submission record
+    const record = await contactTable.create([
+      {
+        fields: {
+          Name: name,
+          Email: email,
+          Message: message,
+          'Submitted At': new Date().toISOString().split('T')[0],
+          Status: 'New',
+          Source: source
+        }
+      }
+    ])
+
+    return convertAirtableToContactSubmission(record[0] as unknown as AirtableContactRecord)
+  } catch (error) {
+    console.error('Error adding contact submission to Airtable:', error)
+    return null
+  }
+}
+
+// Fetch all contact submissions (for admin use)
+export async function fetchContactSubmissions(): Promise<ContactSubmission[]> {
+  try {
+    const records = await contactTable
+      .select({
+        sort: [{ field: 'Submitted At', direction: 'desc' }],
+      })
+      .all()
+
+    const submissions = records
+      .map((record) => convertAirtableToContactSubmission(record as unknown as AirtableContactRecord))
+
+    return submissions
+  } catch (error) {
+    console.error('Error fetching contact submissions from Airtable:', error)
+    return []
+  }
+}
+
+// Update contact submission status (for admin use)
+export async function updateContactSubmissionStatus(
+  id: string, 
+  status: 'new' | 'reviewed' | 'responded' | 'closed'
+): Promise<ContactSubmission | null> {
+  try {
+    const record = await contactTable.update([
+      {
+        id,
+        fields: {
+          Status: status.charAt(0).toUpperCase() + status.slice(1) as 'New' | 'Reviewed' | 'Responded' | 'Closed'
+        }
+      }
+    ])
+
+    return convertAirtableToContactSubmission(record[0] as unknown as AirtableContactRecord)
+  } catch (error) {
+    console.error('Error updating contact submission status in Airtable:', error)
+    return null
   }
 }

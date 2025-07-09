@@ -33,6 +33,16 @@ export interface ContactForm {
   message: string
 }
 
+export interface ContactSubmission {
+  id: string
+  name: string
+  email: string
+  message: string
+  submittedAt: Date
+  status: 'new' | 'reviewed' | 'responded' | 'closed'
+  source?: string
+}
+
 export interface NewsletterForm {
   email: string
 }
