@@ -3,11 +3,12 @@ import InfoCards from '@/components/home/InfoCards'
 import UpcomingEvents from '@/components/home/UpcomingEvents'
 import NewsletterSignup from '@/components/home/NewsletterSignup'
 import Toast from '@/components/ui/Toast'
-import { fetchEventsFromAirtable, fetchAnnouncementsFromAirtable, fetchCommunityCardsFromAirtable } from '@/lib/airtable'
+import { fetchEventsFromGoogleCalendar } from '@/lib/google-calendar'
+import { fetchAnnouncementsFromAirtable, fetchCommunityCardsFromAirtable } from '@/lib/airtable'
 import Image from 'next/image'
 import type { Event, Announcement, CommunityCard } from '@/types'
 
-// Force dynamic rendering to always show fresh Airtable data
+// Force dynamic rendering to always show fresh Google Calendar data
 export const dynamic = 'force-dynamic'
 
 export default async function Home() {
@@ -18,7 +19,7 @@ export default async function Home() {
   
   try {
     const [eventsData, announcementsData, communityCardsData] = await Promise.all([
-      fetchEventsFromAirtable(),
+      fetchEventsFromGoogleCalendar(),
       fetchAnnouncementsFromAirtable(),
       fetchCommunityCardsFromAirtable()
     ])

@@ -1,5 +1,5 @@
 // This file now only contains category configuration
-// Events are fetched directly in server components using fetchEventsFromAirtable
+// Events are fetched directly in server components using fetchEventsFromGoogleCalendar
 
 export const categoryColors = {
   tournament: 'bg-blue-100 text-blue-800',
