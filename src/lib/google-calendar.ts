@@ -36,8 +36,10 @@ const extractTimeFromDateTime = (dateTime?: string): string => {
   if (!dateTime) return '19:00' // Default time
   
   const date = new Date(dateTime)
-  const hours = date.getHours().toString().padStart(2, '0')
-  const minutes = date.getMinutes().toString().padStart(2, '0')
+  // Convert to Eastern timezone to get the correct local time
+  const easternTime = new Date(date.toLocaleString("en-US", {timeZone: "America/New_York"}))
+  const hours = easternTime.getHours().toString().padStart(2, '0')
+  const minutes = easternTime.getMinutes().toString().padStart(2, '0')
   
   return `${hours}:${minutes}`
 }
