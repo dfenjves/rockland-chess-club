@@ -1,55 +1,9 @@
 'use client'
 
-import { AcademicCapIcon, ClockIcon, UserGroupIcon, TrophyIcon, BookOpenIcon } from '@heroicons/react/24/outline'
+import { AcademicCapIcon, ClockIcon, UserGroupIcon, TrophyIcon } from '@heroicons/react/24/outline'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 
-const skillLevels = [
-  {
-    title: 'Complete Beginner',
-    icon: UserGroupIcon,
-    description: 'Never played chess or need to learn the basics',
-    characteristics: [
-      'Learning how pieces move',
-      'Understanding basic rules',
-      'First chess games',
-      'Building confidence'
-    ]
-  },
-  {
-    title: 'Beginner',
-    icon: AcademicCapIcon,
-    description: 'Knows the rules but wants to improve',
-    characteristics: [
-      'Knows piece movement',
-      'Understands check/checkmate',
-      'Ready for tactics training',
-      'Seeking structured improvement'
-    ]
-  },
-  {
-    title: 'Intermediate',
-    icon: TrophyIcon,
-    description: 'Regular player looking to advance skills',
-    characteristics: [
-      'Comfortable with basic tactics',
-      'Some opening knowledge',
-      'Participates in tournaments',
-      'Wants specialized training'
-    ]
-  },
-  {
-    title: 'Advanced',
-    icon: ClockIcon,
-    description: 'Strong player seeking mastery',
-    characteristics: [
-      'Solid tactical foundation',
-      'Good positional understanding',
-      'Tournament experience',
-      'Focused on specific weaknesses'
-    ]
-  }
-]
 
 export default function ClassesPage() {
   return (
@@ -86,7 +40,7 @@ export default function ClassesPage() {
         </div>
       </div>
 
-      {/* Skill Levels */}
+      {/* Learning Environment Images */}
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8 relative z-10">
         {/* Classical decorative divider */}
         <div className="classical-divider mb-16"></div>
@@ -96,54 +50,8 @@ export default function ClassesPage() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl font-bold text-burgundy-800 mb-6" style={{fontFamily: 'var(--font-playfair)'}}>
-            Find Your Level
-          </h2>
-          <p className="text-lg text-forest-700 max-w-2xl mx-auto" style={{fontFamily: 'var(--font-baskerville)'}}>
-            Our classes are designed to meet you where you are and help you progress to the next level.
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
-          {skillLevels.map((level, index) => (
-            <motion.div
-              key={level.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="elegant-card p-8 text-center hover:shadow-elegant transition-all duration-300 group"
-            >
-              <level.icon className="h-10 w-10 text-amber-600 mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" />
-              <h3 className="text-xl font-bold text-burgundy-800 mb-3" style={{fontFamily: 'var(--font-playfair)'}}>{level.title}</h3>
-              <p className="text-forest-700 mb-4" style={{fontFamily: 'var(--font-baskerville)'}}>{level.description}</p>
-              <ul className="text-sm text-forest-600 space-y-2" style={{fontFamily: 'var(--font-baskerville)'}}>
-                {level.characteristics.map((char, charIndex) => (
-                  <li key={charIndex} className="flex items-center">
-                    <span className="text-amber-600 mr-2">♦</span>
-                    {char}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Learning Environment */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
           className="mb-16"
         >
-          <div className="classical-divider mb-16"></div>
-          <h2 className="text-4xl font-bold text-burgundy-800 text-center mb-12" style={{fontFamily: 'var(--font-playfair)'}}>
-            Learning Environment
-          </h2>
-          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             <div className="elegant-card overflow-hidden hover:shadow-elegant transition-all duration-300 group">
               <Image 
@@ -243,13 +151,11 @@ export default function ClassesPage() {
                 </ul>
               </div>
 
-              <a href="https://www.zeffy.com/en-US/ticketing/rockland-county-chess-club" 
-                 className="btn-classical w-full inline-flex items-center justify-center space-x-2 group"
-                 target="_blank" 
-                 rel="noopener noreferrer">
-                <span>Register for Kids Classes</span>
-                <span className="chess-piece-decoration text-sm group-hover:rotate-12 transition-transform duration-300">♕</span>
-              </a>
+              <button className="btn-classical w-full inline-flex items-center justify-center space-x-2 group cursor-not-allowed opacity-75"
+                      disabled>
+                <span>Registration Coming Soon</span>
+                <span className="chess-piece-decoration text-sm">♕</span>
+              </button>
             </div>
 
             {/* Adult Classes */}
@@ -305,13 +211,11 @@ export default function ClassesPage() {
                 </ul>
               </div>
 
-              <a href="https://www.zeffy.com/en-US/ticketing/rockland-county-chess-club" 
-                 className="btn-classical w-full inline-flex items-center justify-center space-x-2 group bg-gradient-to-r from-forest-600 to-forest-700 hover:from-forest-700 hover:to-forest-800"
-                 target="_blank" 
-                 rel="noopener noreferrer">
-                <span>Register for Adult Classes</span>
-                <span className="chess-piece-decoration text-sm group-hover:rotate-12 transition-transform duration-300">♔</span>
-              </a>
+              <button className="btn-classical w-full inline-flex items-center justify-center space-x-2 group bg-gradient-to-r from-forest-600 to-forest-700 cursor-not-allowed opacity-75"
+                      disabled>
+                <span>Registration Coming Soon</span>
+                <span className="chess-piece-decoration text-sm">♔</span>
+              </button>
             </div>
           </div>
 
@@ -338,94 +242,6 @@ export default function ClassesPage() {
           </div>
         </motion.div>
 
-        {/* Learning Options */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16"
-        >
-          <div className="elegant-card p-8 hover:shadow-elegant transition-all duration-300">
-            <div className="flex items-center mb-6">
-              <BookOpenIcon className="h-8 w-8 text-amber-600 mr-4" />
-              <h3 className="text-2xl font-bold text-burgundy-800" style={{fontFamily: 'var(--font-playfair)'}}>Informal Learning</h3>
-            </div>
-            <div className="space-y-4 text-forest-700" style={{fontFamily: 'var(--font-baskerville)'}}>
-              <p>
-                Every Thursday night, our experienced members provide guidance and instruction 
-                during casual play sessions.
-              </p>
-              
-              <div>
-                <h4 className="font-semibold text-burgundy-800 mb-2">What You&apos;ll Get:</h4>
-                <ul className="space-y-2">
-                  <li className="flex items-start">
-                    <span className="text-amber-600 mr-2">♦</span>
-                    Personalized tips during games
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-amber-600 mr-2">♦</span>
-                    Post-game analysis and feedback
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-amber-600 mr-2">♦</span>
-                    Tactical puzzle solving sessions
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-amber-600 mr-2">♦</span>
-                    Opening and endgame guidance
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div className="elegant-card p-8 hover:shadow-elegant transition-all duration-300">
-            <div className="flex items-center mb-6">
-              <UserGroupIcon className="h-8 w-8 text-amber-600 mr-4" />
-              <h3 className="text-2xl font-bold text-burgundy-800" style={{fontFamily: 'var(--font-playfair)'}}>Private Lessons</h3>
-            </div>
-            <div className="space-y-4 text-forest-700" style={{fontFamily: 'var(--font-baskerville)'}}>
-              <p>
-                Several of our experienced members offer private lessons for focused, 
-                one-on-one learning tailored to your specific needs.
-              </p>
-              
-              <div>
-                <h4 className="font-semibold text-burgundy-800 mb-2">Benefits:</h4>
-                <ul className="space-y-2">
-                  <li className="flex items-start">
-                    <span className="text-amber-600 mr-2">♦</span>
-                    Customized curriculum based on your goals
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-amber-600 mr-2">♦</span>
-                    Flexible scheduling around your availability
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-amber-600 mr-2">♦</span>
-                    Analysis of your own games
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-amber-600 mr-2">♦</span>
-                    Faster improvement with focused attention
-                  </li>
-                </ul>
-              </div>
-
-              <div className="pt-4 border-t border-amber-500/30">
-                <p className="text-sm text-forest-600 mb-4">
-                  Rates and availability vary by instructor. Contact us to be connected with available tutors.
-                </p>
-                <a href="/contact" className="btn-classical inline-flex items-center space-x-2 group w-full justify-center">
-                  <span>Inquire About Private Lessons</span>
-                  <span className="chess-piece-decoration text-sm group-hover:rotate-12 transition-transform duration-300">♗</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </motion.div>
 
         {/* Call to Action */}
         <motion.div 
