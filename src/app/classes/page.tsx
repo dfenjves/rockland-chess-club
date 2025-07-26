@@ -186,32 +186,154 @@ export default function ClassesPage() {
           className="mb-16"
         >
           <h2 className="text-4xl font-bold text-burgundy-800 text-center mb-12" style={{fontFamily: 'var(--font-playfair)'}}>
-            Current Class Offerings
+            September 2025 Classes
           </h2>
           
-          {/* Check Back Soon Message */}
-          <div className="elegant-card p-16 text-center bg-gradient-to-br from-amber-100 to-cream max-w-4xl mx-auto">
-            <div className="chess-piece-decoration text-6xl text-burgundy-600 mb-6">♔</div>
-            <h3 className="text-3xl font-bold text-burgundy-800 mb-6" style={{fontFamily: 'var(--font-playfair)'}}>
-              Classes Coming Soon!
-            </h3>
-            <p className="text-xl text-forest-700 mb-8 leading-relaxed" style={{fontFamily: 'var(--font-baskerville)'}}>
-              We&apos;re currently developing our structured class curriculum. Check back here soon for announcements 
-              about upcoming beginner workshops, intermediate tactics training, and advanced strategy sessions.
-            </p>
-            <p className="text-lg text-forest-600 mb-8" style={{fontFamily: 'var(--font-baskerville)'}}>
-              In the meantime, join us for our regular Thursday night sessions where experienced players 
-              provide informal instruction and guidance to newer members.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/contact" className="btn-classical inline-flex items-center justify-center space-x-2 group">
-                <span>Ask About Instruction</span>
-                <span className="chess-piece-decoration text-sm group-hover:rotate-12 transition-transform duration-300">♔</span>
-              </a>
-              <a href="/events" className="btn-classical inline-flex items-center justify-center space-x-2 group bg-gradient-to-r from-forest-600 to-forest-700 hover:from-forest-700 hover:to-forest-800">
-                <span>View Weekly Sessions</span>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            {/* Kids Classes */}
+            <div className="elegant-card p-8 bg-gradient-to-br from-amber-50 to-cream hover:shadow-elegant transition-all duration-300">
+              <div className="text-center mb-6">
+                <div className="chess-piece-decoration text-4xl text-burgundy-600 mb-4">♕</div>
+                <h3 className="text-3xl font-bold text-burgundy-800 mb-3" style={{fontFamily: 'var(--font-playfair)'}}>
+                  Kids Chess Classes
+                </h3>
+                <p className="text-lg text-forest-700" style={{fontFamily: 'var(--font-baskerville)'}}>
+                  For young chess enthusiasts who already know piece movement
+                </p>
+              </div>
+
+              <div className="space-y-4 mb-8">
+                <div className="flex items-center text-forest-700">
+                  <ClockIcon className="h-5 w-5 text-amber-600 mr-3" />
+                  <span style={{fontFamily: 'var(--font-baskerville)'}}>Tuesdays, 4:30 PM - 6:00 PM</span>
+                </div>
+                <div className="flex items-center text-forest-700">
+                  <AcademicCapIcon className="h-5 w-5 text-amber-600 mr-3" />
+                  <span style={{fontFamily: 'var(--font-baskerville)'}}>6-week session: September 9 - October 14</span>
+                </div>
+                <div className="flex items-center text-forest-700">
+                  <UserGroupIcon className="h-5 w-5 text-amber-600 mr-3" />
+                  <span style={{fontFamily: 'var(--font-baskerville)'}}>Must already know how to move chess pieces</span>
+                </div>
+                <div className="flex items-center text-forest-700">
+                  <TrophyIcon className="h-5 w-5 text-amber-600 mr-3" />
+                  <span style={{fontFamily: 'var(--font-baskerville)'}}>$150 for complete 6-week session</span>
+                </div>
+              </div>
+
+              <div className="bg-white/50 rounded-lg p-4 mb-6">
+                <h4 className="font-semibold text-burgundy-800 mb-3" style={{fontFamily: 'var(--font-playfair)'}}>What Your Child Will Learn:</h4>
+                <ul className="space-y-2 text-forest-700" style={{fontFamily: 'var(--font-baskerville)'}}>
+                  <li className="flex items-start">
+                    <span className="text-amber-600 mr-2">♦</span>
+                    Basic tactics and strategy
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-amber-600 mr-2">♦</span>
+                    Opening principles
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-amber-600 mr-2">♦</span>
+                    Endgame fundamentals
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-amber-600 mr-2">♦</span>
+                    Game analysis and improvement
+                  </li>
+                </ul>
+              </div>
+
+              <a href="https://www.zeffy.com/en-US/ticketing/rockland-county-chess-club" 
+                 className="btn-classical w-full inline-flex items-center justify-center space-x-2 group"
+                 target="_blank" 
+                 rel="noopener noreferrer">
+                <span>Register for Kids Classes</span>
                 <span className="chess-piece-decoration text-sm group-hover:rotate-12 transition-transform duration-300">♕</span>
               </a>
+            </div>
+
+            {/* Adult Classes */}
+            <div className="elegant-card p-8 bg-gradient-to-br from-burgundy-50 to-amber-50 hover:shadow-elegant transition-all duration-300">
+              <div className="text-center mb-6">
+                <div className="chess-piece-decoration text-4xl text-burgundy-600 mb-4">♔</div>
+                <h3 className="text-3xl font-bold text-burgundy-800 mb-3" style={{fontFamily: 'var(--font-playfair)'}}>
+                  Adult Chess Classes
+                </h3>
+                <p className="text-lg text-forest-700" style={{fontFamily: 'var(--font-baskerville)'}}>
+                  Structured learning for adult players of all levels
+                </p>
+              </div>
+
+              <div className="space-y-4 mb-8">
+                <div className="flex items-center text-forest-700">
+                  <ClockIcon className="h-5 w-5 text-amber-600 mr-3" />
+                  <span style={{fontFamily: 'var(--font-baskerville)'}}>Tuesdays, 6:00 PM - 7:30 PM</span>
+                </div>
+                <div className="flex items-center text-forest-700">
+                  <AcademicCapIcon className="h-5 w-5 text-amber-600 mr-3" />
+                  <span style={{fontFamily: 'var(--font-baskerville)'}}>6-week session: September 9 - October 14</span>
+                </div>
+                <div className="flex items-center text-forest-700">
+                  <UserGroupIcon className="h-5 w-5 text-amber-600 mr-3" />
+                  <span style={{fontFamily: 'var(--font-baskerville)'}}>All skill levels welcome</span>
+                </div>
+                <div className="flex items-center text-forest-700">
+                  <TrophyIcon className="h-5 w-5 text-amber-600 mr-3" />
+                  <span style={{fontFamily: 'var(--font-baskerville)'}}>FREE with chess club membership</span>
+                </div>
+              </div>
+
+              <div className="bg-white/50 rounded-lg p-4 mb-6">
+                <h4 className="font-semibold text-burgundy-800 mb-3" style={{fontFamily: 'var(--font-playfair)'}}>Course Coverage:</h4>
+                <ul className="space-y-2 text-forest-700" style={{fontFamily: 'var(--font-baskerville)'}}>
+                  <li className="flex items-start">
+                    <span className="text-amber-600 mr-2">♦</span>
+                    Strategic thinking and planning
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-amber-600 mr-2">♦</span>
+                    Advanced tactics and combinations
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-amber-600 mr-2">♦</span>
+                    Opening theory and repertoire
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-amber-600 mr-2">♦</span>
+                    Practical endgame knowledge
+                  </li>
+                </ul>
+              </div>
+
+              <a href="https://www.zeffy.com/en-US/ticketing/rockland-county-chess-club" 
+                 className="btn-classical w-full inline-flex items-center justify-center space-x-2 group bg-gradient-to-r from-forest-600 to-forest-700 hover:from-forest-700 hover:to-forest-800"
+                 target="_blank" 
+                 rel="noopener noreferrer">
+                <span>Register for Adult Classes</span>
+                <span className="chess-piece-decoration text-sm group-hover:rotate-12 transition-transform duration-300">♔</span>
+              </a>
+            </div>
+          </div>
+
+          {/* Additional Information */}
+          <div className="elegant-card p-8 mt-8 bg-gradient-to-br from-cream to-amber-50 max-w-4xl mx-auto text-center">
+            <h4 className="text-2xl font-bold text-burgundy-800 mb-4" style={{fontFamily: 'var(--font-playfair)'}}>
+              Course Details
+            </h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-forest-700" style={{fontFamily: 'var(--font-baskerville)'}}>
+              <div>
+                <h5 className="font-semibold text-burgundy-800 mb-2">Location</h5>
+                <p>7 North Broadway, 3rd Floor<br />Nyack, NY 10960</p>
+              </div>
+              <div>
+                <h5 className="font-semibold text-burgundy-800 mb-2">Session Length</h5>
+                <p>6 weeks of structured instruction<br />Small class sizes for personalized attention</p>
+              </div>
+            </div>
+            <div className="mt-6 pt-6 border-t border-amber-500/30">
+              <p className="text-forest-600">
+                Questions about the classes? <a href="/contact" className="text-burgundy-800 hover:text-burgundy-600 font-semibold">Contact us</a> for more information.
+              </p>
             </div>
           </div>
         </motion.div>
