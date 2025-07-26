@@ -35,7 +35,7 @@ export default function Hero({ communityCards }: HeroProps) {
           >
             <div className="flex justify-center mb-6">
               <Image 
-                src="/new-logo.webp" 
+                src="/new-logo.png" 
                 alt="Rockland County Chess Club" 
                 width={448} 
                 height={448}

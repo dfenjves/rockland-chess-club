@@ -53,7 +53,7 @@ export default async function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="elegant-card overflow-hidden hover:shadow-elegant transition-all duration-300 group">
               <Image 
-                src="/images/conentrating-people.webp" 
+                src="/images/conentrating-people.jpeg" 
                 alt="Players concentrating during a match" 
                 width={600}
                 height={400}
@@ -65,7 +65,7 @@ export default async function Home() {
             
             <div className="elegant-card overflow-hidden hover:shadow-elegant transition-all duration-300 group">
               <Image 
-                src="/images/thinking-kid.webp" 
+                src="/images/thinking-kid.jpeg" 
                 alt="Young player contemplating next move" 
                 width={600}
                 height={400}
@@ -77,7 +77,7 @@ export default async function Home() {
             
             <div className="elegant-card overflow-hidden hover:shadow-elegant transition-all duration-300 group">
               <Image 
-                src="/images/multiplayer.webp" 
+                src="/images/multiplayer.jpg" 
                 alt="Multiple chess games in progress" 
                 width={600}
                 height={400}
@@ -89,7 +89,7 @@ export default async function Home() {
             
             <div className="elegant-card overflow-hidden hover:shadow-elegant transition-all duration-300 group">
               <Image 
-                src="/images/onlooker-kid.webp" 
+                src="/images/onlooker-kid.jpeg" 
                 alt="Young spectator watching a game" 
                 width={600}
                 height={400}
@@ -101,7 +101,7 @@ export default async function Home() {
             
             <div className="elegant-card overflow-hidden hover:shadow-elegant transition-all duration-300 group">
               <Image 
-                src="/images/simultaneous.webp" 
+                src="/images/simultaneous.jpg" 
                 alt="Simultaneous chess exhibition" 
                 width={600}
                 height={400}
@@ -113,7 +113,7 @@ export default async function Home() {
             
             <div className="elegant-card overflow-hidden hover:shadow-elegant transition-all duration-300 group">
               <Image 
-                src="/images/DSC_3653.webp" 
+                src="/images/DSC_3653.JPG" 
                 alt="Chess club members socializing" 
                 width={600}
                 height={400}
