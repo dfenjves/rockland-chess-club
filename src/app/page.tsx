@@ -53,61 +53,73 @@ export default async function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="elegant-card overflow-hidden hover:shadow-elegant transition-all duration-300 group">
               <Image 
-                src="/images/conentrating-people.jpeg" 
+                src="/images/conentrating-people.webp" 
                 alt="Players concentrating during a match" 
                 width={600}
                 height={400}
                 className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                loading="lazy"
               />
             </div>
             
             <div className="elegant-card overflow-hidden hover:shadow-elegant transition-all duration-300 group">
               <Image 
-                src="/images/thinking-kid.jpeg" 
+                src="/images/thinking-kid.webp" 
                 alt="Young player contemplating next move" 
                 width={600}
                 height={400}
                 className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                loading="lazy"
               />
             </div>
             
             <div className="elegant-card overflow-hidden hover:shadow-elegant transition-all duration-300 group">
               <Image 
-                src="/images/multiplayer.jpg" 
+                src="/images/multiplayer.webp" 
                 alt="Multiple chess games in progress" 
                 width={600}
                 height={400}
                 className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                loading="lazy"
               />
             </div>
             
             <div className="elegant-card overflow-hidden hover:shadow-elegant transition-all duration-300 group">
               <Image 
-                src="/images/onlooker-kid.jpeg" 
+                src="/images/onlooker-kid.webp" 
                 alt="Young spectator watching a game" 
                 width={600}
                 height={400}
                 className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                loading="lazy"
               />
             </div>
             
             <div className="elegant-card overflow-hidden hover:shadow-elegant transition-all duration-300 group">
               <Image 
-                src="/images/simultaneous.jpg" 
+                src="/images/simultaneous.webp" 
                 alt="Simultaneous chess exhibition" 
                 width={600}
                 height={400}
                 className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                loading="lazy"
               />
             </div>
             
             <div className="elegant-card overflow-hidden hover:shadow-elegant transition-all duration-300 group">
               <Image 
-                src="/images/DSC_3653.JPG" 
+                src="/images/DSC_3653.webp" 
                 alt="Chess club members socializing" 
                 width={600}
                 height={400}
                 className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                loading="lazy"
               />
             </div>
           </div>

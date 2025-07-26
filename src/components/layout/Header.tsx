@@ -36,9 +36,11 @@ export default function Header() {
                 <Image 
                   src="/favicon-32x32.png" 
                   alt="Rockland County Chess Club" 
-                  width={60} 
-                  height={60}
+                  width={56} 
+                  height={56}
+                  priority
                   className="h-14 w-14 relative z-10 object-contain"
+                  sizes="56px"
                 />
               </div>
               <div className="flex flex-col">

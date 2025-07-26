@@ -35,11 +35,13 @@ export default function Hero({ communityCards }: HeroProps) {
           >
             <div className="flex justify-center mb-6">
               <Image 
-                src="/new-logo.png" 
+                src="/new-logo.webp" 
                 alt="Rockland County Chess Club" 
-                width={500} 
-                height={500}
+                width={448} 
+                height={448}
+                priority
                 className="w-[28rem] h-[28rem] object-contain"
+                sizes="(max-width: 768px) 100vw, 28rem"
               />
             </div>
             <div className="mt-6 text-forest-700 text-xl italic" style={{fontFamily: 'var(--font-baskerville)'}}>
