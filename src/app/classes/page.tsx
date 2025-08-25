@@ -151,11 +151,13 @@ export default function ClassesPage() {
                 </ul>
               </div>
 
-              <button className="btn-classical w-full inline-flex items-center justify-center space-x-2 group cursor-not-allowed opacity-75"
-                      disabled>
-                <span>Registration Coming Soon</span>
+              <a href="https://www.zeffy.com/embed/ticketing/chess-lessons-and-games" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 className="btn-classical w-full inline-flex items-center justify-center space-x-2 group">
+                <span>Register Now</span>
                 <span className="chess-piece-decoration text-sm">♕</span>
-              </button>
+              </a>
             </div>
 
             {/* Adult Classes */}
