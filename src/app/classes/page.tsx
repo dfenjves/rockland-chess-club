@@ -117,7 +117,7 @@ export default function ClassesPage() {
                 </div>
                 <div className="flex items-center text-forest-700">
                   <AcademicCapIcon className="h-5 w-5 text-amber-600 mr-3" />
-                  <span style={{fontFamily: 'var(--font-baskerville)'}}>6-week session: September 9 - October 14</span>
+                  <span style={{fontFamily: 'var(--font-baskerville)'}}>6-week session: September 16 - October 21</span>
                 </div>
                 <div className="flex items-center text-forest-700">
                   <UserGroupIcon className="h-5 w-5 text-amber-600 mr-3" />
@@ -179,7 +179,7 @@ export default function ClassesPage() {
                 </div>
                 <div className="flex items-center text-forest-700">
                   <AcademicCapIcon className="h-5 w-5 text-amber-600 mr-3" />
-                  <span style={{fontFamily: 'var(--font-baskerville)'}}>6-week session: September 9 - October 14</span>
+                  <span style={{fontFamily: 'var(--font-baskerville)'}}>6-week session: September 16 - October 21</span>
                 </div>
                 <div className="flex items-center text-forest-700">
                   <UserGroupIcon className="h-5 w-5 text-amber-600 mr-3" />
