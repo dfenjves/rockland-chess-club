@@ -151,7 +151,7 @@ export default function ClassesPage() {
                 </ul>
               </div>
 
-              <a href="https://www.zeffy.com/embed/ticketing/chess-lessons-and-games" 
+              <a href="https://www.zeffy.com/en-US/ticketing/chess-lessons-and-games" 
                  target="_blank" 
                  rel="noopener noreferrer"
                  className="btn-classical w-full inline-flex items-center justify-center space-x-2 group">
