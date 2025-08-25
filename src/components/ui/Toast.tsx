@@ -63,9 +63,25 @@ export default function Toast({ announcements }: ToastProps) {
                     {currentAnnouncement.title}
                   </h3>
                 </div>
-                <p className="text-forest-700 text-sm leading-relaxed" style={{fontFamily: 'var(--font-baskerville)'}}>
+                <p className="text-forest-700 text-sm leading-relaxed mb-3" style={{fontFamily: 'var(--font-baskerville)'}}>
                   {currentAnnouncement.description}
                 </p>
+                
+                {/* Link button if linkUrl is provided */}
+                {currentAnnouncement.linkUrl && (
+                  <a
+                    href={currentAnnouncement.linkUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center px-3 py-1.5 bg-amber-500 hover:bg-amber-600 text-white text-xs font-medium rounded-md transition-colors duration-200"
+                    style={{fontFamily: 'var(--font-baskerville)'}}
+                  >
+                    {currentAnnouncement.linkText || 'Learn More'}
+                    <svg className="ml-1 h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                )}
                 
                 {/* Progress dots for multiple announcements */}
                 {activeAnnouncements.length > 1 && (
