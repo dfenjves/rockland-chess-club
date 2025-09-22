@@ -8,8 +8,8 @@ import { fetchAnnouncementsFromAirtable, fetchCommunityCardsFromAirtable } from 
 import Image from 'next/image'
 import type { Event, Announcement, CommunityCard } from '@/types'
 
-// Use ISR to revalidate every 5 minutes (300 seconds) to reduce API calls
-export const revalidate = 300
+// Use dynamic rendering but with caching in the API layer to reduce Airtable calls
+export const dynamic = 'force-dynamic'
 
 export default async function Home() {
   // Fetch all data concurrently for better performance
