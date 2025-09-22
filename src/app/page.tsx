@@ -8,8 +8,8 @@ import { fetchAnnouncementsFromAirtable, fetchCommunityCardsFromAirtable } from 
 import Image from 'next/image'
 import type { Event, Announcement, CommunityCard } from '@/types'
 
-// Force dynamic rendering to always show fresh Google Calendar data
-export const dynamic = 'force-dynamic'
+// Use ISR to revalidate every 5 minutes (300 seconds) to reduce API calls
+export const revalidate = 300
 
 export default async function Home() {
   // Fetch all data concurrently for better performance

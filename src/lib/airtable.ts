@@ -1,6 +1,8 @@
 import Airtable from 'airtable'
 import { createLocalDate } from '@/lib/utils'
 import type { Event, Announcement, CommunityCard, NewsletterSubscriber, ContactSubmission } from '@/types'
+import { fallbackAnnouncements } from '@/data/announcements'
+import { fallbackCommunityCards } from '@/data/community-cards'
 
 // Initialize Airtable with validation
 if (!process.env.AIRTABLE_API_KEY) {
@@ -19,6 +21,37 @@ const announcementsTable = base('Announcements')
 const communityCardsTable = base('CommunityCards')
 const newsletterTable = base('Newsletter')
 const contactTable = base('Contact-Us')
+
+// Simple in-memory cache with TTL
+interface CacheEntry<T> {
+  data: T
+  timestamp: number
+  ttl: number
+}
+
+const cache = new Map<string, CacheEntry<unknown>>()
+
+// Cache helper functions
+function getCachedData<T>(key: string): T | null {
+  const entry = cache.get(key)
+  if (!entry) return null
+  
+  const now = Date.now()
+  if (now - entry.timestamp > entry.ttl) {
+    cache.delete(key)
+    return null
+  }
+  
+  return entry.data as T
+}
+
+function setCachedData<T>(key: string, data: T, ttlMinutes: number = 5): void {
+  cache.set(key, {
+    data,
+    timestamp: Date.now(),
+    ttl: ttlMinutes * 60 * 1000 // Convert minutes to milliseconds
+  })
+}
 
 // Types for Airtable records
 interface AirtableEventRecord {
@@ -285,8 +318,16 @@ export async function deleteEvent(id: string): Promise<boolean> {
   }
 }
 
-// Fetch active announcements from Airtable
+// Fetch active announcements from Airtable with caching
 export async function fetchAnnouncementsFromAirtable(): Promise<Announcement[]> {
+  const cacheKey = 'announcements'
+  
+  // Check cache first
+  const cachedData = getCachedData<Announcement[]>(cacheKey)
+  if (cachedData) {
+    return cachedData
+  }
+
   try {
     const records = await announcementsTable
       .select({
@@ -298,6 +339,9 @@ export async function fetchAnnouncementsFromAirtable(): Promise<Announcement[]> 
     const announcements = records
       .map((record) => convertAirtableToAnnouncement(record as unknown as AirtableAnnouncementRecord))
 
+    // Cache for 10 minutes since announcements change infrequently
+    setCachedData(cacheKey, announcements, 10)
+    
     return announcements
   } catch (error) {
     console.error('Error fetching announcements from Airtable:', error)
@@ -307,8 +351,16 @@ export async function fetchAnnouncementsFromAirtable(): Promise<Announcement[]> 
   }
 }
 
-// Fetch active community cards from Airtable
+// Fetch active community cards from Airtable with caching
 export async function fetchCommunityCardsFromAirtable(): Promise<CommunityCard[]> {
+  const cacheKey = 'community-cards'
+  
+  // Check cache first
+  const cachedData = getCachedData<CommunityCard[]>(cacheKey)
+  if (cachedData) {
+    return cachedData
+  }
+
   try {
     const records = await communityCardsTable
       .select({
@@ -320,6 +372,9 @@ export async function fetchCommunityCardsFromAirtable(): Promise<CommunityCard[]
     const communityCards = records
       .map((record) => convertAirtableToCommunityCard(record as unknown as AirtableCommunityCardRecord))
 
+    // Cache for 15 minutes since community cards change very rarely
+    setCachedData(cacheKey, communityCards, 15)
+    
     return communityCards
   } catch (error) {
     console.error('Error fetching community cards from Airtable:', error)
@@ -331,67 +386,18 @@ export async function fetchCommunityCardsFromAirtable(): Promise<CommunityCard[]
 
 // Fallback announcements in case Airtable is unavailable
 function getFallbackAnnouncements(): Announcement[] {
-  return [
-    {
-      id: 'fallback-expansion',
-      title: 'Expansion Announcement',
-      description: 'New space opening September 2025',
-      linkUrl: '/about',
-      linkText: 'Learn More →',
-      status: 'active',
-      priority: 1,
-      icon: '♔'
-    }
-  ]
+  return fallbackAnnouncements
 }
 
 // Fallback community cards in case Airtable is unavailable
 function getFallbackCommunityCards(): CommunityCard[] {
-  return [
-    {
-      id: 'fallback-skill-levels',
-      title: 'All Skill Levels',
-      description: 'From beginners to masters, every player finds their place in our Club',
-      icon: '♔',
-      order: 1,
-      status: 'active'
-    },
-    {
-      id: 'fallback-gatherings',
-      title: 'Regular Gatherings',
-      description: 'Casual matches, regular tournaments, and engaging classes',
-      icon: '♕',
-      order: 2,
-      status: 'active'
-    },
-    {
-      id: 'fallback-instruction',
-      title: 'Instruction',
-      description: 'Our instructors offer guidance in the art and science of chess',
-      icon: '♗',
-      order: 3,
-      status: 'active'
-    }
-  ]
+  return fallbackCommunityCards
 }
 
-// Add newsletter subscriber to Airtable
+// Add newsletter subscriber to Airtable - optimized to reduce API calls
 export async function addNewsletterSubscriber(email: string, source: string = 'website'): Promise<NewsletterSubscriber | null> {
   try {
-    // First check if email already exists
-    const existingRecords = await newsletterTable
-      .select({
-        filterByFormula: `{Email} = "${email}"`,
-        maxRecords: 1
-      })
-      .all()
-
-    // If email already exists, return the existing record
-    if (existingRecords.length > 0) {
-      return convertAirtableToNewsletterSubscriber(existingRecords[0] as unknown as AirtableNewsletterRecord)
-    }
-
-    // Create new subscriber record
+    // Try to create new subscriber record directly - more efficient than checking first
     const record = await newsletterTable.create([
       {
         fields: {
@@ -404,7 +410,28 @@ export async function addNewsletterSubscriber(email: string, source: string = 'w
     ])
 
     return convertAirtableToNewsletterSubscriber(record[0] as unknown as AirtableNewsletterRecord)
-  } catch (error) {
+  } catch (error: unknown) {
+    // If the error is due to duplicate email (Airtable has unique constraints), 
+    // fetch the existing record
+    if ((error as Error)?.message?.includes('INVALID_MULTIPLE_CHOICE_OPTIONS') || 
+        (error as Error)?.message?.includes('duplicate') ||
+        (error as { statusCode?: number })?.statusCode === 422) {
+      try {
+        const existingRecords = await newsletterTable
+          .select({
+            filterByFormula: `{Email} = "${email}"`,
+            maxRecords: 1
+          })
+          .all()
+
+        if (existingRecords.length > 0) {
+          return convertAirtableToNewsletterSubscriber(existingRecords[0] as unknown as AirtableNewsletterRecord)
+        }
+      } catch (fetchError) {
+        console.error('Error fetching existing newsletter subscriber:', fetchError)
+      }
+    }
+    
     console.error('Error adding newsletter subscriber to Airtable:', error)
     return null
   }
