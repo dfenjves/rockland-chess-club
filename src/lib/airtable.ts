@@ -346,8 +346,10 @@ export async function fetchAnnouncementsFromAirtable(): Promise<Announcement[]> 
   } catch (error) {
     console.error('Error fetching announcements from Airtable:', error)
     
-    // Fallback to static announcement if Airtable fails
-    return getFallbackAnnouncements()
+    // Cache fallback data briefly to avoid repeated failures
+    const fallback = getFallbackAnnouncements()
+    setCachedData(cacheKey, fallback, 2) // Cache fallback for 2 minutes
+    return fallback
   }
 }
 
@@ -379,8 +381,10 @@ export async function fetchCommunityCardsFromAirtable(): Promise<CommunityCard[]
   } catch (error) {
     console.error('Error fetching community cards from Airtable:', error)
     
-    // Fallback to static community cards if Airtable fails
-    return getFallbackCommunityCards()
+    // Cache fallback data briefly to avoid repeated failures
+    const fallback = getFallbackCommunityCards()
+    setCachedData(cacheKey, fallback, 2) // Cache fallback for 2 minutes
+    return fallback
   }
 }
 

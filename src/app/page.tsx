@@ -12,21 +12,48 @@ import type { Event, Announcement, CommunityCard } from '@/types'
 export const dynamic = 'force-dynamic'
 
 export default async function Home() {
-  // Fetch all data concurrently for better performance
+  // Fetch all data concurrently with aggressive timeouts to prevent 504 errors
   let events: Event[] = []
   let announcements: Announcement[] = []
   let communityCards: CommunityCard[] = []
   
   try {
-    const [eventsData, announcementsData, communityCardsData] = await Promise.all([
-      fetchEventsFromGoogleCalendar(),
-      fetchAnnouncementsFromAirtable(),
-      fetchCommunityCardsFromAirtable()
+    // Use Promise.allSettled to prevent one failure from blocking others
+    // Add shorter timeouts to prevent 504 errors
+    const results = await Promise.allSettled([
+      Promise.race([
+        fetchEventsFromGoogleCalendar(),
+        new Promise<Event[]>((_, reject) => setTimeout(() => reject(new Error('Google Calendar timeout')), 8000))
+      ]),
+      Promise.race([
+        fetchAnnouncementsFromAirtable(),
+        new Promise<Announcement[]>((_, reject) => setTimeout(() => reject(new Error('Announcements timeout')), 3000))
+      ]),
+      Promise.race([
+        fetchCommunityCardsFromAirtable(),
+        new Promise<CommunityCard[]>((_, reject) => setTimeout(() => reject(new Error('Community cards timeout')), 3000))
+      ])
     ])
     
-    events = eventsData
-    announcements = announcementsData
-    communityCards = communityCardsData
+    // Extract successful results or use fallbacks
+    if (results[0].status === 'fulfilled') {
+      events = results[0].value
+    }
+    if (results[1].status === 'fulfilled') {
+      announcements = results[1].value
+    }
+    if (results[2].status === 'fulfilled') {
+      communityCards = results[2].value
+    }
+    
+    // Log any failures for debugging
+    results.forEach((result, index) => {
+      if (result.status === 'rejected') {
+        const sources = ['Google Calendar', 'Announcements', 'Community Cards']
+        console.error(`Failed to fetch ${sources[index]}:`, result.reason)
+      }
+    })
+    
   } catch (error) {
     console.error('Failed to fetch data for home page:', error)
     // Fallback functions will be called automatically in each fetch function
