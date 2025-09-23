@@ -26,13 +26,5 @@ export const fallbackCommunityCards: CommunityCard[] = [
     icon: '♗',
     order: 3,
     status: 'active'
-  },
-  {
-    id: 'fallback-community',
-    title: 'Vibrant Community',
-    description: 'Connect with fellow chess enthusiasts in Rockland County',
-    icon: '♘',
-    order: 4,
-    status: 'active'
   }
 ]
