@@ -213,11 +213,11 @@ export default function ClassesPage() {
                 </ul>
               </div>
 
-              <button className="btn-classical w-full inline-flex items-center justify-center space-x-2 group bg-gradient-to-r from-forest-600 to-forest-700 cursor-not-allowed opacity-75"
-                      disabled>
-                <span>Registration Coming Soon</span>
+              <a href="/join"
+                 className="btn-classical w-full inline-flex items-center justify-center space-x-2 group bg-gradient-to-r from-forest-600 to-forest-700 hover:from-forest-700 hover:to-forest-800">
+                <span>Included with Membership</span>
                 <span className="chess-piece-decoration text-sm">♔</span>
-              </button>
+              </a>
             </div>
           </div>
 
