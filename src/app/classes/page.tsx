@@ -94,7 +94,7 @@ export default function ClassesPage() {
           className="mb-16"
         >
           <h2 className="text-4xl font-bold text-burgundy-800 text-center mb-12" style={{fontFamily: 'var(--font-playfair)'}}>
-            September 2025 Classes
+            October 2025 Classes
           </h2>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
@@ -117,7 +117,7 @@ export default function ClassesPage() {
                 </div>
                 <div className="flex items-center text-forest-700">
                   <AcademicCapIcon className="h-5 w-5 text-amber-600 mr-3" />
-                  <span style={{fontFamily: 'var(--font-baskerville)'}}>6-week session: September 16 - October 21</span>
+                  <span style={{fontFamily: 'var(--font-baskerville)'}}>6-week session: October 28 - December 2</span>
                 </div>
                 <div className="flex items-center text-forest-700">
                   <UserGroupIcon className="h-5 w-5 text-amber-600 mr-3" />
@@ -151,8 +151,8 @@ export default function ClassesPage() {
                 </ul>
               </div>
 
-              <a href="https://www.zeffy.com/en-US/ticketing/chess-lessons-and-games" 
-                 target="_blank" 
+              <a href="https://www.zeffy.com/en-US/ticketing/chess-lessons-2nd-session"
+                 target="_blank"
                  rel="noopener noreferrer"
                  className="btn-classical w-full inline-flex items-center justify-center space-x-2 group">
                 <span>Register Now</span>
@@ -179,7 +179,7 @@ export default function ClassesPage() {
                 </div>
                 <div className="flex items-center text-forest-700">
                   <AcademicCapIcon className="h-5 w-5 text-amber-600 mr-3" />
-                  <span style={{fontFamily: 'var(--font-baskerville)'}}>6-week session: September 16 - October 21</span>
+                  <span style={{fontFamily: 'var(--font-baskerville)'}}>6-week session: October 28 - December 2</span>
                 </div>
                 <div className="flex items-center text-forest-700">
                   <UserGroupIcon className="h-5 w-5 text-amber-600 mr-3" />
