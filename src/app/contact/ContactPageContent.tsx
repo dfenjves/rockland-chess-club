@@ -10,7 +10,7 @@ const contactInfo = [
     icon: MapPinIcon,
     title: 'Location',
     details: [
-      '7 North Broadway, 3rd Floor',
+      '70 Main St., 3rd Floor',
       'Nyack, NY 10960',
       'Accessible venue with parking available'
     ]
@@ -323,7 +323,7 @@ export function ContactPageContent() {
             <MapPinIcon className="h-16 w-16 text-amber-600 mx-auto mb-4" />
             <h3 className="text-2xl font-bold text-burgundy-800 mb-4" style={{fontFamily: 'var(--font-playfair)'}}>Interactive Map Coming Soon</h3>
             <p className="text-forest-700 text-lg" style={{fontFamily: 'var(--font-baskerville)'}}>
-              Visit us at 7 North Broadway, 3rd Floor in Nyack, NY. 
+              Visit us at 70 Main St., 3rd Floor in Nyack, NY.
               Our location is easily accessible with parking available nearby.
             </p>
           </div>

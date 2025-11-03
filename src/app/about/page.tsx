@@ -155,7 +155,7 @@ export default function AboutPage() {
                   <h3 className="text-2xl font-bold text-burgundy-800" style={{fontFamily: 'var(--font-playfair)'}}>Location</h3>
                 </div>
                 <div className="space-y-3 text-forest-700" style={{fontFamily: 'var(--font-baskerville)'}}>
-                  <p className="font-medium">7 North Broadway, 3rd Floor</p>
+                  <p className="font-medium">70 Main St., 3rd Floor</p>
                   <p>Nyack, NY 10960</p>
                   <p>Accessible venue with parking available</p>
                   <div className="classical-divider my-4"></div>

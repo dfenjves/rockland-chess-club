@@ -19,7 +19,7 @@ const cards = [
     description: 'Convenient Nyack location',
     icon: MapPinIcon,
     content: [
-      '7 North Broadway, 3rd Floor',
+      '70 Main St., 3rd Floor',
       'Nyack, NY 10960',
       'Parking available nearby'
     ]

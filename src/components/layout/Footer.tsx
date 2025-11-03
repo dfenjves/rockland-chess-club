@@ -115,7 +115,7 @@ export default function Footer() {
           
           <div className="space-y-2 text-burgundy-700" style={{fontFamily: 'var(--font-baskerville)'}}>
             <p>
-              7 North Broadway, 3rd Floor • Nyack, NY 10960
+              70 Main St., 3rd Floor • Nyack, NY 10960
             </p>
             <p>
               Thursdays 7-9 PM
