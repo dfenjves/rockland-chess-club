@@ -94,7 +94,7 @@ export default function ClassesPage() {
           className="mb-16"
         >
           <h2 className="text-4xl font-bold text-burgundy-800 text-center mb-12" style={{fontFamily: 'var(--font-playfair)'}}>
-            October 2025 Classes
+            January 2025 Classes
           </h2>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
@@ -113,11 +113,11 @@ export default function ClassesPage() {
               <div className="space-y-4 mb-8">
                 <div className="flex items-center text-forest-700">
                   <ClockIcon className="h-5 w-5 text-amber-600 mr-3" />
-                  <span style={{fontFamily: 'var(--font-baskerville)'}}>Tuesdays, 4:30 PM - 6:00 PM</span>
+                  <span style={{fontFamily: 'var(--font-baskerville)'}}>Tuesdays, 4:30 PM - 5:30 PM</span>
                 </div>
                 <div className="flex items-center text-forest-700">
                   <AcademicCapIcon className="h-5 w-5 text-amber-600 mr-3" />
-                  <span style={{fontFamily: 'var(--font-baskerville)'}}>6-week session: October 28 - December 2</span>
+                  <span style={{fontFamily: 'var(--font-baskerville)'}}>5-week session: January 13 - February 10</span>
                 </div>
                 <div className="flex items-center text-forest-700">
                   <UserGroupIcon className="h-5 w-5 text-amber-600 mr-3" />
@@ -125,7 +125,7 @@ export default function ClassesPage() {
                 </div>
                 <div className="flex items-center text-forest-700">
                   <TrophyIcon className="h-5 w-5 text-amber-600 mr-3" />
-                  <span style={{fontFamily: 'var(--font-baskerville)'}}>$150 for complete 6-week session</span>
+                  <span style={{fontFamily: 'var(--font-baskerville)'}}>$150 for complete 5-week session</span>
                 </div>
               </div>
 
@@ -151,7 +151,7 @@ export default function ClassesPage() {
                 </ul>
               </div>
 
-              <a href="https://www.zeffy.com/en-US/ticketing/chess-lessons-2nd-session"
+              <a href="https://www.zeffy.com/en-US/ticketing/chess-lessons-3rd-session"
                  target="_blank"
                  rel="noopener noreferrer"
                  className="btn-classical w-full inline-flex items-center justify-center space-x-2 group">
@@ -179,7 +179,7 @@ export default function ClassesPage() {
                 </div>
                 <div className="flex items-center text-forest-700">
                   <AcademicCapIcon className="h-5 w-5 text-amber-600 mr-3" />
-                  <span style={{fontFamily: 'var(--font-baskerville)'}}>6-week session: October 28 - December 2</span>
+                  <span style={{fontFamily: 'var(--font-baskerville)'}}>5-week session: January 13 - February 10</span>
                 </div>
                 <div className="flex items-center text-forest-700">
                   <UserGroupIcon className="h-5 w-5 text-amber-600 mr-3" />
@@ -233,7 +233,7 @@ export default function ClassesPage() {
               </div>
               <div>
                 <h5 className="font-semibold text-burgundy-800 mb-2">Session Length</h5>
-                <p>6 weeks of structured instruction<br />Small class sizes for personalized attention</p>
+                <p>5 weeks of structured instruction<br />Small class sizes for personalized attention</p>
               </div>
             </div>
             <div className="mt-6 pt-6 border-t border-amber-500/30">
