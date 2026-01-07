@@ -175,7 +175,7 @@ export default function ClassesPage() {
               <div className="space-y-4 mb-8">
                 <div className="flex items-center text-forest-700">
                   <ClockIcon className="h-5 w-5 text-amber-600 mr-3" />
-                  <span style={{fontFamily: 'var(--font-baskerville)'}}>Tuesdays, 6:00 PM - 7:30 PM</span>
+                  <span style={{fontFamily: 'var(--font-baskerville)'}}>Tuesdays, 7:00 PM - 8:30 PM</span>
                 </div>
                 <div className="flex items-center text-forest-700">
                   <AcademicCapIcon className="h-5 w-5 text-amber-600 mr-3" />
