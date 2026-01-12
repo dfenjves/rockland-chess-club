@@ -45,7 +45,7 @@ export default function Hero({ communityCards }: HeroProps) {
               />
             </div>
             <div className="mt-6 text-forest-700 text-xl italic" style={{fontFamily: 'var(--font-baskerville)'}}>
-              &ldquo;Where chess lovers gather, learn, and grow together&rdquo;
+              Play chess. Make friends. All skill levels welcome.
             </div>
           </motion.div>
 
@@ -57,8 +57,21 @@ export default function Hero({ communityCards }: HeroProps) {
             className="mt-8 text-xl leading-relaxed text-burgundy-700 max-w-3xl mx-auto"
             style={{fontFamily: 'var(--font-baskerville)'}}
           >
-            A warm, welcoming community for chess players of all skill levels. Whether you&apos;re taking your first steps or you&apos;re an experienced player, join us for tournaments, casual games, classes, and friendship.
+            Join Rockland County&apos;s friendliest chess club. We meet every Thursday from 7-9 PM in Nyack. Beginners and experts play side by side.
           </motion.p>
+
+          {/* First Visit Callout */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="mt-8 inline-flex items-center gap-3 bg-amber-100 border-2 border-amber-400 rounded-lg px-6 py-3"
+          >
+            <span className="text-2xl">👋</span>
+            <span className="text-burgundy-800 font-medium" style={{fontFamily: 'var(--font-baskerville)'}}>
+              <strong>First visit?</strong> Just drop in any Thursday — $10 at the door, no reservation needed.
+            </span>
+          </motion.div>
 
           {/* Classical action buttons */}
           <motion.div

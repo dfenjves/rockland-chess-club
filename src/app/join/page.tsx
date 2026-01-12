@@ -40,7 +40,7 @@ const pricingOptions = [
     period: 'per visit',
     description: 'Casual attendance option',
     features: [
-      'Access to that day&apos;s activities',
+      "Access to that day's activities",
       'Equipment provided',
       'Casual games and instruction',
       'Meet the community'
@@ -52,24 +52,32 @@ const pricingOptions = [
 
 const faqs = [
   {
-    question: "I'm a complete beginner. Can I still join?",
-    answer: "Absolutely! We welcome players of all skill levels, including complete beginners. We have experienced members who love teaching the basics, and you'll find a supportive environment to learn and grow."
+    question: "Can I just show up without registering?",
+    answer: "Yes! No reservation needed. Just drop in any Thursday between 7-9 PM. Pay $10 at the door and you're ready to play. We'll introduce you around and find you a game."
+  },
+  {
+    question: "I've never played chess before. Is that okay?",
+    answer: "Absolutely! Complete beginners are welcome. We have patient members who enjoy teaching newcomers. We'll show you how the pieces move and get you playing your first game."
   },
   {
     question: "Do I need to bring my own chess set?",
-    answer: "No, we provide all equipment including chess sets, boards, and clocks. However, you're welcome to bring your own if you prefer."
+    answer: "No, we provide all equipment including chess sets, boards, and clocks. Just bring yourself!"
+  },
+  {
+    question: "What should I expect on my first visit?",
+    answer: "Arrive anytime during our hours (7-9 PM Thursdays). We'll greet you, explain how things work, and pair you with someone at your level. Expect friendly games, helpful tips, and a welcoming atmosphere."
+  },
+  {
+    question: "Is parking available?",
+    answer: "Yes, there's street parking on Main St. and nearby municipal lots. The venue is on the 3rd floor — take the elevator or stairs from the main entrance."
   },
   {
     question: "What age groups participate?",
-    answer: "Our club welcomes all ages! We have members ranging from teenagers to seniors, creating a diverse and enriching community."
-  },
-  {
-    question: "Can I try before committing to membership?",
-    answer: "Yes! You can drop in for $10 to experience our club before deciding on a membership. We're confident you'll love our welcoming community."
+    answer: "Our club welcomes all ages! We have members from age 8 to 80+, creating a diverse and enriching community where everyone learns from each other."
   },
   {
     question: "Are there opportunities for competitive play?",
-    answer: "Yes, we host monthly tournaments and many of our members participate in rated tournament play. We cater to both casual and competitive players."
+    answer: "Yes, we host monthly tournaments and many members participate in rated tournament play. But there's no pressure — most of our time is casual, friendly games."
   }
 ]
 
@@ -133,26 +141,33 @@ export default function JoinPage() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3 items-start">
           {pricingOptions.map((option, index) => (
-            <motion.div 
+            <motion.div
               key={option.name}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
               viewport={{ once: true }}
               className={`relative elegant-card p-8 ${
-                option.recommended 
-                  ? 'border-2 border-amber-500 ring-2 ring-amber-300 bg-gradient-to-br from-amber-50 to-cream' 
+                option.recommended
+                  ? 'border-4 border-burgundy-600 ring-4 ring-burgundy-200 bg-gradient-to-br from-burgundy-50 via-amber-50 to-cream shadow-2xl scale-105 lg:-mt-4 lg:mb-4 z-10'
                   : ''
               } hover:shadow-elegant transition-all duration-300 group`}
             >
               {option.recommended && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <span className="inline-flex items-center rounded-full bg-burgundy-600 px-4 py-1 text-sm font-medium" style={{fontFamily: 'var(--font-playfair)', color: 'var(--cream)'}}>
-                    ♔ Recommended ♔
-                  </span>
-                </div>
+                <>
+                  <div className="absolute -top-5 left-1/2 -translate-x-1/2">
+                    <span className="inline-flex items-center rounded-full bg-burgundy-600 px-6 py-2 text-base font-bold shadow-lg" style={{fontFamily: 'var(--font-playfair)', color: 'var(--cream)'}}>
+                      ♔ Best Value ♔
+                    </span>
+                  </div>
+                  <div className="absolute top-4 right-4">
+                    <span className="inline-block bg-amber-400 text-burgundy-800 text-xs font-bold px-2 py-1 rounded" style={{fontFamily: 'var(--font-baskerville)'}}>
+                      Save $20/year
+                    </span>
+                  </div>
+                </>
               )}
               
               <div className="text-center mb-8">

@@ -94,7 +94,7 @@ export default function ClassesPage() {
           className="mb-16"
         >
           <h2 className="text-4xl font-bold text-burgundy-800 text-center mb-12" style={{fontFamily: 'var(--font-playfair)'}}>
-            January 2025 Classes
+            Current Class Sessions
           </h2>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
@@ -229,7 +229,7 @@ export default function ClassesPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-forest-700" style={{fontFamily: 'var(--font-baskerville)'}}>
               <div>
                 <h5 className="font-semibold text-burgundy-800 mb-2">Location</h5>
-                <p>7 North Broadway, 3rd Floor<br />Nyack, NY 10960</p>
+                <p>70 Main St., 3rd Floor<br />Nyack, NY 10960</p>
               </div>
               <div>
                 <h5 className="font-semibold text-burgundy-800 mb-2">Session Length</h5>
@@ -245,8 +245,54 @@ export default function ClassesPage() {
         </motion.div>
 
 
+        {/* Instructor Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="mb-16"
+        >
+          <div className="classical-divider mb-12"></div>
+          <h2 className="text-4xl font-bold text-burgundy-800 text-center mb-12" style={{fontFamily: 'var(--font-playfair)'}}>
+            Meet Our Instructors
+          </h2>
+          <div className="max-w-4xl mx-auto">
+            <div className="elegant-card p-8 bg-gradient-to-br from-cream to-amber-50">
+              <div className="flex flex-col md:flex-row items-center gap-8">
+                <div className="flex-shrink-0">
+                  <div className="w-32 h-32 rounded-full bg-gradient-to-br from-burgundy-100 to-amber-100 flex items-center justify-center">
+                    <span className="text-5xl text-burgundy-600">♔</span>
+                  </div>
+                </div>
+                <div className="text-center md:text-left">
+                  <h3 className="text-2xl font-bold text-burgundy-800 mb-2" style={{fontFamily: 'var(--font-playfair)'}}>
+                    Experienced Club Members
+                  </h3>
+                  <p className="text-forest-700 mb-4" style={{fontFamily: 'var(--font-baskerville)'}}>
+                    Our classes are taught by experienced club members who are passionate about sharing their love of chess.
+                    With backgrounds ranging from competitive tournament players to patient educators, our instructors
+                    tailor their teaching to each student&apos;s level and learning style.
+                  </p>
+                  <div className="flex flex-wrap gap-3 justify-center md:justify-start">
+                    <span className="inline-flex items-center px-3 py-1 bg-amber-100 text-burgundy-700 rounded-full text-sm" style={{fontFamily: 'var(--font-baskerville)'}}>
+                      <AcademicCapIcon className="h-4 w-4 mr-1" /> Tournament Experience
+                    </span>
+                    <span className="inline-flex items-center px-3 py-1 bg-amber-100 text-burgundy-700 rounded-full text-sm" style={{fontFamily: 'var(--font-baskerville)'}}>
+                      <UserGroupIcon className="h-4 w-4 mr-1" /> All Ages Welcome
+                    </span>
+                    <span className="inline-flex items-center px-3 py-1 bg-amber-100 text-burgundy-700 rounded-full text-sm" style={{fontFamily: 'var(--font-baskerville)'}}>
+                      <TrophyIcon className="h-4 w-4 mr-1" /> Rated Players
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
         {/* Call to Action */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}

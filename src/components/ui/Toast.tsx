@@ -9,33 +9,54 @@ interface ToastProps {
   announcements: Announcement[]
 }
 
+const TOAST_DISMISSED_KEY = 'rccc_toast_dismissed'
+
 export default function Toast({ announcements }: ToastProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isVisible, setIsVisible] = useState(false)
-  const [isDismissed, setIsDismissed] = useState(false)
+  const [isDismissed, setIsDismissed] = useState(true) // Start as true to prevent flash
 
   // Filter active announcements - the status should be 'active' (lowercase)
   const activeAnnouncements = announcements.filter(announcement => announcement.status === 'active')
-  
 
+  // Check sessionStorage on mount and show toast after delay
   useEffect(() => {
-    if (activeAnnouncements.length > 0 && !isDismissed) {
-      setIsVisible(true)
-      
-      // Auto-rotate announcements if there are multiple
-      if (activeAnnouncements.length > 1) {
-        const interval = setInterval(() => {
-          setCurrentIndex((prev) => (prev + 1) % activeAnnouncements.length)
-        }, 5000) // Change every 5 seconds
-        
-        return () => clearInterval(interval)
-      }
+    // Check if already dismissed this session
+    const wasDismissed = sessionStorage.getItem(TOAST_DISMISSED_KEY) === 'true'
+
+    if (wasDismissed) {
+      setIsDismissed(true)
+      return
     }
-  }, [activeAnnouncements.length, isDismissed])
+
+    setIsDismissed(false)
+
+    // Show toast after a 2-second delay so it's less intrusive on page load
+    const showTimeout = setTimeout(() => {
+      if (activeAnnouncements.length > 0) {
+        setIsVisible(true)
+      }
+    }, 2000)
+
+    return () => clearTimeout(showTimeout)
+  }, [activeAnnouncements.length])
+
+  // Auto-rotate announcements
+  useEffect(() => {
+    if (activeAnnouncements.length > 1 && isVisible && !isDismissed) {
+      const interval = setInterval(() => {
+        setCurrentIndex((prev) => (prev + 1) % activeAnnouncements.length)
+      }, 5000) // Change every 5 seconds
+
+      return () => clearInterval(interval)
+    }
+  }, [activeAnnouncements.length, isVisible, isDismissed])
 
   const handleDismiss = () => {
     setIsVisible(false)
     setIsDismissed(true)
+    // Remember dismissal for this session
+    sessionStorage.setItem(TOAST_DISMISSED_KEY, 'true')
   }
 
   if (activeAnnouncements.length === 0 || isDismissed) {

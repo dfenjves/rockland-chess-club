@@ -170,7 +170,7 @@ export function ContactPageContent() {
             <div className="mt-8">
               <h3 className="text-xl font-bold text-burgundy-800 mb-4" style={{fontFamily: 'var(--font-playfair)'}}>Follow Us</h3>
               <div className="flex space-x-4">
-                <a 
+                <a
                   href="https://www.facebook.com/RocklandChess/"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -179,15 +179,6 @@ export function ContactPageContent() {
                 >
                   <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
                     <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" />
-                  </svg>
-                </a>
-                <a 
-                  href="#" 
-                  className="elegant-card p-3 text-burgundy-600 hover:text-amber-600 transition-colors"
-                  aria-label="Instagram"
-                >
-                  <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path fillRule="evenodd" d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.62 5.367 11.987 11.988 11.987s11.987-5.367 11.987-11.987C24.004 5.367 18.637.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.49-3.328-1.297L6.57 14.244c.48.48 1.15.797 1.879.797.729 0 1.399-.317 1.879-.797l1.449 1.447c-.88.807-2.031 1.297-3.328 1.297zm7.198 0c-1.297 0-2.448-.49-3.328-1.297l1.449-1.447c.48.48 1.15.797 1.879.797.729 0 1.399-.317 1.879-.797l1.449 1.447c-.88.807-2.031 1.297-3.328 1.297z" clipRule="evenodd" />
                   </svg>
                 </a>
               </div>
@@ -316,16 +307,28 @@ export function ContactPageContent() {
           </div>
         </div>
 
-        {/* Map Section Placeholder */}
+        {/* Map Section */}
         <div className="mt-16">
           <h2 className="text-4xl font-bold text-burgundy-800 mb-8 text-center" style={{fontFamily: 'var(--font-playfair)'}}>Find Us</h2>
-          <div className="elegant-card p-12 text-center">
-            <MapPinIcon className="h-16 w-16 text-amber-600 mx-auto mb-4" />
-            <h3 className="text-2xl font-bold text-burgundy-800 mb-4" style={{fontFamily: 'var(--font-playfair)'}}>Interactive Map Coming Soon</h3>
-            <p className="text-forest-700 text-lg" style={{fontFamily: 'var(--font-baskerville)'}}>
-              Visit us at 70 Main St., 3rd Floor in Nyack, NY.
-              Our location is easily accessible with parking available nearby.
-            </p>
+          <div className="elegant-card overflow-hidden">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3008.6!2d-73.9177!3d41.0905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2e9a9a9a9a9a9%3A0x0!2s70%20Main%20St%2C%20Nyack%2C%20NY%2010960!5e0!3m2!1sen!2sus!4v1234567890"
+              width="100%"
+              height="400"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Rockland County Chess Club Location"
+              className="w-full"
+            />
+            <div className="p-6 bg-gradient-to-br from-amber-50 to-cream text-center">
+              <p className="text-forest-700 text-lg" style={{fontFamily: 'var(--font-baskerville)'}}>
+                <strong>70 Main St., 3rd Floor, Nyack, NY 10960</strong>
+                <br />
+                Parking available nearby. Enter through the main entrance and take the elevator to the 3rd floor.
+              </p>
+            </div>
           </div>
         </div>
       </div>
