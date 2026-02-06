@@ -72,7 +72,7 @@ const convertGoogleCalendarToEvent = (gcalEvent: GoogleCalendarEvent): Event | n
     time: eventTime,
     category: mapGoogleCalendarCategory(gcalEvent.description, gcalEvent.extendedProperties),
     description: gcalEvent.description || '',
-    location: gcalEvent.location || '7 North Broadway, 3rd Floor, Nyack, NY'
+    location: gcalEvent.location || '70 Main St, 3rd Floor, Nyack, NY'
   }
 }
 
@@ -136,7 +136,7 @@ function getFallbackEvents(): Event[] {
       time: '19:00',
       category: 'casual',
       description: 'Casual games, instruction, and friendly competition. All skill levels welcome!',
-      location: '7 North Broadway, 3rd Floor, Nyack, NY'
+      location: '70 Main St, 3rd Floor, Nyack, NY'
     })
   }
   

@@ -19,7 +19,7 @@ Set up the following fields in your Events table:
 | **Time** | Single line text | Required, format: "19:00" (24-hour time) |
 | **Category** | Single select | Options: "casual", "board-games" |
 | **Description** | Long text | Required |
-| **Location** | Single line text | Default: "7 North Broadway, 3rd Floor, Nyack, NY" |
+| **Location** | Single line text | Default: "70 Main St, 3rd Floor, Nyack, NY" |
 | **Status** | Single select | Options: "active", "cancelled", "draft" |
 
 ## Step 3: Get API Credentials
@@ -61,7 +61,7 @@ Add some sample events to test the integration:
 - **Time**: 19:00
 - **Category**: casual
 - **Description**: Casual games, instruction, and friendly competition. All skill levels welcome!
-- **Location**: 7 North Broadway, 3rd Floor, Nyack, NY
+- **Location**: 70 Main St, 3rd Floor, Nyack, NY
 - **Status**: active
 
 ### Monthly Board Game Night:
@@ -70,7 +70,7 @@ Add some sample events to test the integration:
 - **Time**: 19:00
 - **Category**: board-games
 - **Description**: Not just chess! Enjoy Scrabble, Settlers of Catan, and other strategy games in a fun, social setting.
-- **Location**: 7 North Broadway, 3rd Floor, Nyack, NY
+- **Location**: 70 Main St, 3rd Floor, Nyack, NY
 - **Status**: active
 
 ## Step 6: Managing Events

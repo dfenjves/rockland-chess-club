@@ -31,7 +31,7 @@ This guide will help you create events in Google Calendar that display correctly
 - **Important**: Include category keywords (see below)
 
 ### **Location** *(Optional)*
-- If left blank: defaults to "7 North Broadway, 3rd Floor, Nyack, NY"
+- If left blank: defaults to "70 Main St, 3rd Floor, Nyack, NY"
 - If different location: enter the full address
 
 ---
@@ -112,7 +112,7 @@ For weekly or monthly events:
 - **Date**: First Saturday of month
 - **Time**: 10:00 AM - 4:00 PM
 - **Description**: "Monthly tournament with entry fee and prizes. USCF rated games. Registration starts at 9:30 AM."
-- **Location**: 7 North Broadway, 3rd Floor, Nyack, NY
+- **Location**: 70 Main St, 3rd Floor, Nyack, NY
 - **Result**: Shows as blue "Tournament" on website
 
 ### Example 3: Beginner Class

@@ -140,7 +140,7 @@ const convertAirtableToEvent = (record: AirtableEventRecord): Event => {
     time: convertTimeTo24Hour(record.fields.Time),
     category: record.fields.Category,
     description: record.fields.Description,
-    location: record.fields.Location || '7 North Broadway, 3rd Floor, Nyack, NY'
+    location: record.fields.Location || '70 Main St, 3rd Floor, Nyack, NY'
   }
 }
 
@@ -242,7 +242,7 @@ function getFallbackEvents(): Event[] {
       time: '19:00',
       category: 'casual',
       description: 'Casual games, instruction, and friendly competition. All skill levels welcome!',
-      location: '7 North Broadway, 3rd Floor, Nyack, NY'
+      location: '70 Main St, 3rd Floor, Nyack, NY'
     })
   }
   

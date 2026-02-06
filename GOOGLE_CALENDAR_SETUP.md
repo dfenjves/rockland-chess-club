@@ -60,7 +60,7 @@ When creating events in Google Calendar, follow these guidelines for proper disp
 - **Description**: Detailed event description
 
 ### Optional Fields:
-- **Location**: Will default to "7 North Broadway, 3rd Floor, Nyack, NY" if not specified
+- **Location**: Will default to "70 Main St, 3rd Floor, Nyack, NY" if not specified
 
 ### Event Categories:
 Add the event category in the event description or use Google Calendar's custom properties. The system recognizes these keywords:
@@ -78,7 +78,7 @@ Add the event category in the event description or use Google Calendar's custom 
 - **Date**: Every Thursday
 - **Time**: 7:00 PM - 9:00 PM (Eastern)
 - **Description**: Casual games, instruction, and friendly competition. All skill levels welcome!
-- **Location**: 7 North Broadway, 3rd Floor, Nyack, NY
+- **Location**: 70 Main St, 3rd Floor, Nyack, NY
 - **Repeat**: Weekly
 
 #### Monthly Board Game Night:
@@ -86,7 +86,7 @@ Add the event category in the event description or use Google Calendar's custom 
 - **Date**: First Saturday of each month
 - **Time**: 7:00 PM - 10:00 PM (Eastern)
 - **Description**: Board games - Not just chess! Enjoy Scrabble, Settlers of Catan, and other strategy games in a fun, social setting.
-- **Location**: 7 North Broadway, 3rd Floor, Nyack, NY
+- **Location**: 70 Main St, 3rd Floor, Nyack, NY
 - **Repeat**: Monthly
 
 ## Step 6: Managing Events
