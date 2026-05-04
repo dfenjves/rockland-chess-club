@@ -117,7 +117,7 @@ export default function ClassesPage() {
                 </div>
                 <div className="flex items-center text-forest-700">
                   <AcademicCapIcon className="h-5 w-5 text-amber-600 mr-3" />
-                  <span style={{fontFamily: 'var(--font-baskerville)'}}>5-week session: April 7 - May 5</span>
+                  <span style={{fontFamily: 'var(--font-baskerville)'}}>5-week session: May 19 - June 16</span>
                 </div>
                 <div className="flex items-center text-forest-700">
                   <UserGroupIcon className="h-5 w-5 text-amber-600 mr-3" />
@@ -151,7 +151,7 @@ export default function ClassesPage() {
                 </ul>
               </div>
 
-              <a href="https://www.zeffy.com/en-US/ticketing/chess-classes-5th-session"
+              <a href="https://www.zeffy.com/en-US/ticketing/chess-classes-6th-session"
                  target="_blank"
                  rel="noopener noreferrer"
                  className="btn-classical w-full inline-flex items-center justify-center space-x-2 group">
@@ -179,7 +179,7 @@ export default function ClassesPage() {
                 </div>
                 <div className="flex items-center text-forest-700">
                   <AcademicCapIcon className="h-5 w-5 text-amber-600 mr-3" />
-                  <span style={{fontFamily: 'var(--font-baskerville)'}}>5-week session: April 7 - May 5</span>
+                  <span style={{fontFamily: 'var(--font-baskerville)'}}>5-week session: May 19 - June 16</span>
                 </div>
                 <div className="flex items-center text-forest-700">
                   <UserGroupIcon className="h-5 w-5 text-amber-600 mr-3" />
